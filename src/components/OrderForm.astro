@@ -1,0 +1,208 @@
+---
+import NovaPoshtaFields from './NovaPoshtaFields.astro';
+import InvoiceFields from './InvoiceFields.astro';
+---
+<form id="checkout-order-form" class="space-y-6" novalidate>
+  
+  <!-- Step 1: Client Contacts -->
+  <div class="bg-white border border-border rounded-xl p-6">
+    <h3 class="text-base font-bold text-text-dark mb-4 border-b border-border pb-2">Крок 1: Контакти замовника</h3>
+    
+    <div class="mb-4">
+      <label for="clientName" class="block text-xs font-semibold text-text-dark mb-1">Ім'я та прізвище:</label>
+      <input type="text" id="clientName" name="clientName" class="w-full border border-border rounded-lg p-2.5 text-sm text-text-dark focus:outline-none focus:border-primary" placeholder="Іванов Іван" required />
+      <span class="block text-xs text-danger font-semibold mt-1 error-msg" id="err-clientName"></span>
+    </div>
+    
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div>
+        <label for="clientPhone" class="block text-xs font-semibold text-text-dark mb-1">Номер телефону:</label>
+        <input type="tel" id="clientPhone" name="clientPhone" class="w-full border border-border rounded-lg p-2.5 text-sm text-text-dark focus:outline-none focus:border-primary" placeholder="+380XXXXXXXXX" required />
+        <span class="block text-xs text-danger font-semibold mt-1 error-msg" id="err-clientPhone"></span>
+      </div>
+      
+      <div>
+        <label for="clientEmail" class="block text-xs font-semibold text-text-dark mb-1">Електронна пошта (Необов'язково):</label>
+        <input type="email" id="clientEmail" name="clientEmail" class="w-full border border-border rounded-lg p-2.5 text-sm text-text-dark focus:outline-none focus:border-primary" placeholder="ivan@example.com" />
+        <span class="block text-xs text-danger font-semibold mt-1 error-msg" id="err-clientEmail"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 2: Shipping -->
+  <NovaPoshtaFields />
+  
+  <!-- Step 3: VAT Invoice Toggle & Fields -->
+  <InvoiceFields />
+
+  <!-- Additional options -->
+  <div class="bg-white border border-border rounded-xl p-6">
+    <h3 class="text-base font-bold text-text-dark mb-4 border-b border-border pb-2">Крок 2: Додатково</h3>
+    
+    <div class="mb-4">
+      <label for="orderComment" class="block text-xs font-semibold text-text-dark mb-1">Коментар до замовлення:</label>
+      <textarea id="orderComment" name="orderComment" class="w-full border border-border rounded-lg p-2.5 text-sm text-text-dark focus:outline-none focus:border-primary" rows="3" placeholder="Зазначте додаткові вимоги або побажання щодо індивідуального виготовлення..."></textarea>
+    </div>
+    
+    <label class="inline-flex items-start gap-2 text-xs text-text-muted cursor-pointer font-medium mt-2">
+      <input type="checkbox" id="userAgreement" name="userAgreement" required class="w-4 h-4 rounded text-primary focus:ring-primary mt-0.5" />
+      <span>Я даю згоду на обробку моїх персональних даних відповідно до закону України.</span>
+    </label>
+    <span class="block text-xs text-danger font-semibold mt-1 error-msg" id="err-userAgreement"></span>
+  </div>
+  
+  <div class="bg-red-50 border border-danger text-danger px-4 py-3 rounded-lg text-sm font-semibold" id="form-errors-banner" style="display: none;">
+    Будь ласка, виправте помилки у полях форми перед відправкою.
+  </div>
+
+  <button type="submit" class="btn btn-primary w-full py-4 text-base font-bold cursor-pointer" id="submit-order-btn">
+    Підтвердити замовлення
+  </button>
+</form>
+
+<script>
+  const form = document.getElementById('checkout-order-form') as HTMLFormElement | null;
+  const submitBtn = document.getElementById('submit-order-btn');
+  const banner = document.getElementById('form-errors-banner');
+  
+  if (form && submitBtn) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      document.querySelectorAll('.error-msg').forEach(el => el.textContent = '');
+      if (banner) banner.style.display = 'none';
+      
+      let hasErrors = false;
+      
+      const name = (document.getElementById('clientName') as HTMLInputElement).value.trim();
+      const phone = (document.getElementById('clientPhone') as HTMLInputElement).value.trim();
+      const email = (document.getElementById('clientEmail') as HTMLInputElement).value.trim();
+      const agreement = (document.getElementById('userAgreement') as HTMLInputElement).checked;
+      
+      if (!name) {
+        document.getElementById('err-clientName')!.textContent = "Введіть ім'я та прізвище";
+        hasErrors = true;
+      }
+      
+      if (!phone || !/^\+?380\d{9}$/.test(phone.replace(/\s+/g, ''))) {
+        document.getElementById('err-clientPhone')!.textContent = "Введіть номер телефону (+380XXXXXXXXX)";
+        hasErrors = true;
+      }
+      
+      // Email validation ONLY if filled
+      if (email && !/\S+@\S+\.\S+/.test(email)) {
+        document.getElementById('err-clientEmail')!.textContent = "Введіть коректну електронну пошту";
+        hasErrors = true;
+      }
+      
+      if (!agreement) {
+        document.getElementById('err-userAgreement')!.textContent = "Потрібно надати згоду на обробку даних";
+        hasErrors = true;
+      }
+      
+      const cart = JSON.parse(localStorage.getItem('shoppingCart') || '[]');
+      if (cart.length === 0) {
+        alert("Кошик порожній! Будь ласка, додайте хоча б один плакат.");
+        hasErrors = true;
+      }
+      
+      if (hasErrors) {
+        if (banner) banner.style.display = 'block';
+        return;
+      }
+      
+      const deliveryType = (document.querySelector('input[name="deliveryType"]:checked') as HTMLInputElement).value;
+      const cityName = (document.getElementById('deliveryCity') as HTMLInputElement).value.trim();
+      const warehouseName = (document.getElementById('deliveryWarehouse') as HTMLInputElement).value.trim();
+      const recipientName = (document.getElementById('recipientName') as HTMLInputElement).value.trim();
+      const recipientPhone = (document.getElementById('recipientPhone') as HTMLInputElement).value.trim();
+      
+      const needVat = (document.getElementById('needVatInvoice') as HTMLInputElement).checked;
+      
+      let paymentMethod = 'manualConfirmation';
+      let vatRequest = null;
+      
+      if (needVat) {
+        paymentMethod = 'invoiceWithVat';
+        vatRequest = {
+          companyName: (document.getElementById('companyName') as HTMLInputElement).value.trim(),
+          taxId: (document.getElementById('taxId') as HTMLInputElement).value.trim(),
+          legalAddress: (document.getElementById('legalAddress') as HTMLInputElement).value.trim(),
+          invoiceEmail: (document.getElementById('invoiceEmail') as HTMLInputElement).value.trim(),
+          contactName: (document.getElementById('contactName') as HTMLInputElement).value.trim(),
+          contactPhone: (document.getElementById('contactPhone') as HTMLInputElement).value.trim(),
+          comment: (document.getElementById('orderComment') as HTMLTextAreaElement).value.trim()
+        };
+      } else {
+        paymentMethod = 'manualConfirmation';
+      }
+
+      const hasCustomItems = cart.some((item: any) => item.isCustom);
+      const totalCost = cart.reduce((sum: number, item: any) => sum + (item.isCustom ? 0 : item.price * item.count), 0);
+
+      const orderPayload = {
+        id: `AP-${Date.now()}-${Math.floor(1000 + Math.random() * 9000)}`,
+        createdAt: new Date().toISOString(),
+        clientName: name,
+        clientPhone: phone.replace(/\s+/g, ''),
+        clientEmail: email || null,
+        items: cart,
+        totalCost,
+        hasCustomItems,
+        delivery: {
+          provider: 'nova-poshta',
+          type: deliveryType,
+          cityName,
+          cityRef: null,
+          warehouseName,
+          warehouseRef: null,
+          recipientName: recipientName || name,
+          recipientPhone: recipientPhone || phone.replace(/\s+/g, ''),
+          estimatedCost: null,
+          trackingNumber: null
+        },
+        payment: {
+          paymentMethod,
+          paymentStatus: 'pending',
+          paymentProvider: null,
+          paymentReference: null
+        },
+        vatRequest,
+        comment: (document.getElementById('orderComment') as HTMLTextAreaElement).value.trim(),
+        userAgreement: agreement
+      };
+
+      submitBtn.setAttribute('disabled', 'true');
+      submitBtn.textContent = 'Відправка...';
+
+      fetch('/api/order', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(orderPayload)
+      })
+      .then(res => res.json())
+      .then((data: any) => {
+        if (data.success) {
+          localStorage.setItem('shoppingCart', '[]');
+          window.dispatchEvent(new Event('cart-updated'));
+          
+          if (data.paymentLink) {
+            window.location.href = data.paymentLink;
+          } else {
+            window.location.href = '/thank-you';
+          }
+        } else {
+          alert('Сталася помилка при оформленні замовлення: ' + data.error);
+          submitBtn.removeAttribute('disabled');
+          submitBtn.textContent = 'Підтвердити замовлення';
+        }
+      })
+      .catch(err => {
+        console.error(err);
+        localStorage.setItem('shoppingCart', '[]');
+        window.dispatchEvent(new Event('cart-updated'));
+        window.location.href = '/thank-you';
+      });
+    });
+  }
+</script>

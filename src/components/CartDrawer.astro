@@ -1,0 +1,216 @@
+---
+---
+<div class="cart-drawer-overlay fixed inset-0 bg-black/40 z-1000 flex justify-end" id="cart-drawer-overlay" style="display: none;">
+  <div class="cart-drawer w-[450px] max-w-full h-full bg-white shadow-xl flex flex-col">
+    <div class="cart-drawer-header flex items-center justify-between px-6 py-5 border-b border-border">
+      <h2 class="text-lg font-bold text-text-dark">Кошик</h2>
+      <button class="close-drawer-btn text-2xl text-text-muted hover:text-danger cursor-pointer" id="close-cart-btn" aria-label="Закрити кошик">&times;</button>
+    </div>
+    
+    <div class="cart-drawer-content flex-grow overflow-y-auto p-6 flex flex-col">
+      <div id="cart-empty-message" class="cart-empty text-center my-auto text-text-muted">
+        <p class="mb-4 text-base">Ваш кошик порожній</p>
+        <a href="/" class="btn btn-primary" id="continue-shopping-btn">До каталогу</a>
+      </div>
+      
+      <div id="cart-items-container" style="display: none;" class="flex-grow flex flex-col justify-between">
+        <div class="overflow-y-auto max-h-[60vh]">
+          <table class="w-full border-collapse mb-6">
+            <thead>
+              <tr class="border-b border-border text-left">
+                <th class="pb-2 text-xs font-semibold text-text-muted">Товар</th>
+                <th class="pb-2 text-xs font-semibold text-text-muted w-[90px]">К-ть</th>
+                <th class="pb-2 text-xs font-semibold text-text-muted text-right w-[80px]">Сума</th>
+              </tr>
+            </thead>
+            <tbody id="cart-drawer-items-body" class="divide-y divide-border">
+              <!-- Rendered dynamically -->
+            </tbody>
+          </table>
+        </div>
+        
+        <div>
+          <div class="border-t border-border pt-4 mt-auto">
+            <div class="flex justify-between font-bold text-lg mb-2">
+              <span>Всього:</span>
+              <span id="cart-drawer-total">0 грн</span>
+            </div>
+            <p class="text-xs text-yellow-600 italic leading-relaxed" id="cart-vat-disclaimer" style="display: none;">
+              Вартість замовлення буде уточнена менеджером (рахунок з ПДВ або індивідуальні вимоги).
+            </p>
+          </div>
+          
+          <div class="flex flex-col gap-2.5 mt-5">
+            <a href="/checkout" class="btn btn-primary w-full py-3 font-bold text-center">Оформити замовлення</a>
+            <button class="btn btn-outline w-full py-2.5 font-bold cursor-pointer" id="clear-cart-drawer-btn">Очистити кошик</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const overlay = document.getElementById('cart-drawer-overlay');
+  const closeBtn = document.getElementById('close-cart-btn');
+  const contBtn = document.getElementById('continue-shopping-btn');
+  const headerCartBtn = document.getElementById('header-cart-btn');
+  const clearBtn = document.getElementById('clear-cart-drawer-btn');
+  
+  function openCart() {
+    if (overlay) {
+      overlay.style.display = 'flex';
+      renderDrawerCart();
+    }
+  }
+  
+  function closeCart() {
+    if (overlay) overlay.style.display = 'none';
+  }
+  
+  if (headerCartBtn) {
+    headerCartBtn.addEventListener('click', (e) => {
+      const path = window.location.pathname;
+      if (path !== '/cart' && path !== '/checkout') {
+        e.preventDefault();
+        openCart();
+      }
+    });
+  }
+  
+  if (closeBtn) closeBtn.addEventListener('click', closeCart);
+  if (contBtn) contBtn.addEventListener('click', (e) => { e.preventDefault(); closeCart(); });
+  
+  if (overlay) {
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) closeCart();
+    });
+  }
+  
+  function renderDrawerCart() {
+    try {
+      const cart = JSON.parse(localStorage.getItem('shoppingCart') || '[]');
+      const emptyMsg = document.getElementById('cart-empty-message');
+      const itemsContainer = document.getElementById('cart-items-container');
+      const itemsBody = document.getElementById('cart-drawer-items-body');
+      const totalLabel = document.getElementById('cart-drawer-total');
+      const disclaimer = document.getElementById('cart-vat-disclaimer');
+      
+      if (!emptyMsg || !itemsContainer || !itemsBody || !totalLabel || !disclaimer) return;
+      
+      if (cart.length === 0) {
+        emptyMsg.style.display = 'block';
+        itemsContainer.style.display = 'none';
+        return;
+      }
+      
+      emptyMsg.style.display = 'none';
+      itemsContainer.style.display = 'flex';
+      
+      let html = '';
+      let total = 0;
+      let hasCustom = false;
+      
+      cart.forEach((item: any, idx: number) => {
+        const isCustom = item.isCustom || false;
+        if (isCustom) hasCustom = true;
+        
+        const priceText = isCustom ? 'Ручний розрахунок' : `${item.price * item.count} грн`;
+        if (!isCustom) {
+          total += item.price * item.count;
+        }
+        
+        html += `
+          <tr class="align-top">
+            <td class="py-4 pr-3">
+              <div class="font-bold text-xs sm:text-sm text-text-dark mb-1">${item.title}</div>
+              <div class="text-[11px] text-text-muted mb-2">${isCustom ? 'Індивідуальний розмір/матеріал' : 'Стандарт ПВХ 3мм'}</div>
+              <div>
+                <label class="text-[10px] text-text-muted cursor-pointer flex items-center gap-1">
+                  <input type="checkbox" class="drawer-custom-chk" data-idx="${idx}" ${isCustom ? 'checked' : ''} /> Нестандартний варіант
+                </label>
+                ${isCustom ? `
+                  <textarea class="drawer-custom-req w-full text-[11px] border border-border rounded mt-1.5 p-1 h-12" data-idx="${idx}" placeholder="Опишіть вимоги...">${item.customRequirements || ''}</textarea>
+                ` : ''}
+              </div>
+            </td>
+            <td class="py-4">
+              <div class="inline-flex items-center border border-border rounded bg-white w-20 overflow-hidden">
+                <button class="drawer-qty-btn drawer-minus w-6 h-6 flex items-center justify-center text-xs text-text-muted hover:bg-bg-light cursor-pointer" data-idx="${idx}">-</button>
+                <input type="text" class="drawer-qty-input w-8 h-6 text-center border-x border-border border-y-0 text-xs font-semibold" value="${item.count}" readonly />
+                <button class="drawer-qty-btn drawer-plus w-6 h-6 flex items-center justify-center text-xs text-text-muted hover:bg-bg-light cursor-pointer" data-idx="${idx}">+</button>
+              </div>
+            </td>
+            <td class="py-4 text-right font-bold text-xs sm:text-sm text-text-dark">${priceText}</td>
+          </tr>
+        `;
+      });
+      
+      itemsBody.innerHTML = html;
+      totalLabel.textContent = `${total} грн`;
+      disclaimer.style.display = hasCustom ? 'block' : 'none';
+      
+      document.querySelectorAll('.drawer-plus').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const idx = Number(btn.getAttribute('data-idx'));
+          cart[idx].count++;
+          localStorage.setItem('shoppingCart', JSON.stringify(cart));
+          renderDrawerCart();
+          window.dispatchEvent(new Event('cart-updated'));
+        });
+      });
+      
+      document.querySelectorAll('.drawer-minus').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const idx = Number(btn.getAttribute('data-idx'));
+          cart[idx].count--;
+          if (cart[idx].count <= 0) {
+            cart.splice(idx, 1);
+          }
+          localStorage.setItem('shoppingCart', JSON.stringify(cart));
+          renderDrawerCart();
+          window.dispatchEvent(new Event('cart-updated'));
+        });
+      });
+      
+      document.querySelectorAll('.drawer-custom-chk').forEach(chk => {
+        chk.addEventListener('change', (e: any) => {
+          const idx = Number(chk.getAttribute('data-idx'));
+          const checked = e.target.checked;
+          cart[idx].isCustom = checked;
+          if (!checked) {
+            cart[idx].customRequirements = null;
+          }
+          localStorage.setItem('shoppingCart', JSON.stringify(cart));
+          renderDrawerCart();
+          window.dispatchEvent(new Event('cart-updated'));
+        });
+      });
+      
+      document.querySelectorAll('.drawer-custom-req').forEach(tx => {
+        tx.addEventListener('change', (e: any) => {
+          const idx = Number(tx.getAttribute('data-idx'));
+          cart[idx].customRequirements = e.target.value;
+          localStorage.setItem('shoppingCart', JSON.stringify(cart));
+        });
+      });
+      
+    } catch (e) {
+      console.error(e);
+    }
+  }
+  
+  if (clearBtn) {
+    clearBtn.addEventListener('click', () => {
+      localStorage.setItem('shoppingCart', '[]');
+      renderDrawerCart();
+      window.dispatchEvent(new Event('cart-updated'));
+    });
+  }
+  
+  window.addEventListener('cart-updated', () => {
+    if (overlay && overlay.style.display === 'flex') {
+      renderDrawerCart();
+    }
+  });
+</script>

@@ -1,0 +1,57 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="Доставка та оплата — AVTOPLAKAT UA" description="Інформація про умови доставки Новою поштою та варіанти оплати замовлення.">
+  <section class="bg-bg-light py-12 flex-grow">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <h1 class="text-2xl sm:text-3xl font-extrabold text-text-dark mb-8">Доставка та оплата</h1>
+      
+      <div class="space-y-8">
+        
+        <!-- Delivery Card -->
+        <div class="bg-white border border-border rounded-xl p-6 sm:p-8 shadow-sm">
+          <div class="flex items-center gap-3 border-b border-border pb-4 mb-5">
+            <span class="text-3xl">🚚</span>
+            <h2 class="text-lg font-bold text-text-dark">Доставка</h2>
+          </div>
+          <div class="space-y-4">
+            <p class="text-base font-semibold border-l-4 border-primary pl-4 text-text-dark">
+              Доставка по Україні здійснюється виключно транспортною компанією <strong>«Нова пошта»</strong>.
+            </p>
+            <ul class="list-disc pl-5 space-y-2 text-sm text-text-muted">
+              <li><strong>Отримання у відділенні:</strong> доставка у найближче зручне для вас відділення.</li>
+              <li><strong>Отримання у поштоматі:</strong> безконтактне отримання замовлення у поштоматах Нової пошти.</li>
+              <li><strong>Терміни доставки:</strong> зазвичай становлять 1–3 робочих дні з моменту виготовлення плакатів.</li>
+              <li><strong>Вартість доставки:</strong> розраховується за тарифами перевізника та сплачується отримувачем при заборі замовлення.</li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Payment Card -->
+        <div class="bg-white border border-border rounded-xl p-6 sm:p-8 shadow-sm">
+          <div class="flex items-center gap-3 border-b border-border pb-4 mb-5">
+            <span class="text-3xl">💳</span>
+            <h2 class="text-lg font-bold text-text-dark">Оплата</h2>
+          </div>
+          <div class="space-y-5 text-sm text-text-muted">
+            <p class="text-text-dark font-medium">Ми пропонуємо зручні варіанти розрахунку як для юридичних, так і для фізичних осіб:</p>
+            <ol class="list-decimal pl-5 space-y-4">
+              <li>
+                <strong class="text-text-dark">Оплата на рахунок ФОП:</strong>
+                <p class="text-xs text-text-muted mt-1">Після оформлення замовлення наш менеджер зв'яжеться з вами та надішле реквізити для оплати замовлення.</p>
+              </li>
+              <li>
+                <strong class="text-text-dark">Рахунок з ПДВ:</strong>
+                <p class="text-xs text-text-muted mt-1">Для державних установ, шкіл та приватних компаній ми надаємо повний пакет документів та виставляємо рахунок з ПДВ. Зазначте ваші реквізити та ЄДРПОУ під час заповнення форми оформлення замовлення.</p>
+              </li>
+              <li>
+                <strong class="text-text-dark">Оплата банківською картою (у майбутньому):</strong>
+                <p class="text-xs text-text-muted mt-1">Наразі платіжний сервіс інтегрується. Оплата карткою на сайті буде доступна найближчим часом.</p>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

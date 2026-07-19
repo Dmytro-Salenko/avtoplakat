@@ -1,0 +1,13 @@
+{
+  "id": 64,
+  "sku": "600х900_000034",
+  "title": "Гібридний автомобіль",
+  "slug": "gibridnij-avtomobil",
+  "image": "Gibridnij-avtomobil-rotated.jpg",
+  "category": "car-structure",
+  "status": "published",
+  "priceOverride": null,
+  "sizeOverride": null,
+  "materialOverride": null,
+  "thicknessOverride": null
+}

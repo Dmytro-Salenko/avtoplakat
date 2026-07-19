@@ -1,0 +1,132 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import ProductSpecs from '../../components/ProductSpecs.astro';
+import CartDrawer from '../../components/CartDrawer.astro';
+import { productDefaults } from '../../config/defaults';
+
+export async function getStaticPaths() {
+  const allProducts = await getCollection('products');
+  const publishedProducts = allProducts.filter(p => p.data.status === 'published');
+  
+  return publishedProducts.map(product => ({
+    params: { slug: product.data.slug },
+    props: { product }
+  }));
+}
+
+const { product } = Astro.props;
+
+const categoryNames: Record<string, string> = {
+  'tractor-structure': 'Будова трактора',
+  'truck-structure': 'Будова вантажного автомобіля',
+  'car-structure': 'Будова легкового автомобіля',
+  'road-safety-rules': 'Безпека дорожнього руху',
+  'first-aid': 'Домедична допомога'
+};
+
+const categoryName = categoryNames[product.data.category] || 'Каталог';
+
+const price = product.data.priceOverride || productDefaults.price;
+---
+
+<Layout title={`${product.data.title} — Плакат для автошкіл`} description={`Плакат "${product.data.title}" з розділу ${categoryName}. Високоякісна основа ПВХ 3мм, розміри 500x800 мм.`}>
+  <div class="bg-bg-light py-8 sm:py-12 flex-grow">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Breadcrumbs -->
+      <nav class="text-xs sm:text-sm text-text-muted mb-6 sm:mb-8 font-medium">
+        <a href="/" class="text-primary hover:underline">Каталог</a> &raquo;
+        <a href={`/category/${product.data.category}`} class="text-primary hover:underline">{categoryName}</a> &raquo;
+        <span class="text-text-dark">{product.data.title}</span>
+      </nav>
+      
+      <!-- Main Content Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-start">
+        
+        <!-- Left: Image -->
+        <div class="bg-white border border-border rounded-2xl p-6 sm:p-8 flex justify-center shadow-sm">
+          <img src={`/images/products/${product.data.image}`} alt={product.data.title} class="max-w-full h-auto max-h-[500px] object-contain rounded shadow-md" />
+        </div>
+        
+        <!-- Right: Details -->
+        <div class="flex flex-col gap-6">
+          <div>
+            <span class="text-xs font-bold uppercase text-primary tracking-wider block mb-2">{categoryName}</span>
+            <h1 class="text-2xl sm:text-3xl font-extrabold text-text-dark leading-tight">{product.data.title}</h1>
+          </div>
+          
+          <div class="flex items-baseline gap-2">
+            <span class="text-3xl font-extrabold text-text-dark">{price} грн</span>
+            <span class="text-sm font-semibold text-text-muted">з ПДВ</span>
+          </div>
+          
+          <!-- Buy Actions -->
+          <div class="flex flex-col gap-3">
+            <button class="btn btn-primary w-full py-4 text-base font-bold add-to-cart-page-btn flex items-center justify-center gap-2 cursor-pointer shadow-sm" data-sku={product.data.sku} data-title={product.data.title} data-price={price}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+              Додати у кошик
+            </button>
+            <p class="text-xs text-text-muted italic leading-relaxed">
+              Потрібен інший матеріал чи індивідуальний розмір? Ви зможете вказати це у кошику при оформленні замовлення.
+            </p>
+          </div>
+          
+          <!-- Specifications Component (Replaced double blocks) -->
+          <ProductSpecs product={product.data} />
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <CartDrawer />
+</Layout>
+
+<script>
+  const btn = document.querySelector('.add-to-cart-page-btn');
+  if (btn) {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const sku = btn.getAttribute('data-sku');
+      const title = btn.getAttribute('data-title');
+      const price = Number(btn.getAttribute('data-price'));
+      
+      if (!sku || !title) return;
+      
+      try {
+        let cart = JSON.parse(localStorage.getItem('shoppingCart') || '[]');
+        const existing = cart.find((item: any) => item.sku === sku && !item.isCustom);
+        
+        if (existing) {
+          existing.count++;
+        } else {
+          cart.push({
+            sku,
+            title,
+            price,
+            count: 1,
+            isCustom: false,
+            customRequirements: null
+          });
+        }
+        
+        localStorage.setItem('shoppingCart', JSON.stringify(cart));
+        window.dispatchEvent(new Event('cart-updated'));
+        
+        const origHtml = btn.innerHTML;
+        btn.innerHTML = 'Додано в кошик ✓';
+        btn.classList.remove('btn-primary');
+        btn.classList.add('btn-secondary');
+        
+        setTimeout(() => {
+          btn.innerHTML = origHtml;
+          btn.classList.remove('btn-secondary');
+          btn.classList.add('btn-primary');
+        }, 1500);
+        
+      } catch (err) {
+        console.error(err);
+      }
+    });
+  }
+</script>

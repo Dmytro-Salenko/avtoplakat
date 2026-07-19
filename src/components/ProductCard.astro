@@ -1,0 +1,105 @@
+---
+import type { Product } from '../types/schemas';
+import { productDefaults } from '../config/defaults';
+
+interface Props {
+  product: Product;
+}
+
+const { product } = Astro.props;
+
+const categoryNames: Record<string, string> = {
+  'tractor-structure': 'Будова трактора',
+  'truck-structure': 'Будова вантажного автомобіля',
+  'car-structure': 'Будова легкового автомобіля',
+  'road-safety-rules': 'Безпека дорожнього руху',
+  'first-aid': 'Домедична допомога'
+};
+
+const categoryName = categoryNames[product.category] || 'Каталог';
+
+const price = product.priceOverride || productDefaults.price;
+const formattedPrice = `${price} грн`;
+const width = product.sizeOverride?.widthMm || productDefaults.widthMm;
+const height = product.sizeOverride?.heightMm || productDefaults.heightMm;
+const material = product.materialOverride || productDefaults.material;
+const thickness = product.thicknessOverride || productDefaults.thicknessMm;
+---
+
+<div class="product-card flex flex-col bg-white border border-border rounded-xl overflow-hidden shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all duration-200" data-slug={product.slug} data-title={product.title} data-price={price} data-sku={product.sku}>
+  <a href={`/product/${product.slug}`} class="block aspect-[5/8] overflow-hidden bg-gray-100 border-b border-border">
+    <img src={`/images/products/${product.image}`} alt={product.title} class="w-full h-full object-cover transition-transform duration-300 hover:scale-102" loading="lazy" />
+  </a>
+  
+  <div class="p-5 flex flex-col flex-grow">
+    <span class="text-xs font-bold uppercase text-primary tracking-wider mb-2">{categoryName}</span>
+    
+    <h3 class="text-base font-bold leading-snug text-text-dark mb-3 min-h-[2.8rem] line-clamp-2">
+      <a href={`/product/${product.slug}`} class="hover:text-primary transition-colors">{product.title}</a>
+    </h3>
+    
+    <div class="flex flex-wrap gap-1.5 mb-3">
+      <span class="bg-bg-light text-text-muted text-xs px-2.5 py-1 rounded font-semibold">{width}×{height} мм</span>
+      <span class="bg-bg-light text-text-muted text-xs px-2.5 py-1 rounded font-semibold">{material} {thickness} мм</span>
+    </div>
+    
+    <p class="text-xs text-text-muted italic mt-auto mb-4">Інший розмір або матеріал — за запитом</p>
+    
+    <div class="flex items-center justify-between pt-3 border-t border-border mt-auto">
+      <div class="text-lg font-extrabold text-text-dark">{formattedPrice}</div>
+      <button class="btn btn-primary add-to-cart-btn text-xs px-3.5 py-2 font-bold cursor-pointer" data-sku={product.sku} data-title={product.title} data-price={price}>
+        Додати до кошика
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      const sku = btn.getAttribute('data-sku');
+      const title = btn.getAttribute('data-title');
+      const price = Number(btn.getAttribute('data-price'));
+      
+      if (!sku || !title) return;
+      
+      try {
+        let cart = JSON.parse(localStorage.getItem('shoppingCart') || '[]');
+        const existing = cart.find((item: any) => item.sku === sku && !item.isCustom);
+        
+        if (existing) {
+          existing.count++;
+        } else {
+          cart.push({
+            sku,
+            title,
+            price,
+            count: 1,
+            isCustom: false,
+            customRequirements: null
+          });
+        }
+        
+        localStorage.setItem('shoppingCart', JSON.stringify(cart));
+        window.dispatchEvent(new Event('cart-updated'));
+        
+        const origText = btn.textContent;
+        btn.textContent = 'Додано ✓';
+        btn.classList.remove('btn-primary');
+        btn.classList.add('btn-secondary');
+        
+        setTimeout(() => {
+          btn.textContent = origText;
+          btn.classList.remove('btn-secondary');
+          btn.classList.add('btn-primary');
+        }, 1500);
+        
+      } catch (err) {
+        console.error(err);
+      }
+    });
+  });
+</script>

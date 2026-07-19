@@ -1,0 +1,56 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import CartDrawer from '../../components/CartDrawer.astro';
+
+export async function getStaticPaths() {
+  const categories = [
+    { slug: 'car-structure', name: 'Будова легкового автомобіля та електромобіля' },
+    { slug: 'truck-structure', name: 'Будова вантажного автомобіля' },
+    { slug: 'tractor-structure', name: 'Будова трактора' },
+    { slug: 'road-safety-rules', name: 'Правила дорожнього руху та безпека' },
+    { slug: 'first-aid', name: 'Домедична допомога при ДТП' }
+  ];
+  
+  return categories.map(cat => ({
+    params: { category: cat.slug },
+    props: { categoryName: cat.name }
+  }));
+}
+
+const { category } = Astro.params;
+const { categoryName } = Astro.props;
+
+const allProducts = await getCollection('products');
+const categoryProducts = allProducts.filter(
+  p => p.data.category === category && p.data.status === 'published'
+);
+---
+
+<Layout title={`${categoryName} — Купити плакати для автошколи`} description={`Каталог автоплакатів з розділу ${categoryName}. Виготовлення з ПВХ пластику, якісний друк.`}>
+  <section class="bg-white border-b border-border py-8 sm:py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <a href="/" class="text-xs sm:text-sm text-text-muted hover:text-primary font-semibold transition-colors inline-block mb-3">&larr; До всього каталогу</a>
+      <h1 class="text-2xl sm:text-3xl font-extrabold text-text-dark leading-tight">{categoryName}</h1>
+    </div>
+  </section>
+
+  <section class="py-12 bg-bg-light flex-grow">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {categoryProducts.length === 0 ? (
+        <div class="text-center py-16 px-6 bg-white border border-border rounded-xl text-text-muted">
+          <p class="text-base font-semibold">У цій категорії поки що немає опублікованих товарів.</p>
+        </div>
+      ) : (
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          {categoryProducts.map(product => (
+            <ProductCard product={product.data} />
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+  
+  <CartDrawer />
+</Layout>

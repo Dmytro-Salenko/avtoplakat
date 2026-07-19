@@ -1,0 +1,13 @@
+{
+  "id": 265,
+  "sku": "tractor_t3",
+  "title": "Будова сучасного трактора Дизель Д-243",
+  "slug": "budova-suchasnogo-traktora-dizel-d-243",
+  "image": "tractor_t3-prev.jpg",
+  "category": "tractor-structure",
+  "status": "published",
+  "priceOverride": null,
+  "sizeOverride": null,
+  "materialOverride": null,
+  "thicknessOverride": null
+}

@@ -1,0 +1,114 @@
+---
+import Layout from '../layouts/Layout.astro';
+import OrderForm from '../components/OrderForm.astro';
+---
+
+<Layout title="Оформлення замовлення — AVTOPLAKAT UA" description="Введіть ваші контактні дані та інформацію доставки Новою поштою для оформлення замовлення.">
+  <section class="py-12 bg-bg-light flex-grow">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-2xl sm:text-3xl font-extrabold text-text-dark mb-8">Оформлення замовлення</h1>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
+        
+        <!-- Left: Form -->
+        <div class="lg:col-span-3">
+          <OrderForm />
+        </div>
+        
+        <!-- Right: Summary Panel -->
+        <div class="lg:col-span-2 bg-white border border-border rounded-xl p-6 shadow-sm sticky top-24">
+          <h3 class="text-base font-bold text-text-dark mb-4 border-b border-border pb-2">Ваше замовлення</h3>
+          
+          <div class="space-y-4 mb-6 max-h-[250px] overflow-y-auto" id="checkout-items-summary-list">
+            <!-- Rendered dynamically -->
+          </div>
+          
+          <div class="border-t border-border pt-4 space-y-3">
+            <div class="flex justify-between text-sm text-text-muted">
+              <span>Сума товарів:</span>
+              <span id="checkout-subtotal" class="font-bold text-text-dark">0 грн</span>
+            </div>
+            <div class="flex justify-between text-sm text-text-muted">
+              <span>Доставка:</span>
+              <span class="text-xs text-text-muted">За тарифами Нової пошти</span>
+            </div>
+            <div class="flex justify-between text-base font-bold text-text-dark border-t border-dashed border-border pt-3">
+              <span>Всього до сплати:</span>
+              <span id="checkout-total">0 грн</span>
+            </div>
+          </div>
+          
+          <div class="bg-yellow-400/10 border-l-4 border-yellow-500 p-3 rounded-r text-xs text-yellow-700 leading-relaxed mt-4" id="checkout-custom-warning" style="display: none;">
+            * Замовлення містить нестандартні розміри або матеріали. Вартість буде перерахована менеджером і погоджена з вами по телефону.
+          </div>
+          
+          <div class="bg-blue-50 border-l-4 border-primary p-3 rounded-r text-xs text-primary leading-relaxed mt-4" id="checkout-vat-warning" style="display: none;">
+            * Обрано безготівковий розрахунок з ПДВ. Менеджер підготує та надішле рахунок-фактуру на вказаний вами Email.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  function renderCheckoutSummary() {
+    try {
+      const cart = JSON.parse(localStorage.getItem('shoppingCart') || '[]');
+      const container = document.getElementById('checkout-items-summary-list');
+      const subtotalLabel = document.getElementById('checkout-subtotal');
+      const totalLabel = document.getElementById('checkout-total');
+      const warning = document.getElementById('checkout-custom-warning');
+      
+      if (!container || !subtotalLabel || !totalLabel || !warning) return;
+      
+      if (cart.length === 0) {
+        container.innerHTML = '<p class="text-text-muted text-sm">Кошик порожній.</p>';
+        subtotalLabel.textContent = '0 грн';
+        totalLabel.textContent = '0 грн';
+        return;
+      }
+      
+      let html = '';
+      let total = 0;
+      let hasCustom = false;
+      
+      cart.forEach((item: any) => {
+        const isCustom = item.isCustom || false;
+        if (isCustom) hasCustom = true;
+        
+        const priceText = isCustom ? 'Ручний розрахунок' : `${item.price * item.count} грн`;
+        if (!isCustom) {
+          total += item.price * item.count;
+        }
+        
+        html += `
+          <div class="flex justify-between gap-4 text-xs sm:text-sm">
+            <div>
+              <div class="font-bold text-text-dark">${item.title} (x${item.count})</div>
+              <div class="text-[10px] text-text-muted mt-0.5">${isCustom ? 'Індивідуальні розміри' : 'Стандарт ПВХ 3мм'}</div>
+            </div>
+            <div class="font-bold text-text-dark text-right whitespace-nowrap">${priceText}</div>
+          </div>
+        `;
+      });
+      
+      container.innerHTML = html;
+      subtotalLabel.textContent = `${total} грн`;
+      totalLabel.textContent = `${total} грн`;
+      warning.style.display = hasCustom ? 'block' : 'none';
+      
+    } catch (e) {
+      console.error(e);
+    }
+  }
+  
+  renderCheckoutSummary();
+  
+  window.addEventListener('vat-toggle-changed', (e: any) => {
+    const vatWarning = document.getElementById('checkout-vat-warning');
+    if (vatWarning) {
+      vatWarning.style.display = e.detail.isChecked ? 'block' : 'none';
+    }
+  });
+</script>

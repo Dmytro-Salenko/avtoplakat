@@ -1,0 +1,14 @@
+---
+interface Props {
+  value?: number;
+  min?: number;
+  sku: string;
+}
+
+const { value = 1, min = 1, sku } = Astro.props;
+---
+<div class="quantity-control inline-flex items-center border border-border rounded-lg bg-white overflow-hidden" data-sku={sku}>
+  <button type="button" class="qty-btn qty-minus w-9 h-9 flex items-center justify-center font-bold text-text-muted hover:bg-bg-light hover:text-primary transition-colors cursor-pointer" aria-label="Зменшити">—</button>
+  <input type="number" class="qty-input w-11 h-9 text-center border-y-0 border-x border-border text-sm font-semibold text-text-dark [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none" value={value} min={min} readonly aria-label="Кількість" />
+  <button type="button" class="qty-btn qty-plus w-9 h-9 flex items-center justify-center font-bold text-text-muted hover:bg-bg-light hover:text-primary transition-colors cursor-pointer" aria-label="Збільшити">+</button>
+</div>

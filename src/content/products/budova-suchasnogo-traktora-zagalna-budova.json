@@ -1,0 +1,13 @@
+{
+  "id": 260,
+  "sku": "tractor_t1",
+  "title": "Будова сучасного трактора Загальна Будова",
+  "slug": "budova-suchasnogo-traktora-zagalna-budova",
+  "image": "tractor_t1_prev.jpg",
+  "category": "tractor-structure",
+  "status": "published",
+  "priceOverride": null,
+  "sizeOverride": null,
+  "materialOverride": null,
+  "thicknessOverride": null
+}

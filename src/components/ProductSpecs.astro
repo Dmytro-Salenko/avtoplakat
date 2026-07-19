@@ -1,0 +1,48 @@
+---
+import type { Product } from '../types/schemas';
+import { productDefaults } from '../config/defaults';
+
+interface Props {
+  product: Product;
+}
+
+const { product } = Astro.props;
+
+const width = product.sizeOverride?.widthMm || productDefaults.widthMm;
+const height = product.sizeOverride?.heightMm || productDefaults.heightMm;
+const material = product.materialOverride || productDefaults.material;
+const thickness = product.thicknessOverride || productDefaults.thicknessMm;
+---
+<div class="bg-white border border-border rounded-xl p-6 shadow-sm">
+  <h3 class="text-lg font-bold text-text-dark mb-4">Характеристики плаката</h3>
+  
+  <table class="w-full border-collapse mb-5">
+    <tbody>
+      <tr class="border-b border-border">
+        <td class="py-3 text-sm text-text-muted font-medium w-1/2">Стандартний розмір:</td>
+        <td class="py-3 text-sm text-text-dark font-semibold">{width} × {height} мм (0.5 × 0.8 м)</td>
+      </tr>
+      <tr class="border-b border-border">
+        <td class="py-3 text-sm text-text-muted font-medium">Матеріал основи:</td>
+        <td class="py-3 text-sm text-text-dark font-semibold">{material} пластик</td>
+      </tr>
+      <tr class="border-b border-border">
+        <td class="py-3 text-sm text-text-muted font-medium">Товщина матеріалу:</td>
+        <td class="py-3 text-sm text-text-dark font-semibold">{thickness} мм</td>
+      </tr>
+      <tr class="border-b border-border">
+        <td class="py-3 text-sm text-text-muted font-medium">Орієнтація:</td>
+        <td class="py-3 text-sm text-text-dark font-semibold">{width > height ? "Горизонтальна" : "Вертикальна"}</td>
+      </tr>
+      <tr class="border-b border-border">
+        <td class="py-3 text-sm text-text-muted font-medium">Індивідуальне замовлення:</td>
+        <td class="py-3 text-sm text-primary font-bold">Можливе за запитом</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <div class="bg-primary/5 border-l-4 border-primary p-4 rounded-r text-xs sm:text-sm text-text-dark leading-relaxed">
+    <strong>Потрібен інший розмір або матеріал?</strong><br/>
+    Ви можете замовити виготовлення під ваші індивідуальні вимоги. Зазначте параметри у кошику при оформленні замовлення.
+  </div>
+</div>

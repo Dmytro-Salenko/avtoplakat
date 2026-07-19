@@ -1,0 +1,229 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Кошик — AVTOPLAKAT UA" description="Перегляд вибраних навчальних плакатів перед оформленням замовлення.">
+  <section class="py-12 bg-bg-light flex-grow">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-2xl sm:text-3xl font-extrabold text-text-dark mb-8">Ваш кошик</h1>
+      
+      <!-- Empty Cart Message -->
+      <div id="cart-page-empty" class="bg-white border border-border rounded-xl p-8 sm:p-12 text-center shadow-sm" style="display: none;">
+        <div class="text-5xl mb-4">🛒</div>
+        <p class="text-base sm:text-lg text-text-muted mb-6">Ваш кошик порожній.</p>
+        <a href="/" class="btn btn-primary px-6 py-3 font-bold">Повернутися до каталогу</a>
+      </div>
+      
+      <!-- Cart Content Grid -->
+      <div id="cart-page-content" class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start" style="display: none;">
+        
+        <!-- Left: Items list -->
+        <div class="lg:col-span-2 bg-white border border-border rounded-xl p-6 shadow-sm">
+          <table class="w-full border-collapse">
+            <thead>
+              <tr class="border-b border-border text-left">
+                <th class="pb-3 text-xs font-semibold text-text-muted uppercase">Товар</th>
+                <th class="pb-3 text-xs font-semibold text-text-muted uppercase w-[120px]">Кількість</th>
+                <th class="pb-3 text-xs font-semibold text-text-muted uppercase text-right w-[120px]">Сума</th>
+              </tr>
+            </thead>
+            <tbody id="cart-page-items-body" class="divide-y divide-border">
+              <!-- Rendered dynamically -->
+            </tbody>
+          </table>
+        </div>
+        
+        <!-- Right: Summary Panel -->
+        <div class="bg-white border border-border rounded-xl p-6 shadow-sm">
+          <h3 class="text-base font-bold text-text-dark mb-4 border-b border-border pb-2">Сума замовлення</h3>
+          
+          <div class="space-y-4 mb-6">
+            <div class="flex justify-between text-sm text-text-muted">
+              <span>Товари:</span>
+              <span id="summary-subtotal" class="font-bold text-text-dark">0 грн</span>
+            </div>
+            <div class="flex justify-between text-sm text-text-muted">
+              <span>Доставка:</span>
+              <span class="text-xs text-right text-text-muted">Нова пошта (за тарифами перевізника)</span>
+            </div>
+            
+            <!-- Combined global custom requirements block per UX audit -->
+            <div class="border-t border-border pt-4">
+              <label class="inline-flex items-start gap-2 text-xs font-semibold text-text-dark cursor-pointer">
+                <input type="checkbox" id="global-custom-chk" class="w-4 h-4 rounded text-primary focus:ring-primary mt-0.5" />
+                <span>Потрібні нестандартні розміри чи матеріали</span>
+              </label>
+              <div id="global-custom-box" class="mt-2.5" style="display: none;">
+                <textarea id="global-custom-req" class="w-full border border-border rounded p-2 text-xs text-text-dark focus:outline-none focus:ring-1 focus:ring-primary" rows="2" placeholder="Наприклад: плакат 'Гальмова система' у розмірі 1000х1600 мм"></textarea>
+              </div>
+            </div>
+            
+            <div class="flex justify-between text-base font-bold text-text-dark border-t border-border pt-4">
+              <span>Всього до сплати:</span>
+              <span id="summary-total">0 грн</span>
+            </div>
+          </div>
+          
+          <div class="bg-yellow-400/10 border-l-4 border-yellow-500 p-3 rounded-r text-xs text-yellow-700 leading-relaxed mb-6" id="summary-custom-alert" style="display: none;">
+            Остаточна вартість замовлення буде узгоджена менеджером при підтвердженні.
+          </div>
+          
+          <div class="flex flex-col gap-3">
+            <a href="/checkout" class="btn btn-primary w-full py-3.5 text-center font-bold">Перейти до оформлення</a>
+            <a href="/" class="btn btn-outline w-full py-3 text-center font-bold">Продовжити покупки</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  function renderCartPage() {
+    try {
+      const cart = JSON.parse(localStorage.getItem('shoppingCart') || '[]');
+      const emptyDiv = document.getElementById('cart-page-empty');
+      const contentDiv = document.getElementById('cart-page-content');
+      const itemsBody = document.getElementById('cart-page-items-body');
+      const subtotalLabel = document.getElementById('summary-subtotal');
+      const totalLabel = document.getElementById('summary-total');
+      const customAlert = document.getElementById('summary-custom-alert');
+      
+      const globalChk = document.getElementById('global-custom-chk') as HTMLInputElement | null;
+      const globalBox = document.getElementById('global-custom-box');
+      const globalReq = document.getElementById('global-custom-req') as HTMLTextAreaElement | null;
+      
+      if (!emptyDiv || !contentDiv || !itemsBody || !subtotalLabel || !totalLabel || !customAlert) return;
+      
+      if (cart.length === 0) {
+        emptyDiv.style.display = 'block';
+        contentDiv.style.display = 'none';
+        return;
+      }
+      
+      emptyDiv.style.display = 'none';
+      contentDiv.style.display = 'grid';
+      
+      let html = '';
+      let total = 0;
+      let hasCustom = cart.some((item: any) => item.isCustom);
+      
+      cart.forEach((item: any, idx: number) => {
+        const isCustom = item.isCustom || false;
+        const priceText = isCustom ? 'Ручний розрахунок' : `${item.price * item.count} грн`;
+        if (!isCustom) {
+          total += item.price * item.count;
+        }
+        
+        html += `
+          <tr class="align-top">
+            <td class="py-5 pr-4">
+              <div class="font-bold text-sm sm:text-base text-text-dark mb-1">${item.title}</div>
+              <div class="text-xs text-text-muted mb-3">${isCustom ? 'Індивідуальні розміри/матеріал' : 'Стандарт ПВХ 3мм, 500x800 мм'}</div>
+              <button class="text-xs text-danger font-bold hover:underline cursor-pointer page-delete" data-idx="${idx}">
+                Видалити з кошика
+              </button>
+            </td>
+            <td class="py-5">
+              <div class="inline-flex items-center border border-border rounded bg-white w-20 overflow-hidden">
+                <button class="qty-box-btn page-minus w-6 h-6 flex items-center justify-center text-xs text-text-muted hover:bg-bg-light cursor-pointer" data-idx="${idx}">—</button>
+                <input type="text" class="qty-box-input w-8 h-6 text-center border-x border-border border-y-0 text-xs font-semibold" value="${item.count}" readonly />
+                <button class="qty-box-btn page-plus w-6 h-6 flex items-center justify-center text-xs text-text-muted hover:bg-bg-light cursor-pointer" data-idx="${idx}">+</button>
+              </div>
+            </td>
+            <td class="py-5 text-right font-bold text-sm sm:text-base text-text-dark">${priceText}</td>
+          </tr>
+        `;
+      });
+      
+      itemsBody.innerHTML = html;
+      subtotalLabel.textContent = `${total} грн`;
+      totalLabel.textContent = `${total} грн`;
+      
+      // Handle global checkbox and comment alignment per philosophy
+      if (globalChk && globalBox && globalReq) {
+        globalChk.checked = hasCustom;
+        globalBox.style.display = hasCustom ? 'block' : 'none';
+        customAlert.style.display = hasCustom ? 'block' : 'none';
+        
+        // Populate global comment if present
+        const savedReqs = cart.filter((item: any) => item.isCustom && item.customRequirements).map((item: any) => `${item.title}: ${item.customRequirements}`).join('\n');
+        if (savedReqs && !globalReq.value) {
+          globalReq.value = savedReqs;
+        }
+      }
+      
+      // Event bindings
+      document.querySelectorAll('.page-plus').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const idx = Number(btn.getAttribute('data-idx'));
+          cart[idx].count++;
+          localStorage.setItem('shoppingCart', JSON.stringify(cart));
+          renderCartPage();
+          window.dispatchEvent(new Event('cart-updated'));
+        });
+      });
+      
+      document.querySelectorAll('.page-minus').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const idx = Number(btn.getAttribute('data-idx'));
+          cart[idx].count--;
+          if (cart[idx].count <= 0) {
+            cart.splice(idx, 1);
+          }
+          localStorage.setItem('shoppingCart', JSON.stringify(cart));
+          renderCartPage();
+          window.dispatchEvent(new Event('cart-updated'));
+        });
+      });
+      
+      document.querySelectorAll('.page-delete').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const idx = Number(btn.getAttribute('data-idx'));
+          cart.splice(idx, 1);
+          localStorage.setItem('shoppingCart', JSON.stringify(cart));
+          renderCartPage();
+          window.dispatchEvent(new Event('cart-updated'));
+        });
+      });
+      
+    } catch (e) {
+      console.error(e);
+    }
+  }
+  
+  // Bind global checkbox and textarea
+  const globalChk = document.getElementById('global-custom-chk') as HTMLInputElement | null;
+  const globalBox = document.getElementById('global-custom-box');
+  const globalReq = document.getElementById('global-custom-req') as HTMLTextAreaElement | null;
+  
+  if (globalChk && globalBox && globalReq) {
+    globalChk.addEventListener('change', (e: any) => {
+      const checked = e.target.checked;
+      globalBox.style.display = checked ? 'block' : 'none';
+      document.getElementById('summary-custom-alert')!.style.display = checked ? 'block' : 'none';
+      
+      const cart = JSON.parse(localStorage.getItem('shoppingCart') || '[]');
+      cart.forEach((item: any) => {
+        item.isCustom = checked;
+        if (!checked) item.customRequirements = null;
+      });
+      localStorage.setItem('shoppingCart', JSON.stringify(cart));
+      window.dispatchEvent(new Event('cart-updated'));
+    });
+    
+    globalReq.addEventListener('change', (e: any) => {
+      const val = e.target.value;
+      const cart = JSON.parse(localStorage.getItem('shoppingCart') || '[]');
+      cart.forEach((item: any) => {
+        if (item.isCustom) {
+          item.customRequirements = val;
+        }
+      });
+      localStorage.setItem('shoppingCart', JSON.stringify(cart));
+    });
+  }
+  
+  renderCartPage();
+  window.addEventListener('cart-updated', renderCartPage);
+</script>

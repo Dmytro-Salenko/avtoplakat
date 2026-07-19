@@ -1,0 +1,2537 @@
+[
+  {
+    "id": 62,
+    "type": "product",
+    "status": "publish",
+    "title": "Гальмова система",
+    "slug": "galmova-sistema",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 18:56:53",
+    "modified": "2024-12-16 23:35:04",
+    "image": "Galmova-sistema-rotated.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "63",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "600х900_000024"
+    }
+  },
+  {
+    "id": 64,
+    "type": "product",
+    "status": "publish",
+    "title": "Гібридний автомобіль",
+    "slug": "gibridnij-avtomobil",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 18:58:30",
+    "modified": "2024-12-16 23:32:57",
+    "image": "Gibridnij-avtomobil-rotated.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "65",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "600х900_000034"
+    }
+  },
+  {
+    "id": 66,
+    "type": "product",
+    "status": "publish",
+    "title": "Двигун, загальна будова",
+    "slug": "dvigun-zagalna-budova",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 18:58:58",
+    "modified": "2024-12-16 23:32:45",
+    "image": "Dvigun.-Zagalna-budova-rotated.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "67",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "600х900_000032"
+    }
+  },
+  {
+    "id": 68,
+    "type": "product",
+    "status": "publish",
+    "title": "Дія водія при аварійній несправності автомобіля, що виникла раптово",
+    "slug": "diya-vodiya-pri-avarijnij-nespravnosti-avtomobilya-shho-vinikla-raptovo",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 18:59:35",
+    "modified": "2024-12-16 23:32:25",
+    "image": "Diya-vodiya-pri-avarijnij-nespravnosti-avtomobilya-shho-vinikla-raptovo-rotated.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "69",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "600х900_000009"
+    }
+  },
+  {
+    "id": 33,
+    "type": "product",
+    "status": "publish",
+    "title": "Електрообладнання",
+    "slug": "budova-suchasnogo-legkovogo-avtobobilya",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 17:36:08",
+    "modified": "2024-12-16 23:37:14",
+    "image": "Budova-suchasnogo-legkovogo-avtobobilya-rotated.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "34",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "600х900_000039"
+    }
+  },
+  {
+    "id": 35,
+    "type": "product",
+    "status": "publish",
+    "title": "Дорожньо-транспортні ситуациї підвищеної небезпеки, що найчастіше повторюються",
+    "slug": "dorozhno-transportni-situatsiyi-pidvishhenoyi-nebezpeki-shho-najchastishe-povtoryuyutsya",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 17:36:26",
+    "modified": "2024-12-17 11:44:46",
+    "image": "Dorozhno-transportni-situatsiyi-pidvishhenoyi-nebezpeki-shho-najchastishe-povtoryuyutsya-rotated.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "36",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "600х900_000004"
+    }
+  },
+  {
+    "id": 37,
+    "type": "product",
+    "status": "publish",
+    "title": "Дорожньо-транспортні ситуації, які можуть привети до наїзду на дітей 1.2",
+    "slug": "dorozhno-transportni-situatsiyi-yaki-mozhut-priveti-do-nayizdu-na-ditej-1-2",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 17:36:46",
+    "modified": "2024-12-17 11:45:20",
+    "image": "Dorozhno-transportni-situatsiyi-yaki-mozhut-privesti-do-nayizdu-na-didej-rotated.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "38",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "600х900_000006"
+    }
+  },
+  {
+    "id": 39,
+    "type": "product",
+    "status": "publish",
+    "title": "Дорожньо-транспортні ситуації, які можуть привети до наїзду на дітей 1.1",
+    "slug": "dorozhno-transportni-situatsiyi-yaki-mozhut-priveti-do-nayizdu-na-ditej-1-1",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 17:37:06",
+    "modified": "2024-12-17 11:45:34",
+    "image": "Dorozhno-transportni-situatsiyi-yaki-mozhut-priveti-do-nayizdu-na-ditej-rotated.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "41",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "600х900_000007"
+    }
+  },
+  {
+    "id": 42,
+    "type": "product",
+    "status": "publish",
+    "title": "Обгін транспортних засобів",
+    "slug": "obgin-transportnih-zasobiv",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 17:38:16",
+    "modified": "2024-12-16 23:36:37",
+    "image": "Obgin-transportnih-zasobiv-rotated.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "46",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "600х900_000003"
+    }
+  },
+  {
+    "id": 43,
+    "type": "acf-field",
+    "status": "publish",
+    "title": "Информация",
+    "slug": "field_626d499e3853d",
+    "content": "a:7:{s:4:\"type\";s:3:\"tab\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";i:0;s:17:\"conditional_logic\";i:0;s:7:\"wrapper\";a:3:{s:5:\"width\";s:0:\"\";s:5:\"class\";s:0:\"\";s:2:\"id\";s:0:\"\";}s:9:\"placement\";s:3:\"top\";s:8:\"endpoint\";i:0;}",
+    "excerpt": "информация",
+    "date": "2022-04-30 17:38:10",
+    "modified": "2022-04-30 17:38:10",
+    "image": null,
+    "taxonomies": [],
+    "meta": {}
+  },
+  {
+    "id": 44,
+    "type": "acf-field",
+    "status": "publish",
+    "title": "",
+    "slug": "field_626d49a73853e",
+    "content": "a:7:{s:4:\"type\";s:5:\"group\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";i:0;s:17:\"conditional_logic\";i:0;s:7:\"wrapper\";a:3:{s:5:\"width\";s:0:\"\";s:5:\"class\";s:0:\"\";s:2:\"id\";s:0:\"\";}s:6:\"layout\";s:5:\"block\";s:10:\"sub_fields\";a:0:{}}",
+    "excerpt": "product",
+    "date": "2022-04-30 17:38:10",
+    "modified": "2022-04-30 17:38:10",
+    "image": null,
+    "taxonomies": [],
+    "meta": {}
+  },
+  {
+    "id": 45,
+    "type": "acf-field",
+    "status": "publish",
+    "title": "",
+    "slug": "field_626d49ad3853f",
+    "content": "a:10:{s:4:\"type\";s:4:\"text\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";i:0;s:17:\"conditional_logic\";i:0;s:7:\"wrapper\";a:3:{s:5:\"width\";s:2:\"70\";s:5:\"class\";s:0:\"\";s:2:\"id\";s:0:\"\";}s:13:\"default_value\";s:0:\"\";s:11:\"placeholder\";s:0:\"\";s:7:\"prepend\";s:8:\"Цена\";s:6:\"append\";s:3:\"₴\";s:9:\"maxlength\";s:0:\"\";}",
+    "excerpt": "product_price",
+    "date": "2022-04-30 17:38:10",
+    "modified": "2022-05-16 22:10:24",
+    "image": null,
+    "taxonomies": [],
+    "meta": {}
+  },
+  {
+    "id": 47,
+    "type": "product",
+    "status": "publish",
+    "title": "Як захистити себе при зіткненні",
+    "slug": "yak-zahistiti-sebe-pri-zitknenni",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 17:40:22",
+    "modified": "2024-12-16 23:36:21",
+    "image": "YAk-zahistiti-sebe-pri-zitknenni-rotated.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "49",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "600х900_000002"
+    }
+  },
+  {
+    "id": 50,
+    "type": "product",
+    "status": "publish",
+    "title": "Послідовність дії водіїв при ліквідації заносу",
+    "slug": "poslidovnist-diyi-vodiyiv-pri-likvidatsiyi-zanosu",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 17:40:50",
+    "modified": "2024-12-17 11:46:05",
+    "image": "Poslidovnist-diyi-vodiyiv-pri-likvidatsiyi-zanosu-rotated.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "51",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "600х900_000005"
+    }
+  },
+  {
+    "id": 53,
+    "type": "product",
+    "status": "publish",
+    "title": "5-ступінчаста механічна коробка передач",
+    "slug": "5-stupinchasta-mehanichna-korobka-peredach",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 18:48:09",
+    "modified": "2024-12-16 23:36:07",
+    "image": "5-stupinchasta-mehanichna-korobka-peredach-rotated.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "54",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "600х900_000035"
+    }
+  },
+  {
+    "id": 55,
+    "type": "product",
+    "status": "publish",
+    "title": "Безпека руху",
+    "slug": "bezpeka-ruhu",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 18:48:58",
+    "modified": "2024-12-16 23:35:54",
+    "image": "Bezpeka-ruhu-rotated.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "56",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "600х900_000042"
+    }
+  },
+  {
+    "id": 58,
+    "type": "product",
+    "status": "publish",
+    "title": "Безступінчата автоматична коробка передач Multitronic",
+    "slug": "bezstupinchata-avtomatichna-korobka-peredach-multitronic",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 18:55:36",
+    "modified": "2024-12-16 23:35:42",
+    "image": "Bezstupinchata-avtomatichna-korobka-peredach-Multitronic-rotated.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "59",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "600х900_000018"
+    }
+  },
+  {
+    "id": 60,
+    "type": "product",
+    "status": "publish",
+    "title": "Газобалонна установка для роботи на зрідженому газі",
+    "slug": "gazobalonna-ustanovka-dlya-roboti-na-zridzhenomu-gazi",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 18:56:08",
+    "modified": "2024-12-16 23:35:31",
+    "image": "Gazobalonna-ustanovka-dlya-roboti-na-zridzhenomu-gazi-rotated.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "61",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "600х900_000027"
+    }
+  },
+  {
+    "id": 10,
+    "type": "page",
+    "status": "publish",
+    "title": "Головна",
+    "slug": "home",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 16:43:09",
+    "modified": "2022-07-10 13:05:30",
+    "image": null,
+    "taxonomies": [],
+    "meta": {
+      "hero_heading_heading_title": "Автоплакат UA 🇺🇦",
+      "hero_heading": "",
+      "hero": "",
+      "hero_heading_heading_text": "Виготовляємо плакати - стенди для автошкіл.\r\nЗ нами Ви зможете обладнати сучасний клас в автошколі,\r\nпри помірному бюджеті\r\nПлакати виготовленні з пластику, розмір 500х800 мм.\r\nТакож можливо виготовлення по вашим розмірам. \r\n"
+    }
+  },
+  {
+    "id": 12,
+    "type": "acf-field-group",
+    "status": "publish",
+    "title": "Основная информация и настройки",
+    "slug": "group_607170fe7152d",
+    "content": "a:8:{s:8:\"location\";a:1:{i:0;a:1:{i:0;a:3:{s:5:\"param\";s:12:\"options_page\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:22:\"theme-general-settings\";}}}s:8:\"position\";s:6:\"normal\";s:5:\"style\";s:7:\"default\";s:15:\"label_placement\";s:3:\"top\";s:21:\"instruction_placement\";s:5:\"label\";s:14:\"hide_on_screen\";a:14:{i:0;s:9:\"permalink\";i:1;s:11:\"the_content\";i:2;s:7:\"excerpt\";i:3;s:10:\"discussion\";i:4;s:8:\"comments\";i:5;s:9:\"revisions\";i:6;s:4:\"slug\";i:7;s:6:\"author\";i:8;s:6:\"format\";i:9;s:15:\"page_attributes\";i:10;s:14:\"featured_image\";i:11;s:10:\"categories\";i:12;s:4:\"tags\";i:13;s:15:\"send-trackbacks\";}s:11:\"description\";s:0:\"\";s:12:\"show_in_rest\";i:0;}",
+    "excerpt": "osnovnaya-informatsiya-i-nastrojki",
+    "date": "2022-04-30 16:52:08",
+    "modified": "2022-05-13 10:20:19",
+    "image": null,
+    "taxonomies": [
+      {
+        "taxonomy": "category",
+        "name": "Без рубрики",
+        "slug": "uncategorized"
+      }
+    ],
+    "meta": {}
+  },
+  {
+    "id": 13,
+    "type": "acf-field",
+    "status": "publish",
+    "title": "Брендинг",
+    "slug": "field_6071710f0a582",
+    "content": "a:7:{s:4:\"type\";s:3:\"tab\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";i:0;s:17:\"conditional_logic\";i:0;s:7:\"wrapper\";a:3:{s:5:\"width\";s:0:\"\";s:5:\"class\";s:0:\"\";s:2:\"id\";s:0:\"\";}s:9:\"placement\";s:3:\"top\";s:8:\"endpoint\";i:0;}",
+    "excerpt": "",
+    "date": "2022-04-30 16:52:08",
+    "modified": "2022-04-30 16:52:08",
+    "image": null,
+    "taxonomies": [],
+    "meta": {}
+  },
+  {
+    "id": 14,
+    "type": "acf-field",
+    "status": "publish",
+    "title": "",
+    "slug": "field_61fa2db28dfde",
+    "content": "a:7:{s:4:\"type\";s:5:\"group\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";i:0;s:17:\"conditional_logic\";i:0;s:7:\"wrapper\";a:3:{s:5:\"width\";s:0:\"\";s:5:\"class\";s:0:\"\";s:2:\"id\";s:0:\"\";}s:6:\"layout\";s:5:\"block\";s:10:\"sub_fields\";a:0:{}}",
+    "excerpt": "site_branding",
+    "date": "2022-04-30 16:52:08",
+    "modified": "2022-04-30 16:52:08",
+    "image": null,
+    "taxonomies": [],
+    "meta": {}
+  },
+  {
+    "id": 15,
+    "type": "acf-field",
+    "status": "publish",
+    "title": "",
+    "slug": "field_61fa2dbe8dfdf",
+    "content": "a:15:{s:4:\"type\";s:5:\"image\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";i:0;s:17:\"conditional_logic\";i:0;s:7:\"wrapper\";a:3:{s:5:\"width\";s:2:\"50\";s:5:\"class\";s:0:\"\";s:2:\"id\";s:0:\"\";}s:13:\"return_format\";s:3:\"url\";s:12:\"preview_size\";s:6:\"medium\";s:7:\"library\";s:3:\"all\";s:9:\"min_width\";s:0:\"\";s:10:\"min_height\";s:0:\"\";s:8:\"min_size\";s:0:\"\";s:9:\"max_width\";s:0:\"\";s:10:\"max_height\";s:0:\"\";s:8:\"max_size\";s:0:\"\";s:10:\"mime_types\";s:0:\"\";}",
+    "excerpt": "site_logo",
+    "date": "2022-04-30 16:52:08",
+    "modified": "2022-04-30 16:52:08",
+    "image": null,
+    "taxonomies": [],
+    "meta": {}
+  },
+  {
+    "id": 16,
+    "type": "acf-field",
+    "status": "publish",
+    "title": "Контакты",
+    "slug": "field_607171a66d5ed",
+    "content": "a:7:{s:4:\"type\";s:3:\"tab\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";i:0;s:17:\"conditional_logic\";i:0;s:7:\"wrapper\";a:3:{s:5:\"width\";s:0:\"\";s:5:\"class\";s:0:\"\";s:2:\"id\";s:0:\"\";}s:9:\"placement\";s:3:\"top\";s:8:\"endpoint\";i:0;}",
+    "excerpt": "",
+    "date": "2022-04-30 16:52:08",
+    "modified": "2022-04-30 16:52:08",
+    "image": null,
+    "taxonomies": [],
+    "meta": {}
+  },
+  {
+    "id": 17,
+    "type": "acf-field",
+    "status": "publish",
+    "title": "",
+    "slug": "field_607171dd6d5ef",
+    "content": "a:7:{s:4:\"type\";s:5:\"group\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";i:0;s:17:\"conditional_logic\";i:0;s:7:\"wrapper\";a:3:{s:5:\"width\";s:0:\"\";s:5:\"class\";s:0:\"\";s:2:\"id\";s:0:\"\";}s:6:\"layout\";s:5:\"block\";s:10:\"sub_fields\";a:0:{}}",
+    "excerpt": "contacts",
+    "date": "2022-04-30 16:52:08",
+    "modified": "2022-04-30 16:52:08",
+    "image": null,
+    "taxonomies": [],
+    "meta": {}
+  },
+  {
+    "id": 18,
+    "type": "acf-field",
+    "status": "publish",
+    "title": "Номера телефонов",
+    "slug": "field_607171fb6d5f0",
+    "content": "a:10:{s:4:\"type\";s:8:\"repeater\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";i:0;s:17:\"conditional_logic\";i:0;s:7:\"wrapper\";a:3:{s:5:\"width\";s:0:\"\";s:5:\"class\";s:0:\"\";s:2:\"id\";s:0:\"\";}s:9:\"collapsed\";s:0:\"\";s:3:\"min\";i:0;s:3:\"max\";i:0;s:6:\"layout\";s:5:\"block\";s:12:\"button_label\";s:18:\"Добавить +\";}",
+    "excerpt": "phones",
+    "date": "2022-04-30 16:52:08",
+    "modified": "2022-04-30 16:52:08",
+    "image": null,
+    "taxonomies": [],
+    "meta": {}
+  },
+  {
+    "id": 19,
+    "type": "acf-field",
+    "status": "publish",
+    "title": "Номер телефона",
+    "slug": "field_607179a6c940c",
+    "content": "a:8:{s:4:\"type\";s:9:\"accordion\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";i:0;s:17:\"conditional_logic\";i:0;s:7:\"wrapper\";a:3:{s:5:\"width\";s:0:\"\";s:5:\"class\";s:0:\"\";s:2:\"id\";s:0:\"\";}s:4:\"open\";i:0;s:12:\"multi_expand\";i:0;s:8:\"endpoint\";i:0;}",
+    "excerpt": "",
+    "date": "2022-04-30 16:52:08",
+    "modified": "2022-04-30 16:52:08",
+    "image": null,
+    "taxonomies": [],
+    "meta": {}
+  },
+  {
+    "id": 20,
+    "type": "acf-field",
+    "status": "publish",
+    "title": "",
+    "slug": "field_6071721c6d5f1",
+    "content": "a:10:{s:4:\"type\";s:4:\"text\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";i:0;s:17:\"conditional_logic\";i:0;s:7:\"wrapper\";a:3:{s:5:\"width\";s:0:\"\";s:5:\"class\";s:0:\"\";s:2:\"id\";s:0:\"\";}s:13:\"default_value\";s:0:\"\";s:11:\"placeholder\";s:0:\"\";s:7:\"prepend\";s:27:\"Номер телефона\";s:6:\"append\";s:0:\"\";s:9:\"maxlength\";s:0:\"\";}",
+    "excerpt": "phone_number",
+    "date": "2022-04-30 16:52:08",
+    "modified": "2022-04-30 16:52:08",
+    "image": null,
+    "taxonomies": [],
+    "meta": {}
+  },
+  {
+    "id": 21,
+    "type": "acf-field",
+    "status": "publish",
+    "title": "Email",
+    "slug": "field_60781c3233b1c",
+    "content": "a:10:{s:4:\"type\";s:8:\"repeater\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";i:0;s:17:\"conditional_logic\";i:0;s:7:\"wrapper\";a:3:{s:5:\"width\";s:0:\"\";s:5:\"class\";s:0:\"\";s:2:\"id\";s:0:\"\";}s:9:\"collapsed\";s:0:\"\";s:3:\"min\";i:0;s:3:\"max\";i:0;s:6:\"layout\";s:5:\"block\";s:12:\"button_label\";s:18:\"Добавить +\";}",
+    "excerpt": "emails",
+    "date": "2022-04-30 16:52:08",
+    "modified": "2022-04-30 16:52:08",
+    "image": null,
+    "taxonomies": [],
+    "meta": {}
+  },
+  {
+    "id": 22,
+    "type": "acf-field",
+    "status": "publish",
+    "title": "Email",
+    "slug": "field_60781c3233b1d",
+    "content": "a:8:{s:4:\"type\";s:9:\"accordion\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";i:0;s:17:\"conditional_logic\";i:0;s:7:\"wrapper\";a:3:{s:5:\"width\";s:0:\"\";s:5:\"class\";s:0:\"\";s:2:\"id\";s:0:\"\";}s:4:\"open\";i:0;s:12:\"multi_expand\";i:0;s:8:\"endpoint\";i:0;}",
+    "excerpt": "",
+    "date": "2022-04-30 16:52:08",
+    "modified": "2022-04-30 16:52:08",
+    "image": null,
+    "taxonomies": [],
+    "meta": {}
+  },
+  {
+    "id": 23,
+    "type": "acf-field",
+    "status": "publish",
+    "title": "",
+    "slug": "field_60781c3233b1e",
+    "content": "a:10:{s:4:\"type\";s:4:\"text\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";i:0;s:17:\"conditional_logic\";i:0;s:7:\"wrapper\";a:3:{s:5:\"width\";s:0:\"\";s:5:\"class\";s:0:\"\";s:2:\"id\";s:0:\"\";}s:13:\"default_value\";s:0:\"\";s:11:\"placeholder\";s:0:\"\";s:7:\"prepend\";s:16:\"Адрес email\";s:6:\"append\";s:0:\"\";s:9:\"maxlength\";s:0:\"\";}",
+    "excerpt": "email_address",
+    "date": "2022-04-30 16:52:08",
+    "modified": "2022-04-30 16:52:08",
+    "image": null,
+    "taxonomies": [],
+    "meta": {}
+  },
+  {
+    "id": 24,
+    "type": "acf-field",
+    "status": "publish",
+    "title": "Социальные сети",
+    "slug": "field_62093c6c3cdf2",
+    "content": "a:10:{s:4:\"type\";s:8:\"repeater\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";i:0;s:17:\"conditional_logic\";i:0;s:7:\"wrapper\";a:3:{s:5:\"width\";s:0:\"\";s:5:\"class\";s:0:\"\";s:2:\"id\";s:0:\"\";}s:9:\"collapsed\";s:0:\"\";s:3:\"min\";i:0;s:3:\"max\";i:0;s:6:\"layout\";s:5:\"block\";s:12:\"button_label\";s:18:\"Добавить +\";}",
+    "excerpt": "socials",
+    "date": "2022-04-30 16:52:08",
+    "modified": "2022-04-30 16:52:08",
+    "image": null,
+    "taxonomies": [],
+    "meta": {}
+  },
+  {
+    "id": 25,
+    "type": "acf-field",
+    "status": "publish",
+    "title": "Социальная сеть",
+    "slug": "field_62093c923cdf3",
+    "content": "a:8:{s:4:\"type\";s:9:\"accordion\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";i:0;s:17:\"conditional_logic\";i:0;s:7:\"wrapper\";a:3:{s:5:\"width\";s:0:\"\";s:5:\"class\";s:0:\"\";s:2:\"id\";s:0:\"\";}s:4:\"open\";i:0;s:12:\"multi_expand\";i:0;s:8:\"endpoint\";i:0;}",
+    "excerpt": "",
+    "date": "2022-04-30 16:52:08",
+    "modified": "2022-04-30 16:52:08",
+    "image": null,
+    "taxonomies": [],
+    "meta": {}
+  },
+  {
+    "id": 26,
+    "type": "acf-field",
+    "status": "publish",
+    "title": "",
+    "slug": "field_62093c9f3cdf4",
+    "content": "a:10:{s:4:\"type\";s:4:\"text\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";i:0;s:17:\"conditional_logic\";i:0;s:7:\"wrapper\";a:3:{s:5:\"width\";s:2:\"50\";s:5:\"class\";s:0:\"\";s:2:\"id\";s:0:\"\";}s:13:\"default_value\";s:0:\"\";s:11:\"placeholder\";s:0:\"\";s:7:\"prepend\";s:12:\"Ссылка\";s:6:\"append\";s:0:\"\";s:9:\"maxlength\";s:0:\"\";}",
+    "excerpt": "social_link",
+    "date": "2022-04-30 16:52:08",
+    "modified": "2022-04-30 16:52:08",
+    "image": null,
+    "taxonomies": [],
+    "meta": {}
+  },
+  {
+    "id": 27,
+    "type": "acf-field",
+    "status": "publish",
+    "title": "",
+    "slug": "field_62093cb33cdf5",
+    "content": "a:10:{s:4:\"type\";s:4:\"text\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";i:0;s:17:\"conditional_logic\";i:0;s:7:\"wrapper\";a:3:{s:5:\"width\";s:2:\"50\";s:5:\"class\";s:0:\"\";s:2:\"id\";s:0:\"\";}s:13:\"default_value\";s:0:\"\";s:11:\"placeholder\";s:0:\"\";s:7:\"prepend\";s:7:\"Iconify\";s:6:\"append\";s:0:\"\";s:9:\"maxlength\";s:0:\"\";}",
+    "excerpt": "social_icon",
+    "date": "2022-04-30 16:52:08",
+    "modified": "2022-04-30 18:50:03",
+    "image": null,
+    "taxonomies": [],
+    "meta": {}
+  },
+  {
+    "id": 28,
+    "type": "acf-field",
+    "status": "publish",
+    "title": "Адрес",
+    "slug": "field_626d3f39ba5b1",
+    "content": "a:7:{s:4:\"type\";s:5:\"group\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";i:0;s:17:\"conditional_logic\";i:0;s:7:\"wrapper\";a:3:{s:5:\"width\";s:0:\"\";s:5:\"class\";s:0:\"\";s:2:\"id\";s:0:\"\";}s:6:\"layout\";s:5:\"block\";s:10:\"sub_fields\";a:0:{}}",
+    "excerpt": "address",
+    "date": "2022-04-30 16:54:40",
+    "modified": "2022-04-30 16:54:40",
+    "image": null,
+    "taxonomies": [],
+    "meta": {}
+  },
+  {
+    "id": 29,
+    "type": "acf-field",
+    "status": "publish",
+    "title": "Google Maps",
+    "slug": "field_626d3f4dba5b2",
+    "content": "a:10:{s:4:\"type\";s:4:\"text\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";i:0;s:17:\"conditional_logic\";i:0;s:7:\"wrapper\";a:3:{s:5:\"width\";s:0:\"\";s:5:\"class\";s:0:\"\";s:2:\"id\";s:0:\"\";}s:13:\"default_value\";s:0:\"\";s:11:\"placeholder\";s:24:\"Ссылка Google Maps\";s:7:\"prepend\";s:0:\"\";s:6:\"append\";s:0:\"\";s:9:\"maxlength\";s:0:\"\";}",
+    "excerpt": "address_link",
+    "date": "2022-04-30 16:54:40",
+    "modified": "2022-04-30 16:54:40",
+    "image": null,
+    "taxonomies": [],
+    "meta": {}
+  },
+  {
+    "id": 30,
+    "type": "acf-field",
+    "status": "publish",
+    "title": "Адрес",
+    "slug": "field_626d3f66ba5b3",
+    "content": "a:10:{s:4:\"type\";s:7:\"wysiwyg\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";i:0;s:17:\"conditional_logic\";i:0;s:7:\"wrapper\";a:3:{s:5:\"width\";s:0:\"\";s:5:\"class\";s:0:\"\";s:2:\"id\";s:0:\"\";}s:13:\"default_value\";s:0:\"\";s:4:\"tabs\";s:6:\"visual\";s:7:\"toolbar\";s:5:\"basic\";s:12:\"media_upload\";i:0;s:5:\"delay\";i:0;}",
+    "excerpt": "address_location",
+    "date": "2022-04-30 16:54:40",
+    "modified": "2022-05-13 10:20:19",
+    "image": null,
+    "taxonomies": [],
+    "meta": {}
+  },
+  {
+    "id": 31,
+    "type": "acf-field-group",
+    "status": "publish",
+    "title": "Отдельная запись: Товар",
+    "slug": "group_626d413c3e196",
+    "content": "a:8:{s:8:\"location\";a:1:{i:0;a:1:{i:0;a:3:{s:5:\"param\";s:9:\"post_type\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:7:\"product\";}}}s:8:\"position\";s:6:\"normal\";s:5:\"style\";s:7:\"default\";s:15:\"label_placement\";s:3:\"top\";s:21:\"instruction_placement\";s:5:\"label\";s:14:\"hide_on_screen\";a:1:{i:0;s:11:\"the_content\";}s:11:\"description\";s:0:\"\";s:12:\"show_in_rest\";i:0;}",
+    "excerpt": "otdelnaya-zapis-tovar",
+    "date": "2022-04-30 17:02:19",
+    "modified": "2022-05-16 22:10:24",
+    "image": null,
+    "taxonomies": [],
+    "meta": {}
+  },
+  {
+    "id": 70,
+    "type": "product",
+    "status": "publish",
+    "title": "Додаткове обладнання",
+    "slug": "dodatkove-obladnannya",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 19:02:35",
+    "modified": "2024-12-16 23:32:15",
+    "image": "Dodatkove-obladnannya-rotated.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "71",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "600х900_000037"
+    }
+  },
+  {
+    "id": 72,
+    "type": "product",
+    "status": "publish",
+    "title": "Дорожньо-транспортні ситуації, які можуть привети до наїзду на дітей 1.3",
+    "slug": "dorozhno-transportni-situatsiyi-yaki-mozhut-priveti-do-nayizdu-na-ditej-1-3",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 19:02:54",
+    "modified": "2024-12-16 23:32:05",
+    "image": "Dorozhno-transportni-situatsiyi-kotri-mozhut-privesti-do-nayizdu-na-ditej-rotated.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "73",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "600х900_000008"
+    }
+  },
+  {
+    "id": 74,
+    "type": "product",
+    "status": "publish",
+    "title": "ДТП, у яких постраждали учасники дорожнього руху 1.2",
+    "slug": "dtp-u-yakih-postrazhdali-uchasniki-dorozhnogo-ruhu-1-2",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 19:04:16",
+    "modified": "2024-12-16 23:31:53",
+    "image": "DTP-u-yakih-postrazhdali-uchasniki-dorozhnogo-ruhu-2-rotated.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "75",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "600х900_000043"
+    }
+  },
+  {
+    "id": 76,
+    "type": "product",
+    "status": "publish",
+    "title": "ДТП, у яких постраждали учасники дорожнього руху 1.1",
+    "slug": "dtp-u-yakih-postrazhdali-uchasniki-dorozhnogo-ruhu",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 19:04:39",
+    "modified": "2024-12-16 23:31:41",
+    "image": "Dodatkove-obladnannya-rotated.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "71",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "600х900_000037"
+    }
+  },
+  {
+    "id": 78,
+    "type": "product",
+    "status": "publish",
+    "title": "Електрообладнання",
+    "slug": "elektroobladnannya",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 19:05:10",
+    "modified": "2024-12-16 23:31:26",
+    "image": "Elektroobladnannya-rotated.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "79",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "600х900_000039"
+    }
+  },
+  {
+    "id": 80,
+    "type": "product",
+    "status": "publish",
+    "title": "Загальна будова автомобіля",
+    "slug": "zagalna-budova-avtomobilya",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 19:05:26",
+    "modified": "2024-12-16 23:31:10",
+    "image": "Zagalna-budova-avtomobilya-rotated.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "81",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "600х900_000016"
+    }
+  },
+  {
+    "id": 83,
+    "type": "product",
+    "status": "publish",
+    "title": "Залежність гальмового шляху",
+    "slug": "zalezhnist-galmovogo-shlyahu",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 19:06:05",
+    "modified": "2024-12-16 23:30:58",
+    "image": "Zalezhnist-galmovogo-shlyahu-rotated.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "84",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "600х900_000012"
+    }
+  },
+  {
+    "id": 85,
+    "type": "product",
+    "status": "publish",
+    "title": "Захист навколишнього середовища",
+    "slug": "zahist-navkolishnogo-seredovishha",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 19:06:25",
+    "modified": "2024-12-16 23:30:44",
+    "image": "Zahist-navkolishnogo-seredovishha-rotated.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "86",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "600х900_000038"
+    }
+  },
+  {
+    "id": 90,
+    "type": "product",
+    "status": "publish",
+    "title": "Обгін",
+    "slug": "obgin",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 19:07:53",
+    "modified": "2024-12-16 23:33:35",
+    "image": "Obgin.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "91",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "600х900_000040"
+    }
+  },
+  {
+    "id": 92,
+    "type": "product",
+    "status": "publish",
+    "title": "Опалення і кондиціювання",
+    "slug": "opalennya-i-konditsiyuvannya",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 19:08:22",
+    "modified": "2024-12-16 23:30:31",
+    "image": "Opalennya-i-konditsiyuvannya-rotated.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "93",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "600х900_000036"
+    }
+  },
+  {
+    "id": 94,
+    "type": "product",
+    "status": "publish",
+    "title": "Підвіски",
+    "slug": "pidviski",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 19:08:39",
+    "modified": "2024-12-16 23:30:17",
+    "image": "Pidviski-rotated.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "95",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "600х900_000020"
+    }
+  },
+  {
+    "id": 96,
+    "type": "product",
+    "status": "publish",
+    "title": "Пневматична підвіска",
+    "slug": "pnevmatichna-pidviska",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 19:08:56",
+    "modified": "2024-12-16 23:30:02",
+    "image": "Pnevmatichna-pidviska-rotated.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "97",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "600х900_000021"
+    }
+  },
+  {
+    "id": 98,
+    "type": "product",
+    "status": "publish",
+    "title": "Положення водія на робочому місці",
+    "slug": "polozhennya-vodiya-na-robochomu-mistsi",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 19:09:27",
+    "modified": "2024-12-16 23:29:34",
+    "image": "Polozhennya-vodiya-na-robochomu-mistsi-rotated.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "99",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "600х900_000010"
+    }
+  },
+  {
+    "id": 100,
+    "type": "product",
+    "status": "publish",
+    "title": "Психофізіологія водія",
+    "slug": "psihofiziologiya-vodiya",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 19:09:51",
+    "modified": "2024-12-16 23:29:18",
+    "image": "Psihofiziologiya-vodiya-rotated.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "101",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "600х900_000013"
+    }
+  },
+  {
+    "id": 102,
+    "type": "product",
+    "status": "publish",
+    "title": "Робочий цикл двигуна",
+    "slug": "robochij-tsikl-dviguna",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 19:10:30",
+    "modified": "2024-12-16 23:28:59",
+    "image": "Robochij-tsikl-dviguna-rotated.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "103",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "600х900_000015"
+    }
+  },
+  {
+    "id": 104,
+    "type": "product",
+    "status": "publish",
+    "title": "Рульове керування",
+    "slug": "rulve-keruvannya",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 19:10:58",
+    "modified": "2024-12-16 23:28:36",
+    "image": "Rulve-keruvannya-rotated.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "105",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "600х900_000022"
+    }
+  },
+  {
+    "id": 106,
+    "type": "product",
+    "status": "publish",
+    "title": "Система охолодження двигуна",
+    "slug": "sistema-oholodzhennya-dviguna",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 19:11:24",
+    "modified": "2024-12-16 23:28:20",
+    "image": "Sistem-oholodzhennya-dviguna-rotated.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "107",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "600х900_000014"
+    }
+  },
+  {
+    "id": 108,
+    "type": "product",
+    "status": "publish",
+    "title": "Система живлення бензинового двигуна",
+    "slug": "sistema-zhivlennya-benzinovogo-dviguna",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 19:11:41",
+    "modified": "2024-12-16 23:27:57",
+    "image": "Sistema-zhivlennya-benzinovogo-dviguna-rotated.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "109",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "600х900_000029"
+    }
+  },
+  {
+    "id": 110,
+    "type": "product",
+    "status": "publish",
+    "title": "Система живлення дизильного двигуна",
+    "slug": "sistema-zhivlennya-dizilnogo-dviguna",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 19:12:01",
+    "modified": "2024-12-16 23:27:29",
+    "image": "Sistema-zhivlennya-dizilnogo-dviguna-rotated.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "111",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "600х900_000030"
+    }
+  },
+  {
+    "id": 112,
+    "type": "product",
+    "status": "publish",
+    "title": "Система змащення двигуна",
+    "slug": "sistema-zmashhennya-dviguna",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 19:12:19",
+    "modified": "2024-12-16 23:27:14",
+    "image": "Sistema-zmashhennya-dviguna-rotated.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "113",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "600х900_000028"
+    }
+  },
+  {
+    "id": 114,
+    "type": "product",
+    "status": "publish",
+    "title": "Системи активної безпеки",
+    "slug": "sistemi-aktivnoyi-bezpeki",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 19:12:38",
+    "modified": "2024-12-16 23:27:03",
+    "image": "Sistemi-aktivnoyi-bezpeki-rotated.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "115",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "600х900_000033"
+    }
+  },
+  {
+    "id": 116,
+    "type": "product",
+    "status": "publish",
+    "title": "Системи пасивної безпеки",
+    "slug": "sistemi-pasivnoyi-bezpeki",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 19:12:58",
+    "modified": "2024-12-16 23:26:47",
+    "image": "Sistemi-pasivnoyi-bezpeki-rotated.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "117",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "600х900_000025"
+    }
+  },
+  {
+    "id": 118,
+    "type": "product",
+    "status": "publish",
+    "title": "Типи кузовів",
+    "slug": "tipi-kuzoviv",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 19:13:17",
+    "modified": "2024-12-16 23:26:16",
+    "image": "Tipi-kuzoviv-rotated.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "119",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "600х900_000017"
+    }
+  },
+  {
+    "id": 120,
+    "type": "product",
+    "status": "publish",
+    "title": "Трансмісія",
+    "slug": "transmisiya",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 19:13:35",
+    "modified": "2024-12-16 23:26:05",
+    "image": "Transmisiya-rotated.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "121",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "600х900_000026"
+    }
+  },
+  {
+    "id": 122,
+    "type": "product",
+    "status": "publish",
+    "title": "Фактори, що збільшують імовірність заносу автомобіля",
+    "slug": "faktori-shho-zbilshuyut-imovirnist-zanosu-avtomobilya",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 19:14:01",
+    "modified": "2024-12-16 23:25:48",
+    "image": "Faktori-shho-zbilshuyut-imovirnist-zanosu-avtomobilya-rotated.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "123",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "600х900_000011"
+    }
+  },
+  {
+    "id": 124,
+    "type": "product",
+    "status": "publish",
+    "title": "Шестиступінчаста автоматична коробка передач",
+    "slug": "shestistupinchasta-avtomatichna-korobka-peredach",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 19:14:21",
+    "modified": "2024-12-16 23:25:32",
+    "image": "SHestistupinchasta-avtomatichna-korobka-peredach-rotated.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "125",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "600х900_000019"
+    }
+  },
+  {
+    "id": 126,
+    "type": "product",
+    "status": "publish",
+    "title": "Шини",
+    "slug": "shini",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 19:14:46",
+    "modified": "2024-12-16 23:25:14",
+    "image": "SHini-rotated.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "127",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "600х900_000023"
+    }
+  },
+  {
+    "id": 128,
+    "type": "product",
+    "status": "publish",
+    "title": "Буксирування транспортних засобів",
+    "slug": "buksiruvannya-transportnih-zasobiv",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 21:02:46",
+    "modified": "2024-12-16 23:25:01",
+    "image": "Buksiruvannya-transportnih-zasobiv.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "129",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "800х500_000006"
+    }
+  },
+  {
+    "id": 130,
+    "type": "product",
+    "status": "publish",
+    "title": "Вимоги до велосипедистів",
+    "slug": "vimogi-do-velosipedistiv",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 21:03:11",
+    "modified": "2024-12-16 23:24:33",
+    "image": "Vimogi-do-velosipedistiv.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "131",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "800х500_000014"
+    }
+  },
+  {
+    "id": 132,
+    "type": "product",
+    "status": "publish",
+    "title": "Вузли та агрегати автомобіля, що впливають на безпеку руху",
+    "slug": "vuzli-ta-agregati-avtomobilya-shho-vplivayut-na-bezpeku-ruhu",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 21:03:29",
+    "modified": "2024-12-16 23:24:17",
+    "image": "Vuzli-ta-agregati-avtomobilya-shho-vplivayut-na-bezpeku-ruhu.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "133",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "800х500_000019"
+    }
+  },
+  {
+    "id": 134,
+    "type": "product",
+    "status": "publish",
+    "title": "Дистанція, інтервал, зустрічний проїзд",
+    "slug": "distantsiya-interval-zustrichnij-proyizd",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 21:03:50",
+    "modified": "2024-12-16 23:23:58",
+    "image": "Distantsiya-interval-zustrichnij-proyizd.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "135",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "800х500_000016"
+    }
+  },
+  {
+    "id": 136,
+    "type": "product",
+    "status": "publish",
+    "title": "Дорожня розмітка",
+    "slug": "dorozhnya-rozmitka",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 21:04:10",
+    "modified": "2024-12-16 23:23:41",
+    "image": "Dorozhnya-rozmitka.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "137",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "800х500_000026"
+    }
+  },
+  {
+    "id": 138,
+    "type": "product",
+    "status": "publish",
+    "title": "Заборонні знаки",
+    "slug": "zaboronni-znaki",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 21:04:30",
+    "modified": "2024-12-16 23:23:25",
+    "image": "Zaboronni-znaki.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "139",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "800х500_000029"
+    }
+  },
+  {
+    "id": 140,
+    "type": "product",
+    "status": "publish",
+    "title": "Знаки приорітету",
+    "slug": "znaki-prioritetu",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 21:04:50",
+    "modified": "2024-12-16 23:23:07",
+    "image": "Znaki-prioritetu.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "141",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "800х500_000033"
+    }
+  },
+  {
+    "id": 142,
+    "type": "product",
+    "status": "publish",
+    "title": "Зупинка і стоянка",
+    "slug": "zupinka-i-stoyanka",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 21:05:08",
+    "modified": "2024-12-16 23:22:51",
+    "image": "Zupinka-i-stoyanka.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "143",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "800х500_000001"
+    }
+  },
+  {
+    "id": 144,
+    "type": "product",
+    "status": "publish",
+    "title": "Інформаційно-вказівні знаки 1.1",
+    "slug": "informatsijno-vkazivni-znaki-1-1",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 21:05:27",
+    "modified": "2024-12-16 23:21:35",
+    "image": "Informatsijno-vkazivni-znaki-1.1.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "145",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "800х500_000031"
+    }
+  },
+  {
+    "id": 146,
+    "type": "product",
+    "status": "publish",
+    "title": "Інформаційно-вказівні знаки 1.2",
+    "slug": "informatsijno-vkazivni-znaki-1-2",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 21:05:49",
+    "modified": "2024-12-16 17:58:02",
+    "image": "Informatsijno-vkazivni-znaki-1.2.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "147",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "800х500_000032"
+    }
+  },
+  {
+    "id": 148,
+    "type": "product",
+    "status": "publish",
+    "title": "Інформаційно-вказівні знаки 1.3",
+    "slug": "informatsijno-vkazivni-znaki-1-3",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 21:06:09",
+    "modified": "2024-12-16 17:14:26",
+    "image": "Informatsijno-vkazivni-znaki-1.3-scaled.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "149",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "800х500_000036"
+    }
+  },
+  {
+    "id": 152,
+    "type": "product",
+    "status": "publish",
+    "title": "Навчальна їзда",
+    "slug": "navchalna-yizda",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 21:06:48",
+    "modified": "2024-12-16 17:57:22",
+    "image": "Navchalna-yizda.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "153",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "800х500_000015"
+    }
+  },
+  {
+    "id": 154,
+    "type": "product",
+    "status": "publish",
+    "title": "Окремі питання організації дорожнього руху, що потребують узгодження з органами національної поліції",
+    "slug": "okremi-pitannya-organizatsiyi-dorozhnogo-ruhu-shho-potrebuyut-uzgodzhennya-z-organami-natsionalnoyi-politsiyi",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 21:07:11",
+    "modified": "2024-12-16 17:57:04",
+    "image": "Okremi-pitannya-organizatsiyi-dorozhnogo-ruhu-shho-potrebuyut-uzgodzhennya-z-organami-natsionalnoyi-politsiyi.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "155",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "800х500_000018"
+    }
+  },
+  {
+    "id": 156,
+    "type": "product",
+    "status": "publish",
+    "title": "Перевезення людей і вантажів легковими авомобілями",
+    "slug": "perevezennya-lyudej-i-vantazhiv-legkovimi-avomobilyami",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 21:07:30",
+    "modified": "2024-12-16 17:56:43",
+    "image": "Perevezennya-lyudej-i-vantazhiv-legkovimi-avomobilyami.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "157",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "800х500_000005"
+    }
+  },
+  {
+    "id": 158,
+    "type": "product",
+    "status": "publish",
+    "title": "Перша долікарська допомога потерпілим при ДТП 1.1",
+    "slug": "persha-dolikarska-dopomoga-poterpilim-pri-dtp-1-1",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 21:07:53",
+    "modified": "2024-12-16 17:44:10",
+    "image": "Persha-dolikarska-dopomoga-poterpilim-pri-DTP-1.1.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "159",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "800х500_000020"
+    }
+  },
+  {
+    "id": 160,
+    "type": "product",
+    "status": "publish",
+    "title": "Перша долікарська допомога потерпілим при ДТП 1.2",
+    "slug": "persha-dolikarska-dopomoga-poterpilim-pri-dtp-1-2",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 21:08:12",
+    "modified": "2024-12-16 17:43:55",
+    "image": "Persha-dolikarska-dopomoga-poterpilim-pri-DTP-1.2.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "161",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "800х500_000024"
+    }
+  },
+  {
+    "id": 162,
+    "type": "product",
+    "status": "publish",
+    "title": "Перша долікарська допомога потерпілим при ДТП 1.3",
+    "slug": "persha-dolikarska-dopomoga-poterpilim-pri-dtp-1-3",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 21:08:34",
+    "modified": "2024-12-16 17:43:08",
+    "image": "Persha-dolikarska-dopomoga-poterpilim-pri-DTP-1.3.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "163",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "800х500_000023"
+    }
+  },
+  {
+    "id": 164,
+    "type": "product",
+    "status": "publish",
+    "title": "Перша долікарська допомога потерпілим при ДТП 1.4",
+    "slug": "persha-dolikarska-dopomoga-poterpilim-pri-dtp-1-4",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 21:08:53",
+    "modified": "2024-12-16 17:42:54",
+    "image": "Persha-dolikarska-dopomoga-poterpilim-pri-DTP-1.4.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "165",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "800х500_000022"
+    }
+  },
+  {
+    "id": 166,
+    "type": "product",
+    "status": "publish",
+    "title": "Перша долікарська допомога потерпілим при ДТП 1.5",
+    "slug": "persha-dolikarska-dopomoga-poterpilim-pri-dtp-1-5",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 21:09:22",
+    "modified": "2024-12-16 17:42:40",
+    "image": "Persha-dolikarska-dopomoga-poterpilim-pri-DTP-1.5.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "167",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "800х500_000021"
+    }
+  },
+  {
+    "id": 168,
+    "type": "product",
+    "status": "publish",
+    "title": "Попереджувальні знаки",
+    "slug": "poperedzhuvalni-znaki",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 21:09:47",
+    "modified": "2024-12-16 17:42:17",
+    "image": "Poperedzhuvalni-znaki.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "169",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "800х500_000030"
+    }
+  },
+  {
+    "id": 170,
+    "type": "product",
+    "status": "publish",
+    "title": "Проїзд перехресть",
+    "slug": "proyizd-perehrest",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 21:10:09",
+    "modified": "2024-12-16 17:42:01",
+    "image": "Proyizd-perehrest.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "171",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "800х500_000002"
+    }
+  },
+  {
+    "id": 172,
+    "type": "product",
+    "status": "publish",
+    "title": "Проїзд пішохідних переходів і зупинок транспортних засобів",
+    "slug": "proyizd-pishohidnih-perehodiv-i-zupinok-transportnih-zasobiv",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 21:10:30",
+    "modified": "2024-12-16 17:26:07",
+    "image": "Proyizd-pishohidnih-perehodiv-i-zupinok-transportnih-zasobiv.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "173",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "800х500_000003"
+    }
+  },
+  {
+    "id": 174,
+    "type": "product",
+    "status": "publish",
+    "title": "Рекулювання дорожнього руху",
+    "slug": "rekulyuvannya-dorozhnogo-ruhu",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 21:10:52",
+    "modified": "2024-12-16 17:25:28",
+    "image": "Rekulyuvannya-dorozhnogo-ruhu.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "175",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "800х500_000025"
+    }
+  },
+  {
+    "id": 176,
+    "type": "product",
+    "status": "publish",
+    "title": "Рух по автомагістралях і дорогах для автомобілів",
+    "slug": "ruh-po-avtomagistralyah-i-dorogah-dlya-avtomobiliv",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 21:11:17",
+    "modified": "2024-12-16 17:25:05",
+    "image": "Perevezennya-lyudej-i-vantazhiv-legkovimi-avomobilyami.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "157",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "800х500_000005"
+    }
+  },
+  {
+    "id": 178,
+    "type": "product",
+    "status": "publish",
+    "title": "Рух транспортних засобів із спеціальними сигналами",
+    "slug": "ruh-transportnih-zasobiv-iz-spetsialnimi-signalami",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 21:11:41",
+    "modified": "2024-12-16 17:24:45",
+    "image": "Ruh-transportnih-zasobiv-iz-spetsialnimi-signalami.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "179",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "800х500_000012"
+    }
+  },
+  {
+    "id": 180,
+    "type": "product",
+    "status": "publish",
+    "title": "Рух через залазничні переїзди",
+    "slug": "ruh-cherez-zalaznichni-pereyizdi",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 21:12:01",
+    "modified": "2024-12-16 17:20:40",
+    "image": "Ruh-cherez-zalaznichni-pereyizdi.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "181",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "800х500_000004"
+    }
+  },
+  {
+    "id": 182,
+    "type": "product",
+    "status": "publish",
+    "title": "Табличка до дорожніх знаків",
+    "slug": "tablichka-do-dorozhnih-znakiv",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 21:12:23",
+    "modified": "2024-12-16 17:20:05",
+    "image": "Tablichka-do-dorozhnih-znakiv.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "183",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "800х500_000028"
+    }
+  },
+  {
+    "id": 184,
+    "type": "product",
+    "status": "publish",
+    "title": "Технічний стан транспортних засобів 1.1",
+    "slug": "tehnichnij-stan-transportnih-zasobiv-1-1",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 21:12:44",
+    "modified": "2024-12-16 17:18:44",
+    "image": "Tehnichnij-stan-transportnih-zasobiv-1.1.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "185",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "800х500_000010"
+    }
+  },
+  {
+    "id": 186,
+    "type": "product",
+    "status": "publish",
+    "title": "Технічний стан транспортних засобів 1.2",
+    "slug": "tehnichnij-stan-transportnih-zasobiv-1-2",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 21:13:02",
+    "modified": "2024-12-16 17:16:26",
+    "image": "Tehnichnij-stan-transportnih-zasobiv-1.2.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "187",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "800х500_000011"
+    }
+  },
+  {
+    "id": 188,
+    "type": "product",
+    "status": "publish",
+    "title": "Технічний стан транспортних засобів 1.3",
+    "slug": "tehnichnij-stan-transportnih-zasobiv-1-3",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 21:13:21",
+    "modified": "2024-12-16 17:16:11",
+    "image": "Tehnichnij-stan-transportnih-zasobiv-1.3.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "189",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "800х500_000008"
+    }
+  },
+  {
+    "id": 190,
+    "type": "product",
+    "status": "publish",
+    "title": "Технічний стан транспортних засобів 1.4",
+    "slug": "tehnichnij-stan-transportnih-zasobiv-1-4",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 21:13:44",
+    "modified": "2024-12-16 17:17:40",
+    "image": "Tehnichnij-stan-transportnih-zasobiv-1.4.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "191",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "800х500_000009"
+    }
+  },
+  {
+    "id": 192,
+    "type": "product",
+    "status": "publish",
+    "title": "Швидкість руху транспортних засобів 1.1",
+    "slug": "shvidkist-ruhu-transportnih-zasobiv-1-1",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 21:14:03",
+    "modified": "2024-12-16 17:15:43",
+    "image": "SHvidkist-ruhu-transportnih-zasobiv-1.1.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "193",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "800х500_000017"
+    }
+  },
+  {
+    "id": 194,
+    "type": "product",
+    "status": "publish",
+    "title": "Швидкість руху транспортних засобів 1.2",
+    "slug": "shvidkist-ruhu-transportnih-zasobiv-1-2",
+    "content": "",
+    "excerpt": "",
+    "date": "2022-04-30 21:14:19",
+    "modified": "2024-12-16 17:15:22",
+    "image": "SHvidkist-ruhu-transportnih-zasobiv-1.2.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "195",
+      "product_product_price": "600",
+      "product": "",
+      "product_product_SKU": "800х500_000027"
+    }
+  },
+  {
+    "id": 197,
+    "type": "acf-field-group",
+    "status": "publish",
+    "title": "Шаблон страницы: Головна",
+    "slug": "group_626d8d80c9522",
+    "content": "a:8:{s:8:\"location\";a:1:{i:0;a:1:{i:0;a:3:{s:5:\"param\";s:13:\"page_template\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:28:\"template-pages/page-home.php\";}}}s:8:\"position\";s:6:\"normal\";s:5:\"style\";s:7:\"default\";s:15:\"label_placement\";s:3:\"top\";s:21:\"instruction_placement\";s:5:\"label\";s:14:\"hide_on_screen\";a:1:{i:0;s:11:\"the_content\";}s:11:\"description\";s:0:\"\";s:12:\"show_in_rest\";i:0;}",
+    "excerpt": "shablon-stranitsy-golovna",
+    "date": "2022-04-30 22:28:00",
+    "modified": "2022-04-30 22:29:13",
+    "image": null,
+    "taxonomies": [],
+    "meta": {}
+  },
+  {
+    "id": 198,
+    "type": "acf-field",
+    "status": "publish",
+    "title": "Главный екран",
+    "slug": "field_626d8d98bbe4b",
+    "content": "a:7:{s:4:\"type\";s:3:\"tab\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";i:0;s:17:\"conditional_logic\";i:0;s:7:\"wrapper\";a:3:{s:5:\"width\";s:0:\"\";s:5:\"class\";s:0:\"\";s:2:\"id\";s:0:\"\";}s:9:\"placement\";s:3:\"top\";s:8:\"endpoint\";i:0;}",
+    "excerpt": "главный_екран",
+    "date": "2022-04-30 22:28:00",
+    "modified": "2022-04-30 22:28:00",
+    "image": null,
+    "taxonomies": [],
+    "meta": {}
+  },
+  {
+    "id": 199,
+    "type": "acf-field",
+    "status": "publish",
+    "title": "",
+    "slug": "field_626d8d91bbe4a",
+    "content": "a:7:{s:4:\"type\";s:5:\"group\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";i:0;s:17:\"conditional_logic\";i:0;s:7:\"wrapper\";a:3:{s:5:\"width\";s:0:\"\";s:5:\"class\";s:0:\"\";s:2:\"id\";s:0:\"\";}s:6:\"layout\";s:5:\"block\";s:10:\"sub_fields\";a:0:{}}",
+    "excerpt": "hero",
+    "date": "2022-04-30 22:28:00",
+    "modified": "2022-04-30 22:28:00",
+    "image": null,
+    "taxonomies": [],
+    "meta": {}
+  },
+  {
+    "id": 200,
+    "type": "acf-field",
+    "status": "publish",
+    "title": "Оглавление",
+    "slug": "field_626d8da6bbe4c",
+    "content": "a:7:{s:4:\"type\";s:5:\"group\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";i:0;s:17:\"conditional_logic\";i:0;s:7:\"wrapper\";a:3:{s:5:\"width\";s:0:\"\";s:5:\"class\";s:0:\"\";s:2:\"id\";s:0:\"\";}s:6:\"layout\";s:3:\"row\";s:10:\"sub_fields\";a:0:{}}",
+    "excerpt": "heading",
+    "date": "2022-04-30 22:28:00",
+    "modified": "2022-04-30 22:28:31",
+    "image": null,
+    "taxonomies": [],
+    "meta": {}
+  },
+  {
+    "id": 201,
+    "type": "acf-field",
+    "status": "publish",
+    "title": "Заголовок",
+    "slug": "field_626d8db2bbe4d",
+    "content": "a:10:{s:4:\"type\";s:4:\"text\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";i:0;s:17:\"conditional_logic\";i:0;s:7:\"wrapper\";a:3:{s:5:\"width\";s:0:\"\";s:5:\"class\";s:0:\"\";s:2:\"id\";s:0:\"\";}s:13:\"default_value\";s:0:\"\";s:11:\"placeholder\";s:0:\"\";s:7:\"prepend\";s:0:\"\";s:6:\"append\";s:0:\"\";s:9:\"maxlength\";s:0:\"\";}",
+    "excerpt": "heading_title",
+    "date": "2022-04-30 22:28:00",
+    "modified": "2022-04-30 22:28:31",
+    "image": null,
+    "taxonomies": [],
+    "meta": {}
+  },
+  {
+    "id": 203,
+    "type": "acf-field",
+    "status": "publish",
+    "title": "Текст подзаголовка",
+    "slug": "field_626d8df8e81e4",
+    "content": "a:10:{s:4:\"type\";s:8:\"textarea\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";i:0;s:17:\"conditional_logic\";i:0;s:7:\"wrapper\";a:3:{s:5:\"width\";s:0:\"\";s:5:\"class\";s:0:\"\";s:2:\"id\";s:0:\"\";}s:13:\"default_value\";s:0:\"\";s:11:\"placeholder\";s:0:\"\";s:9:\"maxlength\";s:0:\"\";s:4:\"rows\";i:4;s:9:\"new_lines\";s:2:\"br\";}",
+    "excerpt": "heading_text",
+    "date": "2022-04-30 22:29:13",
+    "modified": "2022-04-30 22:29:13",
+    "image": null,
+    "taxonomies": [],
+    "meta": {}
+  },
+  {
+    "id": 224,
+    "type": "acf-field",
+    "status": "publish",
+    "title": "",
+    "slug": "field_6282a1850b66c",
+    "content": "a:10:{s:4:\"type\";s:4:\"text\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";i:0;s:17:\"conditional_logic\";i:0;s:7:\"wrapper\";a:3:{s:5:\"width\";s:2:\"30\";s:5:\"class\";s:0:\"\";s:2:\"id\";s:0:\"\";}s:13:\"default_value\";s:0:\"\";s:11:\"placeholder\";s:0:\"\";s:7:\"prepend\";s:14:\"Артикул\";s:6:\"append\";s:0:\"\";s:9:\"maxlength\";s:0:\"\";}",
+    "excerpt": "product_SKU",
+    "date": "2022-05-16 22:10:24",
+    "modified": "2022-05-16 22:10:24",
+    "image": null,
+    "taxonomies": [],
+    "meta": {}
+  },
+  {
+    "id": 246,
+    "type": "product",
+    "status": "publish",
+    "title": "Будова сучасного вантажного автомобіля. Шасі та агрегати автомобіля",
+    "slug": "budova-suchasnogo-vantazhnogo-avtomobilya-shasi-ta-agregati-avtomobilya",
+    "content": "",
+    "excerpt": "",
+    "date": "2024-07-11 14:24:24",
+    "modified": "2024-12-16 16:55:57",
+    "image": "800x500Track_P1.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "247",
+      "product_product_SKU": "(800х500 Trck_P1)",
+      "product_product_price": "600",
+      "product": ""
+    }
+  },
+  {
+    "id": 242,
+    "type": "product",
+    "status": "publish",
+    "title": "Загальна будова  основних систем та механізмів  електромобіля",
+    "slug": "zagalna-budova-osnovnih-sistem-ta-mehanizmiv-elektromobilya",
+    "content": "",
+    "excerpt": "",
+    "date": "2024-05-07 13:43:22",
+    "modified": "2024-12-16 16:57:02",
+    "image": "800x500_000037.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "243",
+      "product_product_SKU": "800x500_000037",
+      "product_product_price": "600",
+      "product": ""
+    }
+  },
+  {
+    "id": 244,
+    "type": "product",
+    "status": "publish",
+    "title": "Основи технічного обслуговування",
+    "slug": "osnovi-tehnichnogo-obslugovuvannya",
+    "content": "",
+    "excerpt": "",
+    "date": "2024-05-07 13:47:29",
+    "modified": "2024-12-16 16:56:43",
+    "image": "800x500_000038.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "245",
+      "product_product_SKU": "800x500_000038",
+      "product_product_price": "600",
+      "product": ""
+    }
+  },
+  {
+    "id": 249,
+    "type": "product",
+    "status": "publish",
+    "title": "Будова сучасного вантажного автомобіля. Двигун загальна будова",
+    "slug": "budova-suchasnogo-vantazhnogo-avtomobilya-dvigun-zagalna-budova",
+    "content": "",
+    "excerpt": "",
+    "date": "2024-07-12 12:35:34",
+    "modified": "2024-12-16 16:55:26",
+    "image": "800x500-Track_P2.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "250",
+      "product_product_SKU": "(800х500 Trck_P2)",
+      "product_product_price": "600",
+      "product": ""
+    }
+  },
+  {
+    "id": 252,
+    "type": "product",
+    "status": "publish",
+    "title": "Будова сучасного вантажного автомобіля. Двигун система охолодження",
+    "slug": "budova-suchasnogo-vantazhnogo-avtomobilya-dvigun-sistema-oholodzhennya",
+    "content": "",
+    "excerpt": "",
+    "date": "2024-07-12 13:34:45",
+    "modified": "2024-12-16 16:55:09",
+    "image": "800x500_Track_P3.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "253",
+      "product_product_SKU": "800х500 Trck_P3",
+      "product_product_price": "600",
+      "product": ""
+    }
+  },
+  {
+    "id": 254,
+    "type": "product",
+    "status": "publish",
+    "title": "Будова сучасного вантажного автомобіля. Двигун система змащення",
+    "slug": "budova-suchasnogo-vantazhnogo-avtomobilya-dvigun-sistema-zmashhennya",
+    "content": "",
+    "excerpt": "",
+    "date": "2024-07-12 14:08:30",
+    "modified": "2024-12-16 16:54:54",
+    "image": "800x500_Track_P4.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "255",
+      "product_product_SKU": "800х500 Trck_P4",
+      "product_product_price": "600",
+      "product": ""
+    }
+  },
+  {
+    "id": 260,
+    "type": "product",
+    "status": "publish",
+    "title": "Будова сучасного трактора Загальна Будова",
+    "slug": "budova-suchasnogo-traktora-zagalna-budova",
+    "content": "",
+    "excerpt": "",
+    "date": "2024-08-04 14:28:25",
+    "modified": "2024-12-16 16:54:08",
+    "image": "tractor_t1_prev.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "261",
+      "product_product_SKU": "tractor_t1",
+      "product_product_price": "600",
+      "product": ""
+    }
+  },
+  {
+    "id": 257,
+    "type": "product",
+    "status": "publish",
+    "title": "Будова сучасного вантажного автомобіля. Кривошипно шатунний механізм",
+    "slug": "budova-suchasnogo-vantazhnogo-avtomobilya-krivoshipno-shatunnij-mehanizm",
+    "content": "",
+    "excerpt": "",
+    "date": "2024-07-13 11:51:16",
+    "modified": "2024-12-16 16:54:36",
+    "image": "800x500-Track_P5.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "258",
+      "product_product_SKU": "800х500 Trck_P5",
+      "product_product_price": "600",
+      "product": ""
+    }
+  },
+  {
+    "id": 262,
+    "type": "product",
+    "status": "publish",
+    "title": "Будова сучасного трактора Кабіна та органи управління",
+    "slug": "budova-suchasnogo-traktora-kabina-ta-organi-upravlinnya",
+    "content": "",
+    "excerpt": "",
+    "date": "2024-08-04 14:31:57",
+    "modified": "2024-12-16 16:53:54",
+    "image": "tractor_t2-prev.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "263",
+      "product_product_SKU": "tractor_t2",
+      "product_product_price": "600",
+      "product": ""
+    }
+  },
+  {
+    "id": 265,
+    "type": "product",
+    "status": "publish",
+    "title": "Будова сучасного трактора Дизель Д-243",
+    "slug": "budova-suchasnogo-traktora-dizel-d-243",
+    "content": "",
+    "excerpt": "",
+    "date": "2024-08-04 15:31:38",
+    "modified": "2024-12-16 16:53:42",
+    "image": "tractor_t3-prev.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "266",
+      "product_product_SKU": "tractor_t3",
+      "product_product_price": "600",
+      "product": ""
+    }
+  },
+  {
+    "id": 267,
+    "type": "product",
+    "status": "publish",
+    "title": "Будова сучасного трактора Дизель Д-245.5",
+    "slug": "budova-suchasnogo-traktora-dizel-d-245-5",
+    "content": "",
+    "excerpt": "",
+    "date": "2024-08-04 16:25:41",
+    "modified": "2024-12-16 16:53:27",
+    "image": "tractor_t4-prev.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "268",
+      "product_product_SKU": "tractor_t4",
+      "product_product_price": "600",
+      "product": ""
+    }
+  },
+  {
+    "id": 269,
+    "type": "product",
+    "status": "publish",
+    "title": "Будова сучасного трактора КРИВОШИПНО-ШАТУННИЙ МЕХАНІЗМ",
+    "slug": "budova-suchasnogo-traktora-krivoshipno-shatunnij-mehanizm",
+    "content": "",
+    "excerpt": "",
+    "date": "2024-08-04 17:07:51",
+    "modified": "2024-12-16 16:53:13",
+    "image": "tractor_t5-prev.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "270",
+      "product_product_SKU": "tractor_t5",
+      "product_product_price": "600",
+      "product": ""
+    }
+  },
+  {
+    "id": 271,
+    "type": "product",
+    "status": "publish",
+    "title": "Будова сучасного трактора СИСТЕМА ЖИВЛЕННЯ ДИЗЕЛЯ",
+    "slug": "budova-suchasnogo-traktora-sistema-zhivlennya-dizelya",
+    "content": "",
+    "excerpt": "",
+    "date": "2024-08-04 17:30:05",
+    "modified": "2024-12-16 16:52:58",
+    "image": "tractor_t6-prev.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "272",
+      "product_product_SKU": "tractor_t6",
+      "product_product_price": "600",
+      "product": ""
+    }
+  },
+  {
+    "id": 307,
+    "type": "product",
+    "status": "publish",
+    "title": "Будова сучасного трактора СХЕМА ЕЛЕКТРООБЛАДНАННЯ",
+    "slug": "budova-suchasnogo-traktora-shema-elektroobladnannya",
+    "content": "",
+    "excerpt": "",
+    "date": "2024-08-12 19:56:24",
+    "modified": "2024-12-16 16:49:16",
+    "image": "tractor_t125-prev.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "308",
+      "product_product_SKU": "tractor_t125",
+      "product_product_price": "600",
+      "product": ""
+    }
+  },
+  {
+    "id": 274,
+    "type": "product",
+    "status": "publish",
+    "title": "Будова сучасного трактора ПАЛИВНИЙ НАСОС",
+    "slug": "budova-suchasnogo-traktora-palivnij-nasos",
+    "content": "",
+    "excerpt": "",
+    "date": "2024-08-04 20:30:51",
+    "modified": "2024-12-16 16:52:45",
+    "image": "tractor_t8-prev.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "275",
+      "product_product_SKU": "tractor_t8",
+      "product_product_price": "600",
+      "product": ""
+    }
+  },
+  {
+    "id": 276,
+    "type": "product",
+    "status": "publish",
+    "title": "Будова сучасного трактора РЕГУЛЯТОР ПАЛИВНОГО НАСОСА",
+    "slug": "budova-suchasnogo-traktora-regulyator-palivnogo-nasosa",
+    "content": "",
+    "excerpt": "",
+    "date": "2024-08-04 20:31:55",
+    "modified": "2024-12-16 16:52:32",
+    "image": "tractor_t9-prev.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "277",
+      "product_product_SKU": "tractor_t9",
+      "product_product_price": "600",
+      "product": ""
+    }
+  },
+  {
+    "id": 278,
+    "type": "product",
+    "status": "publish",
+    "title": "Будова сучасного трактора СИСТЕМА ЗМАЩЕННЯ",
+    "slug": "budova-suchasnogo-traktora-sistema-zmashhennya",
+    "content": "",
+    "excerpt": "",
+    "date": "2024-08-05 10:22:11",
+    "modified": "2024-12-16 16:52:19",
+    "image": "tractor_t10-prev.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "279",
+      "product_product_SKU": "tractor_t10",
+      "product_product_price": "600",
+      "product": ""
+    }
+  },
+  {
+    "id": 280,
+    "type": "product",
+    "status": "publish",
+    "title": "Будова сучасного трактора СИСТЕМА ОХОЛОДЖЕННЯ",
+    "slug": "budova-suchasnogo-traktora-sistema-oholodzhennya",
+    "content": "",
+    "excerpt": "",
+    "date": "2024-08-05 10:59:03",
+    "modified": "2024-12-16 16:51:59",
+    "image": "tractor_t11-prev.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "281",
+      "product_product_SKU": "tractor_t11",
+      "product_product_price": "600",
+      "product": ""
+    }
+  },
+  {
+    "id": 282,
+    "type": "product",
+    "status": "publish",
+    "title": "Будова сучасного трактора СХЕМА ТРАНСМІСІЇ",
+    "slug": "budova-suchasnogo-traktora-shema-transmisiyi",
+    "content": "",
+    "excerpt": "",
+    "date": "2024-08-06 12:03:43",
+    "modified": "2024-12-16 16:51:50",
+    "image": "tractor_t12-prev.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "283",
+      "product_product_SKU": "tractor_t12",
+      "product_product_price": "600",
+      "product": ""
+    }
+  },
+  {
+    "id": 284,
+    "type": "product",
+    "status": "publish",
+    "title": "Будова сучасного трактора ЗЧЕПЛЕННЯ",
+    "slug": "budova-suchasnogo-traktora-zcheplennya",
+    "content": "",
+    "excerpt": "",
+    "date": "2024-08-08 11:28:21",
+    "modified": "2024-12-16 16:51:37",
+    "image": "tractor_t14-prev.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "285",
+      "product_product_SKU": "tractor_t14",
+      "product_product_price": "600",
+      "product": ""
+    }
+  },
+  {
+    "id": 287,
+    "type": "product",
+    "status": "publish",
+    "title": "Будова сучасного трактора  КОРОБКА ПЕРЕДАЧ СИНХРОНІЗОВАНА",
+    "slug": "budova-suchasnogo-traktora-korobka-peredach-sinhronizovana",
+    "content": "",
+    "excerpt": "",
+    "date": "2024-08-08 12:55:12",
+    "modified": "2024-12-16 16:51:25",
+    "image": "tractor_t15-prev.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "288",
+      "product_product_SKU": "tractor_t15",
+      "product_product_price": "600",
+      "product": ""
+    }
+  },
+  {
+    "id": 289,
+    "type": "product",
+    "status": "publish",
+    "title": "Будова сучасного трактора КОРОБКА ПЕРЕМИКАННЯ ПЕРЕДАЧ",
+    "slug": "budova-suchasnogo-traktora-korobka-peremikannya-peredach",
+    "content": "",
+    "excerpt": "",
+    "date": "2024-08-08 13:53:27",
+    "modified": "2024-12-16 16:51:12",
+    "image": "tractor_t16-prev.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "290",
+      "product_product_SKU": "tractor_t16",
+      "product_product_price": "600",
+      "product": ""
+    }
+  },
+  {
+    "id": 291,
+    "type": "product",
+    "status": "publish",
+    "title": "Будова сучасного трактора РЕДУКТОРИ.",
+    "slug": "budova-suchasnogo-traktora-reduktori",
+    "content": "",
+    "excerpt": "",
+    "date": "2024-08-08 14:08:56",
+    "modified": "2024-12-16 16:51:02",
+    "image": "tractor_t17-prev.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "292",
+      "product_product_SKU": "tractor_t17",
+      "product_product_price": "600",
+      "product": ""
+    }
+  },
+  {
+    "id": 293,
+    "type": "product",
+    "status": "publish",
+    "title": "Будова сучасного трактора ЗАДНІЙ МІСТ",
+    "slug": "budova-suchasnogo-traktora-zadnij-mist",
+    "content": "",
+    "excerpt": "",
+    "date": "2024-08-09 12:35:09",
+    "modified": "2024-12-16 16:50:50",
+    "image": "tractor_t18-prev.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "294",
+      "product_product_SKU": "tractor_t18",
+      "product_product_price": "600",
+      "product": ""
+    }
+  },
+  {
+    "id": 295,
+    "type": "product",
+    "status": "publish",
+    "title": "Будова сучасного трактора ВАЛ ВІДБОРУ ПОТУЖНОСТІ ЗАДНІЙ",
+    "slug": "budova-suchasnogo-traktora-val-vidboru-potuzhnosti-zadnij",
+    "content": "",
+    "excerpt": "",
+    "date": "2024-08-10 12:55:41",
+    "modified": "2024-12-16 16:50:37",
+    "image": "tractor_t19-prev.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "296",
+      "product_product_SKU": "tractor_t19",
+      "product_product_price": "600",
+      "product": ""
+    }
+  },
+  {
+    "id": 297,
+    "type": "product",
+    "status": "publish",
+    "title": "Будова сучасного трактора ПЕРЕДНІЙ ВЕДУЧИЙ МІСТ",
+    "slug": "budova-suchasnogo-traktora-perednij-veduchij-mist",
+    "content": "",
+    "excerpt": "",
+    "date": "2024-08-11 15:32:41",
+    "modified": "2024-12-16 16:50:25",
+    "image": "tractor_t120-prev.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "298",
+      "product_product_SKU": "tractor_t120",
+      "product_product_price": "600",
+      "product": ""
+    }
+  },
+  {
+    "id": 299,
+    "type": "product",
+    "status": "publish",
+    "title": "Будова сучасного трактора  ПРИВІД РУЛЬОВОГО УПРАВЛІННЯ",
+    "slug": "budova-suchasnogo-traktora-privid-rulovogo-upravlinnya",
+    "content": "",
+    "excerpt": "",
+    "date": "2024-08-11 16:45:01",
+    "modified": "2024-12-16 16:50:13",
+    "image": "tractor_t121-prev.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "300",
+      "product_product_SKU": "tractor_t121",
+      "product_product_price": "600",
+      "product": ""
+    }
+  },
+  {
+    "id": 301,
+    "type": "product",
+    "status": "publish",
+    "title": "Будова сучасного трактора КЕРМОВИЙ МЕХАНІЗМ З ГІДРОПІДСИЛЮВАЧЕМ",
+    "slug": "budova-suchasnogo-traktora-kermovij-mehanizm-z-gidropidsilyuvachem",
+    "content": "",
+    "excerpt": "",
+    "date": "2024-08-11 18:50:27",
+    "modified": "2024-12-16 16:49:56",
+    "image": "tractor_t122-prev.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "302",
+      "product_product_SKU": "tractor_t122",
+      "product_product_price": "600",
+      "product": ""
+    }
+  },
+  {
+    "id": 303,
+    "type": "product",
+    "status": "publish",
+    "title": "Будова сучасного трактора СХЕМА РОБОТИ ГІДРОПІДСИЛЮВАЧА КЕРМОВОГО УПРАВЛІННЯ",
+    "slug": "budova-suchasnogo-traktora-shema-roboti-gidropidsilyuvacha-kermovogo-upravlinnya",
+    "content": "",
+    "excerpt": "",
+    "date": "2024-08-11 19:29:27",
+    "modified": "2024-12-16 16:49:46",
+    "image": "tractor_t123-prev.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "304",
+      "product_product_SKU": "tractor_t123",
+      "product_product_price": "600",
+      "product": ""
+    }
+  },
+  {
+    "id": 305,
+    "type": "product",
+    "status": "publish",
+    "title": "Будова сучасного трактора  ГІДРООБЄМНЕ КЕРМОВЕ УПРАВЛІННЯ УПРАВЛІННЯ БЛОКУВАННЯМ ДИФЕРЕНЦІАЛУ ЗАДНЬОГО МОСТУ",
+    "slug": "budova-suchasnogo-traktora-gidroobyemne-kermove-upravlinnya-upravlinnya-blokuvannyam-diferentsialu-zadnogo-mostu",
+    "content": "",
+    "excerpt": "",
+    "date": "2024-08-11 20:27:44",
+    "modified": "2024-12-16 16:49:31",
+    "image": "tractor_t124-prev.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "306",
+      "product_product_SKU": "tractor_t124",
+      "product_product_price": "600",
+      "product": ""
+    }
+  },
+  {
+    "id": 309,
+    "type": "product",
+    "status": "publish",
+    "title": "Будова сучасного трактора СТАРТЕР ТА ГЕНЕРАТОР",
+    "slug": "budova-suchasnogo-traktora-starter-ta-generator",
+    "content": "",
+    "excerpt": "",
+    "date": "2024-08-12 21:53:30",
+    "modified": "2024-12-16 16:47:46",
+    "image": "tractor_t126-prev.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "310",
+      "product_product_SKU": "tractor_t126",
+      "product_product_price": "600",
+      "product": ""
+    }
+  },
+  {
+    "id": 311,
+    "type": "product",
+    "status": "publish",
+    "title": "Будова сучасного трактора ЕЛЕКТРООБЛАДНАННЯ",
+    "slug": "budova-suchasnogo-traktora-elektroobladnannya",
+    "content": "",
+    "excerpt": "",
+    "date": "2024-08-12 22:26:31",
+    "modified": "2024-12-16 16:47:36",
+    "image": "tractor_t127-prev.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "312",
+      "product_product_SKU": "tractor_t127",
+      "product_product_price": "600",
+      "product": ""
+    }
+  },
+  {
+    "id": 313,
+    "type": "product",
+    "status": "publish",
+    "title": "Будова сучасного трактора  ГІДРАВЛІЧНА СИСТЕМА",
+    "slug": "budova-suchasnogo-traktora-gidravlichna-sistema",
+    "content": "",
+    "excerpt": "",
+    "date": "2024-08-13 10:52:02",
+    "modified": "2024-12-16 16:47:24",
+    "image": "tractor_t128-prev.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "314",
+      "product_product_SKU": "tractor_t128",
+      "product_product_price": "600",
+      "product": ""
+    }
+  },
+  {
+    "id": 315,
+    "type": "product",
+    "status": "publish",
+    "title": "Будова сучасного трактора УНІВЕРСАЛЬНА ГІДРОСИСТЕМА",
+    "slug": "budova-suchasnogo-traktora-universalna-gidrosistema",
+    "content": "",
+    "excerpt": "",
+    "date": "2024-08-13 11:08:41",
+    "modified": "2024-12-16 16:47:13",
+    "image": "tractor_t129-prev.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "316",
+      "product_product_SKU": "tractor_t129",
+      "product_product_price": "600",
+      "product": ""
+    }
+  },
+  {
+    "id": 317,
+    "type": "product",
+    "status": "publish",
+    "title": "Будова сучасного трактора ГІДРАВЛІЧНА СИСТЕМА",
+    "slug": "budova-suchasnogo-traktora-gidravlichna-sistema-2",
+    "content": "",
+    "excerpt": "",
+    "date": "2024-08-13 11:26:09",
+    "modified": "2024-12-16 16:46:54",
+    "image": "tractor_t130-prev.jpg",
+    "taxonomies": [],
+    "meta": {
+      "_thumbnail_id": "318",
+      "product_product_SKU": "tractor_t130",
+      "product_product_price": "600",
+      "product": ""
+    }
+  }
+]

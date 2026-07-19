@@ -1,0 +1,66 @@
+---
+---
+<div class="mb-6">
+  <label class="inline-flex items-center gap-3 w-full bg-white border border-border rounded-xl p-5 cursor-pointer font-bold text-sm sm:text-base text-text-dark">
+    <input type="checkbox" id="needVatInvoice" name="needVatInvoice" class="w-4.5 h-4.5 text-primary focus:ring-primary" />
+    <span>Потрібен рахунок з ПДВ (для юр. осіб та ФОП)</span>
+  </label>
+  
+  <div class="bg-white border border-border rounded-xl p-6 mt-3" id="vat-form-container" style="display: none;">
+    <h3 class="text-base font-bold text-text-dark mb-0.5">Реквізити для рахунку з ПДВ</h3>
+    <p class="text-xs text-text-muted mb-5">Заявка буде надіслана адміністратору для виставлення рахунку.</p>
+    
+    <div class="mb-4">
+      <label for="companyName" class="block text-xs font-semibold text-text-dark mb-1">Повна назва компанії або ФОП:</label>
+      <input type="text" id="companyName" name="companyName" class="w-full border border-border rounded-lg p-2.5 text-sm text-text-dark focus:outline-none focus:border-primary vat-required" placeholder="ТОВ 'Приклад', ФОП Іванов І.І." />
+    </div>
+    
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+      <div>
+        <label for="taxId" class="block text-xs font-semibold text-text-dark mb-1">Код ЄДРПОУ або РНОКПП:</label>
+        <input type="text" id="taxId" name="taxId" class="w-full border border-border rounded-lg p-2.5 text-sm text-text-dark focus:outline-none focus:border-primary vat-required" placeholder="12345678" />
+      </div>
+      
+      <div>
+        <label for="invoiceEmail" class="block text-xs font-semibold text-text-dark mb-1">Email для надсилання рахунку:</label>
+        <input type="email" id="invoiceEmail" name="invoiceEmail" class="w-full border border-border rounded-lg p-2.5 text-sm text-text-dark focus:outline-none focus:border-primary vat-required" placeholder="buhgalter@example.com" />
+      </div>
+    </div>
+    
+    <div class="mb-4">
+      <label for="legalAddress" class="block text-xs font-semibold text-text-dark mb-1">Юридична адреса:</label>
+      <input type="text" id="legalAddress" name="legalAddress" class="w-full border border-border rounded-lg p-2.5 text-sm text-text-dark focus:outline-none focus:border-primary vat-required" placeholder="01001, м. Київ, вул. Хрещатик, буд. 1" />
+    </div>
+    
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div>
+        <label for="contactName" class="block text-xs font-semibold text-text-dark mb-1">Контактна особа:</label>
+        <input type="text" id="contactName" name="contactName" class="w-full border border-border rounded-lg p-2.5 text-sm text-text-dark focus:outline-none focus:border-primary vat-required" placeholder="Прізвище, Ім'я" />
+      </div>
+      
+      <div>
+        <label for="contactPhone" class="block text-xs font-semibold text-text-dark mb-1">Контактний телефон:</label>
+        <input type="tel" id="contactPhone" name="contactPhone" class="w-full border border-border rounded-lg p-2.5 text-sm text-text-dark focus:outline-none focus:border-primary vat-required" placeholder="+380XXXXXXXXX" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const toggle = document.getElementById('needVatInvoice') as HTMLInputElement | null;
+  const container = document.getElementById('vat-form-container');
+  const requiredFields = document.querySelectorAll('.vat-required') as NodeListOf<HTMLInputElement>;
+  
+  if (toggle && container) {
+    toggle.addEventListener('change', (e: any) => {
+      const isChecked = e.target.checked;
+      container.style.display = isChecked ? 'block' : 'none';
+      
+      requiredFields.forEach(field => {
+        field.required = isChecked;
+      });
+      
+      window.dispatchEvent(new CustomEvent('vat-toggle-changed', { detail: { isChecked } }));
+    });
+  }
+</script>
