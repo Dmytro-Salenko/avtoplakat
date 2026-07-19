@@ -2,66 +2,17 @@
 ---
 <div class="bg-white border border-border rounded-xl p-6 mb-6">
   <h3 class="text-base font-bold text-text-dark mb-1">Доставка (Нова пошта)</h3>
-  <p class="text-xs text-text-muted mb-5">Доставка по Україні здійснюється виключно компанією «Нова пошта».</p>
+  <p class="text-xs text-text-muted mb-5">Доставка по Україні здійснюється виключно у відділення «Нова пошта» (плакати не підходять для поштоматів).</p>
   
   <div class="mb-4">
-    <label class="block text-xs font-semibold text-text-dark mb-2">Тип отримання:</label>
-    <div class="flex gap-6">
-      <label class="inline-flex items-center gap-2 text-sm text-text-dark cursor-pointer">
-        <input type="radio" name="deliveryType" value="branch" checked class="w-4 h-4 text-primary focus:ring-primary" />
-        <span>Відділення</span>
-      </label>
-      <label class="inline-flex items-center gap-2 text-sm text-text-dark cursor-pointer">
-        <input type="radio" name="deliveryType" value="parcel-locker" class="w-4 h-4 text-primary focus:ring-primary" />
-        <span>Поштомат</span>
-      </label>
-    </div>
-  </div>
-  
-  <div class="mb-4">
-    <label for="deliveryCity" class="block text-xs font-semibold text-text-dark mb-1">Населений пункт:</label>
+    <label for="deliveryCity" class="block text-xs font-semibold text-text-dark mb-1">Населений пункт (Місто/Село):</label>
     <input type="text" id="deliveryCity" name="deliveryCity" class="w-full border border-border rounded-lg p-2.5 text-sm text-text-dark focus:outline-none focus:border-primary" placeholder="Наприклад: Київ" required />
+    <span class="block text-xs text-danger font-semibold mt-1 error-msg" id="err-deliveryCity"></span>
   </div>
   
   <div class="mb-4">
-    <label for="deliveryWarehouse" class="block text-xs font-semibold text-text-dark mb-1" id="warehouse-label">Номер та адреса відділення:</label>
+    <label for="deliveryWarehouse" class="block text-xs font-semibold text-text-dark mb-1">Номер та адреса відділення Нової пошти:</label>
     <input type="text" id="deliveryWarehouse" name="deliveryWarehouse" class="w-full border border-border rounded-lg p-2.5 text-sm text-text-dark focus:outline-none focus:border-primary" placeholder="Наприклад: Відділення №15, вул. Хрещатик, 20" required />
-    <span class="block text-[10px] text-text-muted italic mt-1">Примітка: у наступних версіях тут буде автоматичний вибір відділень через API Нової пошти.</span>
-  </div>
-  
-  <div class="text-xs font-bold uppercase text-text-muted tracking-wider my-6 border-b border-border pb-1">
-    Дані отримувача (якщо відрізняються від замовника)
-  </div>
-  
-  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-    <div>
-      <label for="recipientName" class="block text-xs font-semibold text-text-dark mb-1">Ім'я отримувача:</label>
-      <input type="text" id="recipientName" name="recipientName" class="w-full border border-border rounded-lg p-2.5 text-sm text-text-dark focus:outline-none focus:border-primary" placeholder="Прізвище, Ім'я, По батькові" />
-    </div>
-    
-    <div>
-      <label for="recipientPhone" class="block text-xs font-semibold text-text-dark mb-1">Телефон отримувача:</label>
-      <input type="tel" id="recipientPhone" name="recipientPhone" class="w-full border border-border rounded-lg p-2.5 text-sm text-text-dark focus:outline-none focus:border-primary" placeholder="+380XXXXXXXXX" />
-    </div>
+    <span class="block text-xs text-danger font-semibold mt-1 error-msg" id="err-deliveryWarehouse"></span>
   </div>
 </div>
-
-<script>
-  const radios = document.querySelectorAll('input[name="deliveryType"]');
-  const label = document.getElementById('warehouse-label');
-  const input = document.getElementById('deliveryWarehouse') as HTMLInputElement | null;
-  
-  if (radios && label && input) {
-    radios.forEach(radio => {
-      radio.addEventListener('change', (e: any) => {
-        if (e.target.value === 'parcel-locker') {
-          label.textContent = 'Адреса та номер поштомата Нової пошти:';
-          input.placeholder = 'Наприклад: Поштомат №2051, вул. Шевченка, 100';
-        } else {
-          label.textContent = 'Номер та адреса відділення Нової пошти:';
-          input.placeholder = 'Наприклад: Відділення №15, вул. Хрещатик, 20';
-        }
-      });
-    });
-  }
-</script>

@@ -7,3 +7,9 @@ export const productDefaults = {
   thicknessMm: 3,
   customOptionsAvailable: true
 };
+
+export const siteConfig = {
+  // TODO: Введіть реальний номер телефону для сайту перед релізом (наприклад, "+38067XXXXXXX")
+  phone: "",
+  email: "support@avtoplakat.com.ua"
+};

@@ -1,4 +1,5 @@
 ---
+import { siteConfig } from '../config/defaults';
 ---
 <footer class="bg-gray-900 text-gray-300 pt-12 mt-auto">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -27,9 +28,10 @@
     <div>
       <h4 class="text-white font-semibold text-sm tracking-wider uppercase mb-4">Контакти</h4>
       <ul class="space-y-2 text-sm text-gray-400">
-        <li>Email: support@avtoplakat.com.ua</li>
-        <li>Телефон: +38 (067) 123-45-67</li>
-        <li>Телефон: +38 (050) 765-43-21</li>
+        <li>Email: {siteConfig.email}</li>
+        {siteConfig.phone && (
+          <li>Телефон: <a href={`tel:${siteConfig.phone}`} class="hover:text-white">{siteConfig.phone}</a></li>
+        )}
       </ul>
     </div>
   </div>

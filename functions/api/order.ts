@@ -1,15 +1,15 @@
 import { OrderSchema } from '../../src/types/schemas';
 import { sendTelegramMessage } from '../services/telegram';
-import { createMonobankInvoice } from '../services/monobank';
 
 interface Env {
   TELEGRAM_BOT_TOKEN: string;
   TELEGRAM_CHAT_ID: string;
-  PAYMENT_API_KEY: string;
-  PAYMENT_REDIRECT_URL: string;
+  SENDGRID_API_KEY: string;
+  OWNER_EMAIL: string;
+  SENDER_EMAIL: string;
 }
 
-export const onRequestPost: PagesFunction<Env> = async (context) => {
+export const onRequestPost = async (context: any) => {
   const { request, env } = context;
   
   try {
@@ -38,44 +38,18 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     // 3. Process Cart Items & calculate standard total cost
     let computedStandardTotal = 0;
     let itemsTextList = '';
+    let emailItemsTextList = '';
     
     order.items.forEach((item, index) => {
-      if (item.isCustom) {
-        itemsTextList += `${index + 1}. <b>${item.title}</b> (x${item.count}) - <i>Нестандартний варіант</i>\n`;
-        itemsTextList += `   └ Вимоги: ${item.customRequirements}\n`;
-      } else {
-        const itemSum = item.price * item.count;
-        computedStandardTotal += itemSum;
-        itemsTextList += `${index + 1}. <b>${item.title}</b> (x${item.count}) - ${item.price} грн/од. (Сума: ${itemSum} грн)\n`;
-      }
+      const itemSum = item.price * item.count;
+      computedStandardTotal += itemSum;
+      itemsTextList += `${index + 1}. <b>${item.title}</b> (x${item.count}) - ${item.price} грн/од. (Сума: ${itemSum} грн)\n`;
+      emailItemsTextList += `${index + 1}. ${item.title} (x${item.count}) - ${item.price} грн/од. (Сума: ${itemSum} грн)\n`;
     });
 
-    // 4. Decide on Payment & redirect
-    let paymentLink = null;
-    let paymentStatus = 'pending';
-    let paymentProviderText = 'None';
-    
-    if (order.payment.paymentMethod === 'card' && !order.hasCustomItems) {
-      // Create Monobank Invoice
-      const monoInvoice = await createMonobankInvoice({
-        apiKey: env.PAYMENT_API_KEY,
-        redirectUrl: env.PAYMENT_REDIRECT_URL || 'https://avtoplakat.com.ua/thank-you'
-      }, orderId, computedStandardTotal);
-      
-      if (monoInvoice) {
-        paymentLink = monoInvoice.pageUrl;
-        paymentStatus = 'awaitingPayment';
-        paymentProviderText = 'Monobank';
-      }
-    } else if (order.payment.paymentMethod === 'invoiceWithVat') {
-      paymentStatus = 'pending';
-      paymentProviderText = 'InvoiceWithVat';
-    } else {
-      paymentStatus = 'pending';
-      paymentProviderText = 'ManualConfirmation';
-    }
+    const paymentMethodText = order.payment.paymentMethod === 'invoiceWithVat' ? 'Рахунок з ПДВ' : 'Оплата на картку';
 
-    // 5. Build Telegram Notification Message
+    // 4. Build Telegram Notification Message
     let telegramMsg = `🇺🇦 <b>НОВЕ ЗАМОВЛЕННЯ #${orderId}</b>\n`;
     telegramMsg += `📅 Дата: ${new Date(createdAt).toLocaleString('uk-UA')}\n\n`;
     
@@ -85,72 +59,91 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     telegramMsg += `   Email: ${order.clientEmail}\n\n`;
     
     telegramMsg += `📦 <b>Товари у кошику:</b>\n${itemsTextList}\n`;
-    
-    if (order.hasCustomItems) {
-      telegramMsg += `⚠️ <b>Містить індивідуальні вимоги!</b>\n`;
-      telegramMsg += `   Стандартна сума до розрахунку: ${computedStandardTotal} грн (нестандартні позиції прораховуються вручну)\n\n`;
-    } else {
-      telegramMsg += `💵 <b>Загальна вартість:</b> ${computedStandardTotal} грн\n\n`;
-    }
-    
-    telegramMsg += `🚚 <b>Доставка:</b>\n`;
-    telegramMsg += `   Тип: ${order.delivery.type === 'parcel-locker' ? 'Поштомат' : 'Відділення'}\n`;
+    telegramMsg += `💵 <b>Загальна вартість:</b> ${computedStandardTotal} грн\n\n`;
+    telegramMsg += `🚚 <b>Доставка (Нова пошта):</b>\n`;
     telegramMsg += `   Місто: ${order.delivery.cityName}\n`;
-    telegramMsg += `   Адреса: ${order.delivery.warehouseName}\n`;
-    
-    const recName = order.delivery.recipientName;
-    const recPhone = order.delivery.recipientPhone;
-    if (recName || recPhone) {
-      telegramMsg += `   Отримувач: ${recName || 'не вказано'} (тел: ${recPhone || 'не вказано'})\n`;
-    }
-    telegramMsg += `\n`;
-    
-    telegramMsg += `💳 <b>Спосіб оплати:</b>\n`;
-    if (order.payment.paymentMethod === 'invoiceWithVat' && order.vatRequest) {
-      telegramMsg += `   Рахунок з ПДВ\n`;
-      telegramMsg += `   🏢 Компанія: ${order.vatRequest.companyName}\n`;
-      telegramMsg += `   🔢 Код ЄДРПОУ/РНОКПП: ${order.vatRequest.taxId}\n`;
-      telegramMsg += `   🏠 Юр. адреса: ${order.vatRequest.legalAddress}\n`;
-      telegramMsg += `   ✉️ Email для рахунку: ${order.vatRequest.invoiceEmail}\n`;
-      telegramMsg += `   👤 Контактна особа: ${order.vatRequest.contactName} (тел: ${order.vatRequest.contactPhone})\n`;
-    } else if (order.payment.paymentMethod === 'card') {
-      telegramMsg += `   Банківська карта (Онлайн)\n`;
-      telegramMsg += `   Статус оплати: ${paymentStatus === 'awaitingPayment' ? 'Очікує оплати' : 'Уточнення вартості'}\n`;
-      if (paymentLink) {
-        telegramMsg += `   🔗 Посилання на інвойс: <a href="${paymentLink}">Перейти</a>\n`;
-      }
-    } else {
-      telegramMsg += `   Оплата на рахунок ФОП (ручне підтвердження)\n`;
-    }
+    telegramMsg += `   Відділення: ${order.delivery.warehouseName}\n\n`;
+    telegramMsg += `💳 <b>Спосіб оплати:</b> ${paymentMethodText}\n`;
     
     if (order.comment) {
       telegramMsg += `\n💬 <b>Коментар:</b> ${order.comment}\n`;
     }
 
-    // 6. Send Telegram Notification
+    // 5. Build Email Body Text for Owner
+    let emailBody = `НОВЕ ЗАМОВЛЕННЯ #${orderId}\n`;
+    emailBody += `Дата та час: ${new Date(createdAt).toLocaleString('uk-UA')}\n\n`;
+    emailBody += `Клієнт:\n`;
+    emailBody += `- ФІО: ${order.clientName}\n`;
+    emailBody += `- Телефон: ${order.clientPhone}\n`;
+    emailBody += `- Email: ${order.clientEmail}\n\n`;
+    emailBody += `Товари у замовленні:\n${emailItemsTextList}\n`;
+    emailBody += `Загальна сума: ${computedStandardTotal} грн\n\n`;
+    emailBody += `Доставка:\n`;
+    emailBody += `- Населений пункт: ${order.delivery.cityName}\n`;
+    emailBody += `- Відділення Нової пошти: ${order.delivery.warehouseName}\n\n`;
+    emailBody += `Спосіб оплати: ${paymentMethodText}\n`;
+    
+    if (order.comment) {
+      emailBody += `\nКоментар замовника: ${order.comment}\n`;
+    }
+
+    // 6. Send Telegram Notification (if config present)
     if (env.TELEGRAM_BOT_TOKEN && env.TELEGRAM_CHAT_ID) {
-      await sendTelegramMessage({
-        botToken: env.TELEGRAM_BOT_TOKEN,
-        chatId: env.TELEGRAM_CHAT_ID
-      }, telegramMsg);
+      try {
+        await sendTelegramMessage({
+          botToken: env.TELEGRAM_BOT_TOKEN,
+          chatId: env.TELEGRAM_CHAT_ID
+        }, telegramMsg);
+      } catch (err) {
+        console.error('Failed to send Telegram message:', err);
+      }
+    }
+
+    // 7. Send Email Notification via SendGrid (if config present)
+    if (env.SENDGRID_API_KEY && env.OWNER_EMAIL) {
+      try {
+        const mailPayload = {
+          personalizations: [{
+            to: [{ email: env.OWNER_EMAIL }]
+          }],
+          from: { email: env.SENDER_EMAIL || 'noreply@avtoplakat.com.ua' },
+          subject: `Нове замовлення #${orderId} - AVTOPLAKAT`,
+          content: [{
+            type: 'text/plain',
+            value: emailBody
+          }]
+        };
+
+        const mailRes = await fetch('https://api.sendgrid.com/v3/mail/send', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${env.SENDGRID_API_KEY}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(mailPayload)
+        });
+
+        if (!mailRes.ok) {
+          console.error('SendGrid responded with error:', await mailRes.text());
+        }
+      } catch (err) {
+        console.error('Failed to send email via SendGrid:', err);
+      }
     } else {
-      console.log('Telegram Config missing. Message to send:\n', telegramMsg);
+      console.log('Email configuration missing or SendGrid deactivated. Email notification body:\n', emailBody);
     }
     
-    // 7. Return success response
+    // 8. Return success response
     return new Response(JSON.stringify({
       success: true,
-      orderId,
-      paymentStatus,
-      paymentProvider: paymentProviderText,
-      paymentLink
+      orderId
     }), {
       status: 200,
       headers: { 'Content-Type': 'application/json' }
     });
     
   } catch (err: any) {
-    console.error('Order handler crashed:', err);
+    console.error('Order API handler failed:', err);
     return new Response(JSON.stringify({
       success: false,
       error: 'Internal server error',

@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import ProductSpecs from '../../components/ProductSpecs.astro';
+import ProductCard from '../../components/ProductCard.astro';
 import CartDrawer from '../../components/CartDrawer.astro';
 import { productDefaults } from '../../config/defaults';
 
@@ -28,6 +29,13 @@ const categoryNames: Record<string, string> = {
 const categoryName = categoryNames[product.data.category] || 'Каталог';
 
 const price = product.data.priceOverride || productDefaults.price;
+
+// Find similar products in the same category
+const allProducts = await getCollection('products');
+const publishedProducts = allProducts.filter(p => p.data.status === 'published');
+const similarProducts = publishedProducts
+  .filter(p => p.data.category === product.data.category && p.data.slug !== product.data.slug)
+  .slice(0, 4);
 ---
 
 <Layout title={`${product.data.title} — Плакат для автошкіл`} description={`Плакат "${product.data.title}" з розділу ${categoryName}. Високоякісна основа ПВХ 3мм, розміри 500x800 мм.`}>
@@ -42,11 +50,11 @@ const price = product.data.priceOverride || productDefaults.price;
       </nav>
       
       <!-- Main Content Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-start">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-start mb-16">
         
-        <!-- Left: Image -->
-        <div class="bg-white border border-border rounded-2xl p-6 sm:p-8 flex justify-center shadow-sm">
-          <img src={`/images/products/${product.data.image}`} alt={product.data.title} class="max-w-full h-auto max-h-[500px] object-contain rounded shadow-md" />
+        <!-- Left: Image with Quick Zoom Trigger -->
+        <div class="bg-white border border-border rounded-2xl p-6 sm:p-8 flex justify-center shadow-sm cursor-zoom-in" id="image-zoom-trigger" title="Натисніть для збільшення зображення">
+          <img src={`/images/products/${product.data.image}`} alt={product.data.title} class="max-w-full h-auto max-h-[500px] object-contain rounded shadow-md" id="product-thumbnail" />
         </div>
         
         <!-- Right: Details -->
@@ -72,18 +80,42 @@ const price = product.data.priceOverride || productDefaults.price;
             </p>
           </div>
           
-          <!-- Specifications Component (Replaced double blocks) -->
+          <!-- Specifications Component -->
           <ProductSpecs product={product.data} />
         </div>
       </div>
+
+      <!-- Similar Products Block -->
+      {similarProducts.length > 0 && (
+        <section class="border-t border-border pt-12">
+          <h2 class="text-xl sm:text-2xl font-bold text-text-dark mb-6">Схожі плакати</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+            {similarProducts.map(p => (
+              <ProductCard product={p.data} />
+            ))}
+          </div>
+        </section>
+      )}
     </div>
   </div>
-  
+
+  <!-- Quick Zoom Modal -->
+  <div id="quick-zoom-modal" class="fixed inset-0 bg-black/85 z-[2000] flex flex-col items-center justify-center p-4 transition-opacity duration-300 opacity-0 pointer-events-none">
+    <div class="relative max-w-5xl w-full h-full flex flex-col items-center justify-center gap-4">
+      <img src={`/images/products/${product.data.image}`} alt={product.data.title} class="max-w-full max-h-[85vh] object-contain rounded shadow-2xl bg-white p-2" />
+      <button id="close-zoom-btn" class="bg-white text-text-dark font-bold px-6 py-2.5 rounded-lg shadow-lg hover:bg-gray-100 transition-colors cursor-pointer text-sm">
+        Закрити
+      </button>
+    </div>
+  </div>
   <CartDrawer />
 </Layout>
 
 <script>
+  // Add to Cart Logic
   const btn = document.querySelector('.add-to-cart-page-btn');
+  const toast = document.getElementById('cart-toast');
+  
   if (btn) {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
@@ -113,19 +145,50 @@ const price = product.data.priceOverride || productDefaults.price;
         localStorage.setItem('shoppingCart', JSON.stringify(cart));
         window.dispatchEvent(new Event('cart-updated'));
         
-        const origHtml = btn.innerHTML;
-        btn.innerHTML = 'Додано в кошик ✓';
-        btn.classList.remove('btn-primary');
-        btn.classList.add('btn-secondary');
-        
-        setTimeout(() => {
-          btn.innerHTML = origHtml;
-          btn.classList.remove('btn-secondary');
-          btn.classList.add('btn-primary');
-        }, 1500);
+        // Show success toast per philosophy
+        if (toast) {
+          toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+          toast.classList.add('translate-y-0', 'opacity-100');
+          setTimeout(() => {
+            toast.classList.remove('translate-y-0', 'opacity-100');
+            toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+          }, 2500);
+        }
         
       } catch (err) {
         console.error(err);
+      }
+    });
+  }
+
+  // Quick Zoom Modal Logic
+  const trigger = document.getElementById('image-zoom-trigger');
+  const modal = document.getElementById('quick-zoom-modal');
+  const closeBtn = document.getElementById('close-zoom-btn');
+
+  if (trigger && modal && closeBtn) {
+    const openZoom = () => {
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+      modal.classList.add('opacity-100');
+      document.body.style.overflow = 'hidden'; // Lock background scroll
+    };
+
+    const closeZoom = () => {
+      modal.classList.remove('opacity-100');
+      modal.classList.add('opacity-0', 'pointer-events-none');
+      document.body.style.overflow = ''; // Restore background scroll
+    };
+
+    trigger.addEventListener('click', openZoom);
+    closeBtn.addEventListener('click', closeZoom);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeZoom();
+    });
+
+    // Escape Key logic
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.classList.contains('opacity-0')) {
+        closeZoom();
       }
     });
   }

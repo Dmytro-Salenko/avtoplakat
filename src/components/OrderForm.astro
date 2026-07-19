@@ -9,8 +9,8 @@ import InvoiceFields from './InvoiceFields.astro';
     <h3 class="text-base font-bold text-text-dark mb-4 border-b border-border pb-2">Крок 1: Контакти замовника</h3>
     
     <div class="mb-4">
-      <label for="clientName" class="block text-xs font-semibold text-text-dark mb-1">Ім'я та прізвище:</label>
-      <input type="text" id="clientName" name="clientName" class="w-full border border-border rounded-lg p-2.5 text-sm text-text-dark focus:outline-none focus:border-primary" placeholder="Іванов Іван" required />
+      <label for="clientName" class="block text-xs font-semibold text-text-dark mb-1">Прізвище, ім’я та по батькові (ФІО):</label>
+      <input type="text" id="clientName" name="clientName" class="w-full border border-border rounded-lg p-2.5 text-sm text-text-dark focus:outline-none focus:border-primary" placeholder="Коваленко Олександр Васильович" required />
       <span class="block text-xs text-danger font-semibold mt-1 error-msg" id="err-clientName"></span>
     </div>
     
@@ -22,8 +22,8 @@ import InvoiceFields from './InvoiceFields.astro';
       </div>
       
       <div>
-        <label for="clientEmail" class="block text-xs font-semibold text-text-dark mb-1">Електронна пошта (Необов'язково):</label>
-        <input type="email" id="clientEmail" name="clientEmail" class="w-full border border-border rounded-lg p-2.5 text-sm text-text-dark focus:outline-none focus:border-primary" placeholder="ivan@example.com" />
+        <label for="clientEmail" class="block text-xs font-semibold text-text-dark mb-1">Електронна пошта (Email):</label>
+        <input type="email" id="clientEmail" name="clientEmail" class="w-full border border-border rounded-lg p-2.5 text-sm text-text-dark focus:outline-none focus:border-primary" placeholder="olexandr@email.com" required />
         <span class="block text-xs text-danger font-semibold mt-1 error-msg" id="err-clientEmail"></span>
       </div>
     </div>
@@ -32,7 +32,7 @@ import InvoiceFields from './InvoiceFields.astro';
   <!-- Step 2: Shipping -->
   <NovaPoshtaFields />
   
-  <!-- Step 3: VAT Invoice Toggle & Fields -->
+  <!-- Step 3: Payment Method -->
   <InvoiceFields />
 
   <!-- Additional options -->
@@ -40,12 +40,12 @@ import InvoiceFields from './InvoiceFields.astro';
     <h3 class="text-base font-bold text-text-dark mb-4 border-b border-border pb-2">Крок 2: Додатково</h3>
     
     <div class="mb-4">
-      <label for="orderComment" class="block text-xs font-semibold text-text-dark mb-1">Коментар до замовлення:</label>
-      <textarea id="orderComment" name="orderComment" class="w-full border border-border rounded-lg p-2.5 text-sm text-text-dark focus:outline-none focus:border-primary" rows="3" placeholder="Зазначте додаткові вимоги або побажання щодо індивідуального виготовлення..."></textarea>
+      <label for="orderComment" class="block text-xs font-semibold text-text-dark mb-1">Коментар до замовлення (необов'язково):</label>
+      <textarea id="orderComment" name="orderComment" class="w-full border border-border rounded-lg p-2.5 text-sm text-text-dark focus:outline-none focus:border-primary" rows="3" placeholder="Наприклад: вкажіть потрібні розміри, товщину та матеріал пластику..."></textarea>
     </div>
     
     <label class="inline-flex items-start gap-2 text-xs text-text-muted cursor-pointer font-medium mt-2">
-      <input type="checkbox" id="userAgreement" name="userAgreement" required class="w-4 h-4 rounded text-primary focus:ring-primary mt-0.5" />
+      <input type="checkbox" id="userAgreement" name="userAgreement" checked required class="w-4 h-4 rounded text-primary focus:ring-primary mt-0.5" />
       <span>Я даю згоду на обробку моїх персональних даних відповідно до закону України.</span>
     </label>
     <span class="block text-xs text-danger font-semibold mt-1 error-msg" id="err-userAgreement"></span>
@@ -56,7 +56,7 @@ import InvoiceFields from './InvoiceFields.astro';
   </div>
 
   <button type="submit" class="btn btn-primary w-full py-4 text-base font-bold cursor-pointer" id="submit-order-btn">
-    Підтвердити замовлення
+    Замовити
   </button>
 </form>
 
@@ -77,10 +77,12 @@ import InvoiceFields from './InvoiceFields.astro';
       const name = (document.getElementById('clientName') as HTMLInputElement).value.trim();
       const phone = (document.getElementById('clientPhone') as HTMLInputElement).value.trim();
       const email = (document.getElementById('clientEmail') as HTMLInputElement).value.trim();
+      const city = (document.getElementById('deliveryCity') as HTMLInputElement).value.trim();
+      const warehouse = (document.getElementById('deliveryWarehouse') as HTMLInputElement).value.trim();
       const agreement = (document.getElementById('userAgreement') as HTMLInputElement).checked;
       
       if (!name) {
-        document.getElementById('err-clientName')!.textContent = "Введіть ім'я та прізвище";
+        document.getElementById('err-clientName')!.textContent = "Вкажіть ваше прізвище, ім'я та по батькові";
         hasErrors = true;
       }
       
@@ -89,14 +91,23 @@ import InvoiceFields from './InvoiceFields.astro';
         hasErrors = true;
       }
       
-      // Email validation ONLY if filled
-      if (email && !/\S+@\S+\.\S+/.test(email)) {
-        document.getElementById('err-clientEmail')!.textContent = "Введіть коректну електронну пошту";
+      if (!email || !/\S+@\S+\.\S+/.test(email)) {
+        document.getElementById('err-clientEmail')!.textContent = "Вкажіть коректну адресу електронної пошти";
+        hasErrors = true;
+      }
+
+      if (!city) {
+        document.getElementById('err-deliveryCity')!.textContent = "Вкажіть населений пункт для доставки";
+        hasErrors = true;
+      }
+
+      if (!warehouse) {
+        document.getElementById('err-deliveryWarehouse')!.textContent = "Вкажіть номер та адресу відділення Нової пошти";
         hasErrors = true;
       }
       
       if (!agreement) {
-        document.getElementById('err-userAgreement')!.textContent = "Потрібно надати згоду на обробку даних";
+        document.getElementById('err-userAgreement')!.textContent = "Потрібно надати згоду на обробку персональних даних";
         hasErrors = true;
       }
       
@@ -105,37 +116,9 @@ import InvoiceFields from './InvoiceFields.astro';
         alert("Кошик порожній! Будь ласка, додайте хоча б один плакат.");
         hasErrors = true;
       }
-      
-      if (hasErrors) {
-        if (banner) banner.style.display = 'block';
-        return;
-      }
-      
-      const deliveryType = (document.querySelector('input[name="deliveryType"]:checked') as HTMLInputElement).value;
-      const cityName = (document.getElementById('deliveryCity') as HTMLInputElement).value.trim();
-      const warehouseName = (document.getElementById('deliveryWarehouse') as HTMLInputElement).value.trim();
-      const recipientName = (document.getElementById('recipientName') as HTMLInputElement).value.trim();
-      const recipientPhone = (document.getElementById('recipientPhone') as HTMLInputElement).value.trim();
-      
-      const needVat = (document.getElementById('needVatInvoice') as HTMLInputElement).checked;
-      
-      let paymentMethod = 'manualConfirmation';
-      let vatRequest = null;
-      
-      if (needVat) {
-        paymentMethod = 'invoiceWithVat';
-        vatRequest = {
-          companyName: (document.getElementById('companyName') as HTMLInputElement).value.trim(),
-          taxId: (document.getElementById('taxId') as HTMLInputElement).value.trim(),
-          legalAddress: (document.getElementById('legalAddress') as HTMLInputElement).value.trim(),
-          invoiceEmail: (document.getElementById('invoiceEmail') as HTMLInputElement).value.trim(),
-          contactName: (document.getElementById('contactName') as HTMLInputElement).value.trim(),
-          contactPhone: (document.getElementById('contactPhone') as HTMLInputElement).value.trim(),
-          comment: (document.getElementById('orderComment') as HTMLTextAreaElement).value.trim()
-        };
-      } else {
-        paymentMethod = 'manualConfirmation';
-      }
+
+      const needVat = (document.getElementById('pay-vat') as HTMLInputElement)?.checked || false;
+      let paymentMethod = needVat ? 'invoiceWithVat' : 'manualConfirmation';
 
       const hasCustomItems = cart.some((item: any) => item.isCustom);
       const totalCost = cart.reduce((sum: number, item: any) => sum + (item.isCustom ? 0 : item.price * item.count), 0);
@@ -145,19 +128,19 @@ import InvoiceFields from './InvoiceFields.astro';
         createdAt: new Date().toISOString(),
         clientName: name,
         clientPhone: phone.replace(/\s+/g, ''),
-        clientEmail: email || null,
+        clientEmail: email,
         items: cart,
         totalCost,
         hasCustomItems,
         delivery: {
           provider: 'nova-poshta',
-          type: deliveryType,
-          cityName,
+          type: 'branch',
+          cityName: city,
           cityRef: null,
-          warehouseName,
+          warehouseName: warehouse,
           warehouseRef: null,
-          recipientName: recipientName || name,
-          recipientPhone: recipientPhone || phone.replace(/\s+/g, ''),
+          recipientName: name,
+          recipientPhone: phone.replace(/\s+/g, ''),
           estimatedCost: null,
           trackingNumber: null
         },
@@ -167,7 +150,7 @@ import InvoiceFields from './InvoiceFields.astro';
           paymentProvider: null,
           paymentReference: null
         },
-        vatRequest,
+        vatRequest: null,
         comment: (document.getElementById('orderComment') as HTMLTextAreaElement).value.trim(),
         userAgreement: agreement
       };
@@ -185,16 +168,11 @@ import InvoiceFields from './InvoiceFields.astro';
         if (data.success) {
           localStorage.setItem('shoppingCart', '[]');
           window.dispatchEvent(new Event('cart-updated'));
-          
-          if (data.paymentLink) {
-            window.location.href = data.paymentLink;
-          } else {
-            window.location.href = '/thank-you';
-          }
+          window.location.href = '/thank-you';
         } else {
           alert('Сталася помилка при оформленні замовлення: ' + data.error);
           submitBtn.removeAttribute('disabled');
-          submitBtn.textContent = 'Підтвердити замовлення';
+          submitBtn.textContent = 'Замовити';
         }
       })
       .catch(err => {

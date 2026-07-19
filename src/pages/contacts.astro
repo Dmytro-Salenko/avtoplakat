@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { siteConfig } from '../config/defaults';
 ---
 <Layout title="Контакти — AVTOPLAKAT UA" description="Зв'яжіться з нами для консультації чи замовлення плакатів за вашими розмірами.">
   <section class="bg-white py-12 flex-grow">
@@ -13,19 +14,20 @@ import Layout from '../layouts/Layout.astro';
             <p class="text-base text-text-dark font-semibold">вул. Шевченка, буд. 100, м. Київ, Україна, 01001</p>
           </div>
           
-          <div class="bg-bg-light border border-border rounded-xl p-6">
-            <h3 class="text-sm font-bold uppercase text-primary tracking-wider mb-2">📞 Телефони для замовлень</h3>
-            <p class="text-xl sm:text-2xl font-black text-text-dark space-y-2 mt-1">
-              <a href="tel:+380671234567" class="block hover:text-primary hover:underline transition-colors">+38 (067) 123-45-67</a>
-              <a href="tel:+380507654321" class="block hover:text-primary hover:underline transition-colors">+38 (050) 765-43-21</a>
-            </p>
-            <span class="block text-xs text-text-muted italic mt-3">Пн–Пт: з 9:00 до 18:00, Сб–Нд: вихідні</span>
-          </div>
+          {siteConfig.phone && (
+            <div class="bg-bg-light border border-border rounded-xl p-6">
+              <h3 class="text-sm font-bold uppercase text-primary tracking-wider mb-2">📞 Телефони для замовлень</h3>
+              <p class="text-xl sm:text-2xl font-black text-text-dark space-y-2 mt-1">
+                <a href={`tel:${siteConfig.phone}`} class="block hover:text-primary hover:underline transition-colors">{siteConfig.phone}</a>
+              </p>
+              <span class="block text-xs text-text-muted italic mt-3">Пн–Пт: з 9:00 до 18:00, Сб–Нд: вихідні</span>
+            </div>
+          )}
           
           <div class="bg-bg-light border border-border rounded-xl p-6">
             <h3 class="text-sm font-bold uppercase text-primary tracking-wider mb-2">✉️ Електронна пошта</h3>
             <p class="text-lg sm:text-xl font-bold text-text-dark">
-              <a href="mailto:support@avtoplakat.com.ua" class="hover:text-primary hover:underline transition-colors">support@avtoplakat.com.ua</a>
+              <a href={`mailto:${siteConfig.email}`} class="hover:text-primary hover:underline transition-colors">{siteConfig.email}</a>
             </p>
           </div>
         </div>
