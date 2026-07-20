@@ -6,12 +6,17 @@ import '../styles/global.css';
 interface Props {
   title?: string;
   description?: string;
+  ogImage?: string;
 }
 
 const { 
   title = "AVTOPLAKAT UA — Навчальні автоплакати для автошкіл", 
-  description = "Каталог сучасних автоплакатів для автошкіл України. Виготовлення з ПВХ пластику, стандартні та індивідуальні розміри." 
+  description = "Каталог сучасних автоплакатів для автошкіл України. Виготовлення з ПВХ пластику, стандартні та індивідуальні розміри.",
+  ogImage = "/og-image.jpg"
 } = Astro.props;
+
+const canonicalUrl = Astro.url.href;
+const ogImageAbsolute = new URL(ogImage, Astro.site ?? Astro.url.origin).href;
 ---
 <!doctype html>
 <html lang="uk" class="h-full">
@@ -25,9 +30,23 @@ const {
     <!-- SEO Meta Tags -->
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImageAbsolute} />
+    <meta property="og:image:width" content="800" />
+    <meta property="og:image:height" content="500" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageAbsolute} />
+
     <meta name="google-site-verification" content="Og7vr81sa4_PiHNbl04b6Ad7ftn1M5Q_HHbVfhGvlbs" />
   </head>
   <body class="h-full bg-bg-light text-text-dark antialiased">
