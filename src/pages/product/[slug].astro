@@ -36,6 +36,27 @@ const publishedProducts = allProducts.filter(p => p.data.status === 'published')
 const similarProducts = publishedProducts
   .filter(p => p.data.category === product.data.category && p.data.slug !== product.data.slug)
   .slice(0, 4);
+
+// Schema.org Product + Offer (JSON-LD)
+const siteOrigin = Astro.site ? Astro.site.origin : Astro.url.origin;
+const productUrl = Astro.url.href;
+const productImageUrl = `${siteOrigin}/images/products/${product.data.image}`;
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": product.data.title,
+  "description": `Навчальний автоплакат "${product.data.title}" з розділу ${categoryName}. Основа ПВХ 3 мм, розмір 500×800 мм, прямий УФ-друк.`,
+  "image": productImageUrl,
+  "url": productUrl,
+  "category": categoryName,
+  "offers": {
+    "@type": "Offer",
+    "price": price,
+    "priceCurrency": "UAH",
+    "availability": "https://schema.org/InStock",
+    "url": productUrl
+  }
+};
 ---
 
 <Layout title={`${product.data.title} — Плакат для автошкіл`} description={`Плакат "${product.data.title}" з розділу ${categoryName}. Високоякісна основа ПВХ 3мм, розміри 500x800 мм.`}>
@@ -109,6 +130,9 @@ const similarProducts = publishedProducts
     </div>
   </div>
   <CartDrawer />
+
+  <!-- Schema.org Product + Offer JSON-LD -->
+  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
 </Layout>
 
 <script>
