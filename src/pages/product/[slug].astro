@@ -59,58 +59,93 @@ const productSchema = {
 };
 ---
 
-<Layout title={`${product.data.title} — Плакат для автошкіл`} description={`Плакат "${product.data.title}" з розділу ${categoryName}. Високоякісна основа ПВХ 3мм, розміри 500x800 мм.`}>
-  <div class="bg-bg-light py-8 sm:py-12 flex-grow">
+<Layout title={`${product.data.title} — Плакат для автошкіл`} description={`Плакат "${product.data.title}" з розділу ${categoryName}. Основа ПВХ 3 мм, розміри 500×800 мм.`}>
+  <div class="bg-[#f5f7fa] py-6 sm:py-10 flex-grow">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
+
       <!-- Breadcrumbs -->
-      <nav class="text-xs sm:text-sm text-text-muted mb-6 sm:mb-8 font-medium">
-        <a href="/" class="text-primary hover:underline">Каталог</a> &raquo;
-        <a href={`/category/${product.data.category}`} class="text-primary hover:underline">{categoryName}</a> &raquo;
-        <span class="text-text-dark">{product.data.title}</span>
+      <nav class="text-xs text-gray-500 mb-6 font-medium flex flex-wrap gap-1 items-center">
+        <a href="/" class="text-[#0D47A1] hover:underline">Каталог</a>
+        <span>›</span>
+        <a href={`/category/${product.data.category}`} class="text-[#0D47A1] hover:underline">{categoryName}</a>
+        <span>›</span>
+        <span class="text-gray-700 truncate max-w-[240px]">{product.data.title}</span>
       </nav>
-      
+
       <!-- Main Content Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-start mb-16">
-        
-        <!-- Left: Image with Quick Zoom Trigger -->
-        <div class="bg-white border border-border rounded-2xl p-6 sm:p-8 flex justify-center shadow-sm cursor-zoom-in" id="image-zoom-trigger" title="Натисніть для збільшення зображення">
-          <img src={`/images/products/${product.data.image}`} alt={product.data.title} class="max-w-full h-auto max-h-[500px] object-contain rounded shadow-md" id="product-thumbnail" />
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-10 items-start mb-12">
+
+        <!-- Left: Image -->
+        <div
+          class="bg-white border border-gray-200 rounded-xl p-6 flex items-center justify-center shadow-sm cursor-zoom-in min-h-[320px]"
+          id="image-zoom-trigger"
+          title="Натисніть для збільшення"
+        >
+          <img
+            src={`/images/products/${product.data.image}`}
+            alt={product.data.title}
+            class="max-w-full max-h-[460px] object-contain"
+            id="product-thumbnail"
+          />
         </div>
-        
+
         <!-- Right: Details -->
-        <div class="flex flex-col gap-6">
+        <div class="flex flex-col gap-5">
           <div>
-            <span class="text-xs font-bold uppercase text-primary tracking-wider block mb-2">{categoryName}</span>
-            <h1 class="text-2xl sm:text-3xl font-extrabold text-text-dark leading-tight">{product.data.title}</h1>
+            <span class="text-xs font-bold uppercase text-[#0D47A1] tracking-wider block mb-1.5">{categoryName}</span>
+            <h1 class="text-xl sm:text-2xl font-extrabold text-gray-900 leading-tight">{product.data.title}</h1>
           </div>
-          
+
+          <!-- Price -->
           <div class="flex items-baseline gap-2">
-            <span class="text-3xl font-extrabold text-text-dark">{price} грн</span>
-            <span class="text-sm font-semibold text-text-muted">з ПДВ</span>
+            <span class="text-3xl font-extrabold text-[#E53935]">{price} грн</span>
+            <span class="text-sm text-gray-500">з ПДВ</span>
           </div>
-          
-          <!-- Buy Actions -->
-          <div class="flex flex-col gap-3">
-            <button class="btn btn-primary w-full py-4 text-base font-bold add-to-cart-page-btn flex items-center justify-center gap-2 cursor-pointer shadow-sm" data-sku={product.data.sku} data-title={product.data.title} data-price={price}>
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
-              Додати у кошик
-            </button>
-            <p class="text-xs text-text-muted italic leading-relaxed">
-              Потрібен інший матеріал чи індивідуальний розмір? Ви зможете вказати це у кошику при оформленні замовлення.
-            </p>
-          </div>
-          
-          <!-- Specifications Component -->
-          <ProductSpecs product={product.data} />
+
+          <!-- Specs -->
+          <ul class="flex flex-col gap-1.5 text-sm text-gray-700">
+            <li class="flex items-center gap-2">
+              <span class="text-green-500 font-bold text-base">✔</span>
+              <span>Основа ПВХ <strong>3 мм</strong></span>
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-green-500 font-bold text-base">✔</span>
+              <span>Розмір <strong>500×800 мм</strong></span>
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-green-500 font-bold text-base">✔</span>
+              <span>Прямий <strong>УФ-друк</strong></span>
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-green-500 font-bold text-base">✔</span>
+              <span>Доставка <strong>Новою поштою</strong></span>
+            </li>
+          </ul>
+
+          <!-- Add to Cart -->
+          <button
+            class="add-to-cart-page-btn w-full py-3.5 text-base font-bold text-white bg-[#0D47A1] rounded-xl hover:bg-[#1565C0] transition-colors cursor-pointer flex items-center justify-center gap-2 shadow-sm"
+            data-sku={product.data.sku}
+            data-title={product.data.title}
+            data-price={price}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+            </svg>
+            Замовити
+          </button>
+          <p class="text-xs text-gray-400 text-center leading-relaxed">
+            Інший розмір або матеріал — вкажіть у кошику при оформленні
+          </p>
         </div>
       </div>
 
-      <!-- Similar Products Block -->
+      <!-- Similar Products -->
       {similarProducts.length > 0 && (
-        <section class="border-t border-border pt-12">
-          <h2 class="text-xl sm:text-2xl font-bold text-text-dark mb-6">Схожі плакати</h2>
-          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+        <section class="border-t border-gray-200 pt-8">
+          <h2 class="text-lg font-bold text-gray-800 mb-5">Схожі плакати</h2>
+          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
             {similarProducts.map(p => (
               <ProductCard product={p.data} />
             ))}
@@ -124,7 +159,7 @@ const productSchema = {
   <div id="quick-zoom-modal" class="fixed inset-0 bg-black/85 z-[2000] flex flex-col items-center justify-center p-4 transition-opacity duration-300 opacity-0 pointer-events-none">
     <div class="relative max-w-5xl w-full h-full flex flex-col items-center justify-center gap-4">
       <img src={`/images/products/${product.data.image}`} alt={product.data.title} class="max-w-full max-h-[85vh] object-contain rounded shadow-2xl bg-white p-2" />
-      <button id="close-zoom-btn" class="bg-white text-text-dark font-bold px-6 py-2.5 rounded-lg shadow-lg hover:bg-gray-100 transition-colors cursor-pointer text-sm">
+      <button id="close-zoom-btn" class="bg-white text-gray-800 font-bold px-6 py-2.5 rounded-lg shadow-lg hover:bg-gray-100 transition-colors cursor-pointer text-sm">
         Закрити
       </button>
     </div>

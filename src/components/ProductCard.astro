@@ -8,49 +8,48 @@ interface Props {
 
 const { product } = Astro.props;
 
-const categoryNames: Record<string, string> = {
-  'tractor-structure': 'Будова трактора',
-  'truck-structure': 'Будова вантажного автомобіля',
-  'car-structure': 'Будова легкового автомобіля',
-  'road-safety-rules': 'Безпека дорожнього руху',
-  'first-aid': 'Домедична допомога'
-};
-
-const categoryName = categoryNames[product.category] || 'Каталог';
-
 const price = product.priceOverride || productDefaults.price;
-const formattedPrice = `${price} грн`;
-const width = product.sizeOverride?.widthMm || productDefaults.widthMm;
-const height = product.sizeOverride?.heightMm || productDefaults.heightMm;
-const material = product.materialOverride || productDefaults.material;
-const thickness = product.thicknessOverride || productDefaults.thicknessMm;
 ---
 
-<div class="product-card flex flex-col bg-white border border-border rounded-xl overflow-hidden shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all duration-200" data-slug={product.slug} data-title={product.title} data-price={price} data-sku={product.sku}>
-  <a href={`/product/${product.slug}`} class="block aspect-[5/8] overflow-hidden bg-gray-100 border-b border-border">
-    <img src={`/images/products/${product.image}`} alt={product.title} class="w-full h-full object-cover transition-transform duration-300 hover:scale-102" loading="lazy" />
+<div
+  class="product-card flex flex-col bg-white rounded-xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
+  data-slug={product.slug}
+  data-title={product.title}
+  data-price={price}
+  data-sku={product.sku}
+>
+  <!-- Image area — fixed height, object-contain so nothing is cropped -->
+  <a href={`/product/${product.slug}`} class="block h-48 bg-gray-50 flex items-center justify-center p-3 border-b border-gray-100">
+    <img
+      src={`/images/products/${product.image}`}
+      alt={product.title}
+      class="max-h-full max-w-full object-contain"
+      loading="lazy"
+      decoding="async"
+    />
   </a>
-  
-  <div class="p-5 flex flex-col flex-grow">
-    <span class="text-xs font-bold uppercase text-primary tracking-wider mb-2">{categoryName}</span>
-    
-    <h3 class="text-base font-bold leading-snug text-text-dark mb-3 min-h-[2.8rem] line-clamp-2">
-      <a href={`/product/${product.slug}`} class="hover:text-primary transition-colors">{product.title}</a>
+
+  <!-- Card body -->
+  <div class="p-4 flex flex-col flex-grow gap-2">
+    <!-- Title -->
+    <h3 class="text-sm font-semibold leading-snug text-gray-800 line-clamp-2 min-h-[2.6rem]">
+      <a href={`/product/${product.slug}`} class="hover:text-[#0D47A1] transition-colors">
+        {product.title}
+      </a>
     </h3>
-    
-    <div class="flex flex-wrap gap-1.5 mb-3">
-      <span class="bg-bg-light text-text-muted text-xs px-2.5 py-1 rounded font-semibold">{width}×{height} мм</span>
-      <span class="bg-bg-light text-text-muted text-xs px-2.5 py-1 rounded font-semibold">{material} {thickness} мм</span>
-    </div>
-    
-    <p class="text-xs text-text-muted italic mt-auto mb-4">Інший розмір або матеріал — за запитом</p>
-    
-    <div class="flex items-center justify-between pt-3 border-t border-border mt-auto">
-      <div class="text-lg font-extrabold text-text-dark">{formattedPrice}</div>
-      <button class="btn btn-primary add-to-cart-btn text-xs px-3.5 py-2 font-bold cursor-pointer" data-sku={product.sku} data-title={product.title} data-price={price}>
-        Додати до кошика
-      </button>
-    </div>
+
+    <!-- Price -->
+    <div class="text-xl font-extrabold text-[#E53935] mt-auto">{price} грн</div>
+
+    <!-- Add to cart button -->
+    <button
+      class="add-to-cart-btn w-full py-2.5 text-sm font-bold text-white bg-[#0D47A1] rounded-lg hover:bg-[#1565C0] transition-colors cursor-pointer mt-1"
+      data-sku={product.sku}
+      data-title={product.title}
+      data-price={price}
+    >
+      Додати у кошик
+    </button>
   </div>
 </div>
 
@@ -59,33 +58,27 @@ const thickness = product.thicknessOverride || productDefaults.thicknessMm;
     btn.addEventListener('click', (e) => {
       e.preventDefault();
       e.stopPropagation();
-      
+
       const sku = btn.getAttribute('data-sku');
       const title = btn.getAttribute('data-title');
       const price = Number(btn.getAttribute('data-price'));
-      
+
       if (!sku || !title) return;
-      
+
       try {
         let cart = JSON.parse(localStorage.getItem('shoppingCart') || '[]');
         const existing = cart.find((item: any) => item.sku === sku && !item.isCustom);
-        
+
         if (existing) {
           existing.count++;
         } else {
-          cart.push({
-            sku,
-            title,
-            price,
-            count: 1,
-            isCustom: false,
-            customRequirements: null
-          });
+          cart.push({ sku, title, price, count: 1, isCustom: false, customRequirements: null });
         }
-        
+
         localStorage.setItem('shoppingCart', JSON.stringify(cart));
         window.dispatchEvent(new Event('cart-updated'));
-        
+
+        // Toast
         const toast = document.getElementById('cart-toast');
         if (toast) {
           toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
@@ -96,17 +89,15 @@ const thickness = product.thicknessOverride || productDefaults.thicknessMm;
           }, 2500);
         }
 
+        // Button feedback
         const origText = btn.textContent;
-        btn.textContent = 'Додано ✓';
-        btn.classList.remove('btn-primary');
-        btn.classList.add('btn-secondary');
-        
+        (btn as HTMLButtonElement).textContent = '✓ Додано';
+        (btn as HTMLButtonElement).style.backgroundColor = '#10b981';
         setTimeout(() => {
-          btn.textContent = origText;
-          btn.classList.remove('btn-secondary');
-          btn.classList.add('btn-primary');
+          (btn as HTMLButtonElement).textContent = origText || 'Додати у кошик';
+          (btn as HTMLButtonElement).style.backgroundColor = '';
         }, 1500);
-        
+
       } catch (err) {
         console.error(err);
       }

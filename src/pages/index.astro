@@ -1,108 +1,74 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
-import CategoryCard from '../components/CategoryCard.astro';
 import ProductCard from '../components/ProductCard.astro';
 import CartDrawer from '../components/CartDrawer.astro';
 
 const allProducts = await getCollection('products');
 const publishedProducts = allProducts.filter(p => p.data.status === 'published');
 
-const getCount = (cat: string) => publishedProducts.filter(p => p.data.category === cat).length;
-
 const categories = [
-  { slug: 'car-structure', name: 'Будова легкового автомобіля та електромобіля', count: getCount('car-structure') },
-  { slug: 'truck-structure', name: 'Будова вантажного автомобіля', count: getCount('truck-structure') },
-  { slug: 'tractor-structure', name: 'Будова трактора', count: getCount('tractor-structure') },
-  { slug: 'road-safety-rules', name: 'Правила дорожнього руху та безпека', count: getCount('road-safety-rules') },
-  { slug: 'first-aid', name: 'Домедична допомога при ДТП', count: getCount('first-aid') }
+  { slug: 'car-structure',    name: 'Будова автомобіля',  icon: '🚗' },
+  { slug: 'truck-structure',  name: 'Будова вантажного',  icon: '🚛' },
+  { slug: 'tractor-structure',name: 'Будова трактора',    icon: '🚜' },
+  { slug: 'road-safety-rules',name: 'ПДР та безпека',     icon: '🛑' },
+  { slug: 'first-aid',        name: 'Домедична допомога', icon: '🩺' },
 ];
 ---
 
-<Layout>
-  <!-- Hero Section -->
-  <section class="bg-primary bg-radial-[circle_at_80%_20%] from-yellow-400/8 to-transparent text-white py-16 sm:py-20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center justify-between gap-10">
-      <div class="max-w-2xl">
-        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight mb-6">Навчальні плакати для автошкіл 🇺🇦</h1>
-        <p class="text-base sm:text-lg text-blue-100 mb-8 leading-relaxed">
-          Якісні стенди та плакати з ПВХ-пластику для професійного обладнання навчальних класів автошкіл. Стандартні розміри 500×800 мм та виготовлення під замовлення.
-        </p>
-        <div class="flex flex-wrap gap-4">
-          <a href="#catalog" class="btn btn-secondary py-3 px-6 text-sm sm:text-base font-bold shadow-md">Переглянути каталог</a>
-          <a href="/shipping-payment" class="btn btn-outline bg-transparent border-white/40 text-white hover:bg-white/10 py-3 px-6 text-sm sm:text-base font-bold">Доставка та оплата</a>
-        </div>
-      </div>
-      <div class="w-full lg:max-w-sm bg-white/5 border border-white/15 rounded-2xl p-6 sm:p-8 flex items-center lg:flex-col gap-4 sm:gap-6 text-left lg:text-center">
-        <span class="text-4xl sm:text-5xl">🚚</span>
-        <div>
-          <p class="font-bold text-sm sm:text-base text-gray-100 leading-snug">Швидка доставка Новою поштою по всій Україні</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Categories Grid -->
-  <section class="py-12 sm:py-16 bg-bg-light">
+<Layout
+  title="AVTOPLAKAT UA — Каталог навчальних плакатів для автошкіл"
+  description="Навчальні автоплакати для автошкіл України. ПВХ 3 мм, розмір 500×800 мм, швидка доставка Новою поштою."
+>
+  <!-- Page header + category filter -->
+  <section class="bg-white border-b border-gray-200 py-5 sm:py-6">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl sm:text-3xl font-extrabold text-text-dark mb-8">Категорії плакатів</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <h1 class="text-xl sm:text-2xl font-extrabold text-gray-900 mb-4">
+        Каталог навчальних плакатів
+      </h1>
+
+      <!-- Category pills -->
+      <div class="flex flex-wrap gap-2">
         {categories.map(cat => (
-          <CategoryCard slug={cat.slug} name={cat.name} count={cat.count} />
+          <a href={`/category/${cat.slug}`} class="cat-btn">
+            <span>{cat.icon}</span>
+            {cat.name}
+          </a>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- Main Catalog Grid -->
-  <section class="py-12 sm:py-16 bg-white border-t border-border" id="catalog">
+  <!-- Product grid -->
+  <section class="py-8 sm:py-10 flex-grow" id="catalog">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 border-b border-border pb-4">
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-text-dark">Повний каталог продукції</h2>
-        <span class="text-sm font-semibold text-text-muted">Всього: {publishedProducts.length} плакатів</span>
+
+      <!-- Count bar -->
+      <div class="flex items-center justify-between mb-5">
+        <p class="text-sm text-gray-500">
+          Всього <span class="font-bold text-gray-800">{publishedProducts.length}</span> плакатів
+        </p>
       </div>
-      
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+
+      <!-- Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
         {publishedProducts.map(product => (
           <ProductCard product={product.data} />
         ))}
       </div>
-    </div>
-  </section>
 
-  <!-- Promo B2B Section -->
-  <section class="py-12 sm:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="bg-primary text-white rounded-2xl p-8 sm:p-12 shadow-md">
-      <div class="max-w-3xl">
-        <h2 class="text-2xl sm:text-3xl font-extrabold mb-4">Працюємо з ПДВ та державними установами</h2>
-        <p class="text-sm sm:text-base text-blue-100 mb-6 leading-relaxed">
-          Надаємо повний пакет бухгалтерських документів для юридичних осіб, ФОП та бюджетних організацій. Оформлення договору, рахунок-фактура та видаткові накладні.
-        </p>
-        <a href="/shipping-payment" class="btn btn-secondary py-3 px-6 font-bold shadow-md">Детальніше про оплату з ПДВ</a>
+      <!-- B2B note -->
+      <div class="mt-10 bg-[#0D47A1] text-white rounded-xl px-6 py-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <p class="font-bold text-base">Працюємо з ПДВ та державними установами</p>
+          <p class="text-sm text-blue-200 mt-0.5">Повний пакет документів для юридичних осіб і ФОП</p>
+        </div>
+        <a href="/shipping-payment" class="text-sm font-bold text-white underline underline-offset-2 hover:text-yellow-300 whitespace-nowrap">
+          Детальніше →
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- FAQ Section -->
-  <section class="py-12 sm:py-16 bg-bg-light border-t border-border">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl sm:text-3xl font-extrabold text-text-dark text-center mb-10">Часті питання (FAQ)</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="bg-white border border-border rounded-xl p-6 shadow-sm">
-          <h4 class="text-base font-bold text-text-dark mb-3 leading-snug">Які стандартні характеристики плакатів?</h4>
-          <p class="text-sm text-text-muted leading-relaxed">Всі стандартні плакати мають розмір 500 × 800 мм, виготовляються на міцній пластиковій основі ПВХ товщиною 3 мм та мають прямий УФ-друк, що не вигорає.</p>
-        </div>
-        <div class="bg-white border border-border rounded-xl p-6 shadow-sm">
-          <h4 class="text-base font-bold text-text-dark mb-3 leading-snug">Чи можна замовити індивідуальні розміри?</h4>
-          <p class="text-sm text-text-muted leading-relaxed">Так! У кошику ви можете вибрати опцію «Потрібен нестандартний розмір або матеріал» та вказати власні вимоги. Наш менеджер прорахує замовлення та зв'яжеться з вами.</p>
-        </div>
-        <div class="bg-white border border-border rounded-xl p-6 shadow-sm">
-          <h4 class="text-base font-bold text-text-dark mb-3 leading-snug">Які умови доставки та оплати?</h4>
-          <p class="text-sm text-text-muted leading-relaxed">Доставка здійснюється по всій Україні виключно Новою поштою. Оплатити можна після підтвердження замовлення за реквізитами ФОП або за рахунком з ПДВ.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-  
   <CartDrawer />
 </Layout>

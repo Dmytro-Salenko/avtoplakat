@@ -1,15 +1,16 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 @theme {
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --color-primary: #1e40af;
-  --color-primary-hover: #1d4ed8;
+  --color-primary: #0D47A1;
+  --color-primary-hover: #1565C0;
   --color-secondary: #eab308;
   --color-secondary-hover: #ca8a04;
-  --color-text-dark: #1f2937;
-  --color-text-muted: #4b5563;
-  --color-bg-light: #f9fafb;
+  --color-price: #E53935;
+  --color-text-dark: #1a1a2e;
+  --color-text-muted: #6b7280;
+  --color-bg-light: #f5f7fa;
   --color-bg-white: #ffffff;
   --color-border: #e5e7eb;
   --color-success: #10b981;
@@ -20,30 +21,32 @@ body {
   font-family: var(--font-sans);
   color: var(--color-text-dark);
   background-color: var(--color-bg-light);
-  line-height: 1.5;
+  line-height: 1.55;
   -webkit-font-smoothing: antialiased;
 }
 
-/* Common Components following KISS principles */
+/* ─── Buttons ─── */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.75rem 1.5rem;
+  padding: 0.7rem 1.5rem;
   font-weight: 600;
   font-size: 0.95rem;
   border-radius: 8px;
-  transition: all 0.2s ease;
+  transition: background-color 0.15s ease, box-shadow 0.15s ease;
   gap: 0.5rem;
   cursor: pointer;
+  border: none;
 }
 
 .btn-primary {
   background-color: var(--color-primary);
-  color: var(--color-bg-white);
+  color: #fff;
 }
 .btn-primary:hover {
   background-color: var(--color-primary-hover);
+  box-shadow: 0 2px 8px rgba(13, 71, 161, 0.35);
 }
 
 .btn-secondary {
@@ -55,11 +58,35 @@ body {
 }
 
 .btn-outline {
-  border: 1px solid var(--color-border);
+  border: 1.5px solid var(--color-border);
   background-color: var(--color-bg-white);
   color: var(--color-text-dark);
 }
 .btn-outline:hover {
   background-color: var(--color-bg-light);
-  border-color: var(--color-text-muted);
+  border-color: #9ca3af;
+}
+
+/* ─── Category pill buttons ─── */
+.cat-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 1rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: 1.5px solid var(--color-border);
+  background: #fff;
+  color: var(--color-text-dark);
+  transition: border-color 0.15s, background 0.15s, color 0.15s;
+  white-space: nowrap;
+  cursor: pointer;
+  text-decoration: none;
+}
+.cat-btn:hover,
+.cat-btn.active {
+  border-color: var(--color-primary);
+  background: #e8f0fe;
+  color: var(--color-primary);
 }
