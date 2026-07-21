@@ -1,46 +1,36 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { siteConfig } from '../config/defaults';
 ---
-<Layout title="Контакти — AVTOPLAKAT UA" description="Зв'яжіться з нами для консультації чи замовлення плакатів за вашими розмірами.">
-  <section class="bg-white py-12 flex-grow">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6">
-      <h1 class="text-2xl sm:text-3xl font-extrabold text-primary mb-8">Наші контакти</h1>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-        <div class="space-y-6">
-          <div class="bg-bg-light border border-border rounded-xl p-6">
-            <h3 class="text-sm font-bold uppercase text-primary tracking-wider mb-2">📍 Виробництво та офіс</h3>
-            <p class="text-base text-text-dark font-semibold">вул. Шевченка, буд. 100, м. Київ, Україна, 01001</p>
-          </div>
-          
-          {siteConfig.phone && (
-            <div class="bg-bg-light border border-border rounded-xl p-6">
-              <h3 class="text-sm font-bold uppercase text-primary tracking-wider mb-2">📞 Телефони для замовлень</h3>
-              <p class="text-xl sm:text-2xl font-black text-text-dark space-y-2 mt-1">
-                <a href={`tel:${siteConfig.phone}`} class="block hover:text-primary hover:underline transition-colors">{siteConfig.phone}</a>
-              </p>
-              <span class="block text-xs text-text-muted italic mt-3">Пн–Пт: з 9:00 до 18:00, Сб–Нд: вихідні</span>
-            </div>
-          )}
-          
-          <div class="bg-bg-light border border-border rounded-xl p-6">
-            <h3 class="text-sm font-bold uppercase text-primary tracking-wider mb-2">✉️ Електронна пошта</h3>
-            <p class="text-lg sm:text-xl font-bold text-text-dark">
-              <a href={`mailto:${siteConfig.email}`} class="hover:text-primary hover:underline transition-colors">{siteConfig.email}</a>
-            </p>
-          </div>
+<Layout title="Контакти — AVTOPLAKAT UA" description="Зв'яжіться з нами для консультації або замовлення навчальних автоплакатів.">
+  <section class="bg-[#f5f7fa] py-12 flex-grow">
+    <div class="max-w-2xl mx-auto px-4 sm:px-6">
+      <h1 class="text-2xl sm:text-3xl font-extrabold text-[#0D47A1] mb-8">Контакти</h1>
+
+      <!-- Contact card -->
+      <div class="bg-white border border-gray-200 rounded-xl p-6 sm:p-8 shadow-sm">
+        <h2 class="text-lg font-bold text-gray-800 mb-5 flex items-center gap-2">
+          <span>📧</span> Зв'язатися з нами
+        </h2>
+
+        <div class="mb-5">
+          <p class="text-xs font-semibold uppercase text-gray-400 tracking-wider mb-1">Email</p>
+          <a
+            href="mailto:support@avtoplakat.com.ua"
+            class="text-lg font-bold text-[#0D47A1] hover:underline transition-colors"
+          >
+            support@avtoplakat.com.ua
+          </a>
         </div>
-        
-        <div class="flex flex-col justify-center space-y-4">
-          <h3 class="text-lg font-bold text-text-dark">Зворотний зв'язок</h3>
-          <p class="text-sm text-text-muted leading-relaxed">
-            Ви можете замовити будь-які плакати з нашого каталогу онлайн або зв'язатися з нашими менеджерами за вказаними номерами телефонів.
-          </p>
-          <p class="text-sm text-text-muted leading-relaxed">
-            Якщо у вас є готові макети або креслення для індивідуального виготовлення стендів, надсилайте їх нам на електронну пошту support@avtoplakat.com.ua для прорахунку вартості.
-          </p>
+
+        <div class="border-t border-gray-100 pt-5 space-y-2 text-sm text-gray-600 leading-relaxed">
+          <p>Ми відправляємо навчальні плакати по всій Україні службою <strong>«Нова пошта»</strong>.</p>
+          <p>Після оформлення замовлення наш менеджер зв'яжеться з вами для підтвердження замовлення.</p>
         </div>
+      </div>
+
+      <!-- Back to catalog -->
+      <div class="mt-6 text-center">
+        <a href="/" class="text-sm font-semibold text-[#0D47A1] hover:underline">← Повернутися до каталогу</a>
       </div>
     </div>
   </section>
