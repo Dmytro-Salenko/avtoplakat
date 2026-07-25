@@ -11,20 +11,22 @@ interface Env {
 
 export const onRequestPost = async (context: any) => {
   const { request, env } = context;
-  console.log('[ORDER API] Request received:', request.method, new URL(request.url).pathname);
+  console.log('[ORDER API] Order request received');
   
   try {
     let body;
     try {
       body = await request.json();
-      console.log('[ORDER API] JSON parsed successfully');
     } catch (e) {
       console.error('[ORDER API] Failed to parse request JSON');
       return new Response(JSON.stringify({
         success: false,
         stage: 'parsing',
         error: 'Invalid JSON payload'
-      }), { status: 400, headers: { 'Content-Type': 'application/json' } });
+      }), {
+        status: 400,
+        headers: { "Content-Type": "application/json; charset=utf-8" }
+      });
     }
     
     // 1. Validate incoming data via Zod
@@ -54,18 +56,18 @@ export const onRequestPost = async (context: any) => {
         details: validationResult.error.format()
       }), {
         status: 400,
-        headers: { 'Content-Type': 'application/json' }
+        headers: { "Content-Type": "application/json; charset=utf-8" }
       });
     }
     
     console.log('[ORDER API] Validation passed');
     const order = validationResult.data;
     
-    // 2. Generate random Order ID (date-based + random string)
+    // 2. Generate random Order ID
     const orderId = order.id || `AP-${Date.now()}-${Math.floor(1000 + Math.random() * 9000)}`;
     const createdAt = order.createdAt || new Date().toISOString();
     
-    // 3. Process Cart Items & calculate standard total cost
+    // 3. Process Cart Items
     let computedStandardTotal = 0;
     let itemsTextList = '';
     let emailItemsTextList = '';
@@ -100,7 +102,7 @@ export const onRequestPost = async (context: any) => {
       telegramMsg += `\n💬 <b>Коментар:</b> ${order.comment}\n`;
     }
 
-    // 5. Build Email Body Text for Owner
+    // 5. Build Email Body Text
     let emailBody = `НОВЕ ЗАМОВЛЕННЯ #${orderId}\n`;
     emailBody += `Дата та час: ${new Date(createdAt).toLocaleString('uk-UA')}\n\n`;
     emailBody += `Клієнт:\n`;
@@ -118,7 +120,7 @@ export const onRequestPost = async (context: any) => {
       emailBody += `\nКоментар замовника: ${order.comment}\n`;
     }
 
-    // 6. Send Telegram Notification (if config present)
+    // 6. Send Telegram Notification (if configured)
     if (env.TELEGRAM_BOT_TOKEN && env.TELEGRAM_CHAT_ID) {
       try {
         await sendTelegramMessage({
@@ -130,85 +132,103 @@ export const onRequestPost = async (context: any) => {
       }
     }
 
-    // 7. Send Email Notification via SendGrid (if config present)
-    console.log('[ORDER API] OWNER_EMAIL configured:', Boolean(env.OWNER_EMAIL));
-
-    if (env.SENDGRID_API_KEY && env.OWNER_EMAIL) {
-      console.log('[ORDER API] Mail API request started (SendGrid)');
-      try {
-        const mailPayload = {
-          personalizations: [{
-            to: [{ email: env.OWNER_EMAIL }]
-          }],
-          from: { email: env.SENDER_EMAIL || 'noreply@avtoplakat.com.ua' },
-          subject: `Нове замовлення #${orderId} - AVTOPLAKAT`,
-          content: [{
-            type: 'text/plain',
-            value: emailBody
-          }]
-        };
-
-        const mailRes = await fetch('https://api.sendgrid.com/v3/mail/send', {
-          method: 'POST',
-          headers: {
-            'Authorization': `Bearer ${env.SENDGRID_API_KEY}`,
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(mailPayload)
-        });
-
-        console.log('[ORDER API] Mail API response status:', mailRes.status);
-
-        if (!mailRes.ok) {
-          const errorText = await mailRes.text();
-          console.error('[ORDER API] SendGrid responded with error:', mailRes.status, errorText);
-          return new Response(JSON.stringify({
-            success: false,
-            stage: 'email_delivery',
-            error: 'SendGrid email delivery failed',
-            mailStatusCode: mailRes.status,
-            mailErrorDetails: errorText
-          }), {
-            status: mailRes.status >= 400 && mailRes.status < 600 ? mailRes.status : 502,
-            headers: { 'Content-Type': 'application/json' }
-          });
+    // 7. Check SendGrid configuration
+    if (!env.SENDGRID_API_KEY || !env.OWNER_EMAIL) {
+      console.log('[ORDER API] Email service is not configured');
+      return new Response(JSON.stringify({
+        success: false,
+        stage: "configuration",
+        error: "Email service is not configured"
+      }), {
+        status: 500,
+        headers: {
+          "Content-Type": "application/json; charset=utf-8"
         }
-      } catch (err: any) {
-        console.error('[ORDER API] Failed to send email via SendGrid:', err);
-        return new Response(JSON.stringify({
-          success: false,
-          stage: 'email_delivery',
-          error: 'Mail service request failed',
-          details: err.message
-        }), {
-          status: 500,
-          headers: { 'Content-Type': 'application/json' }
-        });
-      }
-    } else {
-      console.log('[ORDER API] Email configuration missing (SENDGRID_API_KEY or OWNER_EMAIL missing).');
+      });
     }
 
-    console.log('[ORDER API] Order completed successfully:', orderId);
-    
-    // 8. Return success response
-    return new Response(JSON.stringify({
-      success: true,
-      orderId
-    }), {
-      status: 200,
-      headers: { 'Content-Type': 'application/json' }
-    });
+    // 8. Send Email Notification via SendGrid
+    console.log('[ORDER API] SendGrid request started');
+    try {
+      const mailPayload = {
+        personalizations: [{
+          to: [{ email: env.OWNER_EMAIL }]
+        }],
+        from: { email: env.SENDER_EMAIL || 'noreply@avtoplakat.com.ua' },
+        subject: `Нове замовлення #${orderId} - AVTOPLAKAT`,
+        content: [{
+          type: 'text/plain',
+          value: emailBody
+        }]
+      };
+
+      const mailRes = await fetch('https://api.sendgrid.com/v3/mail/send', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${env.SENDGRID_API_KEY}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(mailPayload)
+      });
+
+      console.log(`[ORDER API] SendGrid response status: ${mailRes.status}`);
+
+      if (!mailRes.ok) {
+        const errorText = await mailRes.text();
+        console.error(`[ORDER API] SendGrid error details: ${errorText}`);
+        return new Response(JSON.stringify({
+          success: false,
+          stage: "mail",
+          mailStatusCode: mailRes.status,
+          mailErrorDetails: errorText
+        }), {
+          status: mailRes.status,
+          headers: {
+            "Content-Type": "application/json; charset=utf-8"
+          }
+        });
+      }
+
+      console.log('[ORDER API] Order completed');
+
+      return new Response(JSON.stringify({
+        success: true,
+        orderId: orderId,
+        mailAccepted: true
+      }), {
+        status: 200,
+        headers: {
+          "Content-Type": "application/json; charset=utf-8"
+        }
+      });
+
+    } catch (err: any) {
+      console.error('[ORDER API] SendGrid fetch thrown error:', err);
+      return new Response(JSON.stringify({
+        success: false,
+        stage: "mail",
+        mailStatusCode: 500,
+        mailErrorDetails: err.message
+      }), {
+        status: 500,
+        headers: {
+          "Content-Type": "application/json; charset=utf-8"
+        }
+      });
+    }
     
   } catch (err: any) {
-    console.error('Order API handler failed:', err);
+    console.error('[ORDER API] Internal server error:', err);
     return new Response(JSON.stringify({
       success: false,
-      error: 'Internal server error',
+      stage: "server",
+      error: "Internal server error",
       details: err.message
     }), {
       status: 500,
-      headers: { 'Content-Type': 'application/json' }
+      headers: {
+        "Content-Type": "application/json; charset=utf-8"
+      }
     });
   }
 };
