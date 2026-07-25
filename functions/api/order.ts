@@ -100,6 +100,8 @@ export const onRequestPost = async (context: any) => {
     }
 
     // 7. Send Email Notification via SendGrid (if config present)
+    console.log('Order email recipient configured:', Boolean(env.OWNER_EMAIL));
+
     if (env.SENDGRID_API_KEY && env.OWNER_EMAIL) {
       try {
         const mailPayload = {
@@ -124,10 +126,28 @@ export const onRequestPost = async (context: any) => {
         });
 
         if (!mailRes.ok) {
-          console.error('SendGrid responded with error:', await mailRes.text());
+          const errorText = await mailRes.text();
+          console.error('SendGrid responded with error:', mailRes.status, errorText);
+          return new Response(JSON.stringify({
+            success: false,
+            error: 'Mail service error',
+            mailStatusCode: mailRes.status,
+            mailErrorDetails: errorText
+          }), {
+            status: mailRes.status >= 400 && mailRes.status < 600 ? mailRes.status : 500,
+            headers: { 'Content-Type': 'application/json' }
+          });
         }
-      } catch (err) {
+      } catch (err: any) {
         console.error('Failed to send email via SendGrid:', err);
+        return new Response(JSON.stringify({
+          success: false,
+          error: 'Mail service request failed',
+          details: err.message
+        }), {
+          status: 500,
+          headers: { 'Content-Type': 'application/json' }
+        });
       }
     } else {
       console.log('Email configuration missing or SendGrid deactivated. Email notification body:\n', emailBody);
