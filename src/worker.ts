@@ -18,16 +18,35 @@ export default {
 
     // Route POST /api/order to order API logic
     if (url.pathname === '/api/order' && request.method === 'POST') {
+      console.log('[ORDER API] Request received:', request.method, url.pathname);
       try {
         const body = await request.json();
+        console.log('[ORDER API] JSON parsed successfully');
         
         // 1. Validate incoming data via Zod
         const validationResult = OrderSchema.safeParse(body);
         
         if (!validationResult.success) {
+          const missingFields: string[] = [];
+          const invalidFields: string[] = [];
+
+          validationResult.error.issues.forEach(issue => {
+            const path = issue.path.join('.');
+            if (issue.code === 'invalid_type' && ((issue as any).received === 'undefined' || (issue as any).received === 'null')) {
+              missingFields.push(path);
+            } else {
+              invalidFields.push(path);
+            }
+          });
+
+          console.log('[ORDER API] Validation failed:', { missingFields, invalidFields });
+
           return new Response(JSON.stringify({
             success: false,
+            stage: 'validation',
             error: 'Validation failed',
+            missingFields,
+            invalidFields,
             details: validationResult.error.format()
           }), {
             status: 400,
@@ -35,6 +54,7 @@ export default {
           });
         }
         
+        console.log('[ORDER API] Validation passed');
         const order = validationResult.data;
         
         // 2. Generate random Order ID
@@ -106,9 +126,10 @@ export default {
         }
 
         // 7. Send Email Notification via SendGrid
-        console.log('Order email recipient configured:', Boolean(env.OWNER_EMAIL));
+        console.log('[ORDER API] OWNER_EMAIL configured:', Boolean(env.OWNER_EMAIL));
 
         if (env.SENDGRID_API_KEY && env.OWNER_EMAIL) {
+          console.log('[ORDER API] Mail API request started (SendGrid)');
           try {
             const mailPayload = {
               personalizations: [{
@@ -131,23 +152,27 @@ export default {
               body: JSON.stringify(mailPayload)
             });
 
+            console.log('[ORDER API] Mail API response status:', mailRes.status);
+
             if (!mailRes.ok) {
               const errorText = await mailRes.text();
-              console.error('SendGrid responded with error:', mailRes.status, errorText);
+              console.error('[ORDER API] SendGrid responded with error:', mailRes.status, errorText);
               return new Response(JSON.stringify({
                 success: false,
-                error: 'Mail service error',
+                stage: 'email_delivery',
+                error: 'SendGrid email delivery failed',
                 mailStatusCode: mailRes.status,
                 mailErrorDetails: errorText
               }), {
-                status: mailRes.status >= 400 && mailRes.status < 600 ? mailRes.status : 500,
+                status: mailRes.status >= 400 && mailRes.status < 600 ? mailRes.status : 502,
                 headers: { 'Content-Type': 'application/json' }
               });
             }
           } catch (err: any) {
-            console.error('Failed to send email via SendGrid:', err);
+            console.error('[ORDER API] Failed to send email via SendGrid:', err);
             return new Response(JSON.stringify({
               success: false,
+              stage: 'email_delivery',
               error: 'Mail service request failed',
               details: err.message
             }), {
@@ -156,8 +181,10 @@ export default {
             });
           }
         } else {
-          console.log('Email configuration missing or SendGrid deactivated. Email notification body:\n', emailBody);
+          console.log('[ORDER API] Email configuration missing (SENDGRID_API_KEY or OWNER_EMAIL missing).');
         }
+
+        console.log('[ORDER API] Order completed successfully:', orderId);
         
         return new Response(JSON.stringify({
           success: true,

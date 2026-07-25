@@ -39,13 +39,13 @@ export type CartItem = z.infer<typeof CartItemSchema>;
 
 export const DeliverySchema = z.object({
   provider: z.literal("nova-poshta").default("nova-poshta"),
-  type: z.enum(["branch", "parcel-locker"]),
+  type: z.enum(["branch", "parcel-locker"]).default("branch"),
   cityName: z.string().min(1, "Місто обов'язкове для заповнення"),
   cityRef: z.string().nullable().default(null),
   warehouseName: z.string().min(1, "Оберіть відділення або поштомат"),
   warehouseRef: z.string().nullable().default(null),
-  recipientName: z.string().min(1, "Вкажіть ім'я отримувача"),
-  recipientPhone: z.string().regex(/^\+?380\d{9}$/, "Некоректний формат телефону"),
+  recipientName: z.string().nullable().default(null),
+  recipientPhone: z.string().nullable().default(null),
   estimatedCost: z.number().nullable().default(null),
   trackingNumber: z.string().nullable().default(null)
 });
