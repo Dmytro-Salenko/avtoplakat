@@ -57,6 +57,7 @@ const productSchema = {
     "url": productUrl
   }
 };
+const originalFilename = product.data.originalFilename || product.data.sku || product.data.image;
 ---
 
 <Layout title={`${product.data.title} — Плакат для автошкіл`} description={`Плакат "${product.data.title}" з розділу ${categoryName}. Основа ПВХ 3 мм, розміри 500×800 мм.`}>
@@ -125,7 +126,7 @@ const productSchema = {
           <!-- Add to Cart -->
           <button
             class="add-to-cart-page-btn w-full py-3.5 text-base font-bold text-white bg-[#0D47A1] rounded-xl hover:bg-[#1565C0] transition-colors cursor-pointer flex items-center justify-center gap-2 shadow-sm"
-            data-sku={product.data.sku}
+            data-original-filename={originalFilename}
             data-title={product.data.title}
             data-price={price}
           >
@@ -178,24 +179,26 @@ const productSchema = {
   if (btn) {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
-      const sku = btn.getAttribute('data-sku');
+      const originalFilename = btn.getAttribute('data-original-filename');
       const title = btn.getAttribute('data-title');
       const price = Number(btn.getAttribute('data-price'));
       
-      if (!sku || !title) return;
+      if (!originalFilename || !title) return;
       
       try {
         let cart = JSON.parse(localStorage.getItem('shoppingCart') || '[]');
-        const existing = cart.find((item: any) => item.sku === sku && !item.isCustom);
+        const existing = cart.find((item: any) => item.originalFilename === originalFilename && !item.isCustom);
         
         if (existing) {
-          existing.count++;
+          existing.count = (existing.count || existing.quantity || 1) + 1;
+          existing.quantity = existing.count;
         } else {
           cart.push({
-            sku,
             title,
+            originalFilename,
             price,
             count: 1,
+            quantity: 1,
             isCustom: false,
             customRequirements: null
           });

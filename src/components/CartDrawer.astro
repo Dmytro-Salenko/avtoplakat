@@ -114,10 +114,16 @@
       cart.forEach((item: any, idx: number) => {
         const isCustom = item.isCustom || false;
         if (isCustom) hasCustom = true;
+        const cnt = Number(item.count || item.quantity || 1);
+        item.count = cnt;
+        item.quantity = cnt;
+        if (!item.originalFilename && item.sku) {
+          item.originalFilename = item.sku;
+        }
         
-        const priceText = isCustom ? 'Ручний розрахунок' : `${item.price * item.count} грн`;
+        const priceText = isCustom ? 'Ручний розрахунок' : `${item.price * cnt} грн`;
         if (!isCustom) {
-          total += item.price * item.count;
+          total += item.price * cnt;
         }
         
         html += `
@@ -137,7 +143,7 @@
             <td class="py-4">
               <div class="inline-flex items-center border border-border rounded bg-white w-20 overflow-hidden">
                 <button class="drawer-qty-btn drawer-minus w-6 h-6 flex items-center justify-center text-xs text-text-muted hover:bg-bg-light cursor-pointer" data-idx="${idx}">-</button>
-                <input type="text" class="drawer-qty-input w-8 h-6 text-center border-x border-border border-y-0 text-xs font-semibold" value="${item.count}" readonly />
+                <input type="text" class="drawer-qty-input w-8 h-6 text-center border-x border-border border-y-0 text-xs font-semibold" value="${cnt}" readonly />
                 <button class="drawer-qty-btn drawer-plus w-6 h-6 flex items-center justify-center text-xs text-text-muted hover:bg-bg-light cursor-pointer" data-idx="${idx}">+</button>
               </div>
             </td>
@@ -153,7 +159,8 @@
       document.querySelectorAll('.drawer-plus').forEach(btn => {
         btn.addEventListener('click', () => {
           const idx = Number(btn.getAttribute('data-idx'));
-          cart[idx].count++;
+          cart[idx].count = (cart[idx].count || cart[idx].quantity || 1) + 1;
+          cart[idx].quantity = cart[idx].count;
           localStorage.setItem('shoppingCart', JSON.stringify(cart));
           renderDrawerCart();
           window.dispatchEvent(new Event('cart-updated'));
@@ -163,7 +170,8 @@
       document.querySelectorAll('.drawer-minus').forEach(btn => {
         btn.addEventListener('click', () => {
           const idx = Number(btn.getAttribute('data-idx'));
-          cart[idx].count--;
+          cart[idx].count = (cart[idx].count || cart[idx].quantity || 1) - 1;
+          cart[idx].quantity = cart[idx].count;
           if (cart[idx].count <= 0) {
             cart.splice(idx, 1);
           }

@@ -119,17 +119,24 @@ import InvoiceFields from './InvoiceFields.astro';
       }
       
       let cart: any[] = [];
+      let missingOriginalFilename = false;
       try {
         const rawCart = JSON.parse(localStorage.getItem('shoppingCart') || '[]');
         if (Array.isArray(rawCart)) {
-          cart = rawCart.map((item: any) => ({
-            sku: String(item.sku || item.originalFilename || item.id || item.title || '').trim(),
-            title: String(item.title || item.name || '').trim(),
-            price: Number(item.price || 600),
-            count: Number(item.count || item.quantity || 1),
-            isCustom: Boolean(item.isCustom),
-            customRequirements: item.customRequirements ? String(item.customRequirements) : null
-          })).filter((item: any) => item.sku && item.title && !isNaN(item.price) && item.count > 0);
+          cart = rawCart.map((item: any) => {
+            const origFn = String(item.originalFilename || item.sku || '').trim();
+            if (!origFn) {
+              missingOriginalFilename = true;
+            }
+            return {
+              title: String(item.title || item.name || '').trim(),
+              originalFilename: origFn,
+              price: Number(item.price || 600),
+              quantity: Number(item.quantity || item.count || 1),
+              isCustom: Boolean(item.isCustom),
+              customRequirements: item.customRequirements ? String(item.customRequirements) : null
+            };
+          }).filter((item: any) => item.title && !isNaN(item.price) && item.quantity > 0);
         }
       } catch (e) {
         cart = [];
@@ -137,6 +144,9 @@ import InvoiceFields from './InvoiceFields.astro';
 
       if (cart.length === 0) {
         alert("Кошик порожній! Будь ласка, додайте хоча б один плакат.");
+        hasErrors = true;
+      } else if (missingOriginalFilename || cart.some((item: any) => !item.originalFilename)) {
+        alert("Помилка: у кошику є товар без ідентифікатора файлу. Очистіть кошик і додайте товар знову.");
         hasErrors = true;
       }
 
@@ -149,7 +159,7 @@ import InvoiceFields from './InvoiceFields.astro';
       let paymentMethod = needVat ? 'invoiceWithVat' : 'manualConfirmation';
 
       const hasCustomItems = cart.some((item: any) => item.isCustom);
-      const totalCost = cart.reduce((sum: number, item: any) => sum + (item.isCustom ? 0 : item.price * item.count), 0);
+      const totalCost = cart.reduce((sum: number, item: any) => sum + (item.isCustom ? 0 : item.price * item.quantity), 0);
 
       const orderPayload = {
         id: `AP-${Date.now()}-${Math.floor(1000 + Math.random() * 9000)}`,

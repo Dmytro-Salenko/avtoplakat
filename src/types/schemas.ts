@@ -2,7 +2,8 @@ import { z } from 'zod';
 
 export const ProductSchema = z.object({
   id: z.number(),
-  sku: z.string(),
+  sku: z.string().optional(),
+  originalFilename: z.string().optional(),
   title: z.string(),
   slug: z.string(),
   image: z.string(),
@@ -27,10 +28,10 @@ export const ProductSchema = z.object({
 export type Product = z.infer<typeof ProductSchema>;
 
 export const CartItemSchema = z.object({
-  sku: z.string(),
-  title: z.string(),
+  title: z.string().min(1, "Назва товару обов'язкова"),
+  originalFilename: z.string().min(1, "Ідентифікатор оригінального файлу обов'язковий"),
   price: z.number(),
-  count: z.number().min(1),
+  quantity: z.number().min(1),
   isCustom: z.boolean().default(false),
   customRequirements: z.string().nullable().default(null)
 });

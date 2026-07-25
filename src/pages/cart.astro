@@ -110,9 +110,16 @@ import Layout from '../layouts/Layout.astro';
       
       cart.forEach((item: any, idx: number) => {
         const isCustom = item.isCustom || false;
-        const priceText = isCustom ? 'Ручний розрахунок' : `${item.price * item.count} грн`;
+        const cnt = Number(item.count || item.quantity || 1);
+        item.count = cnt;
+        item.quantity = cnt;
+        if (!item.originalFilename && item.sku) {
+          item.originalFilename = item.sku;
+        }
+
+        const priceText = isCustom ? 'Ручний розрахунок' : `${item.price * cnt} грн`;
         if (!isCustom) {
-          total += item.price * item.count;
+          total += item.price * cnt;
         }
         
         html += `
@@ -127,7 +134,7 @@ import Layout from '../layouts/Layout.astro';
             <td class="py-5">
               <div class="inline-flex items-center border border-border rounded bg-white w-20 overflow-hidden">
                 <button class="qty-box-btn page-minus w-6 h-6 flex items-center justify-center text-xs text-text-muted hover:bg-bg-light cursor-pointer" data-idx="${idx}">—</button>
-                <input type="text" class="qty-box-input w-8 h-6 text-center border-x border-border border-y-0 text-xs font-semibold" value="${item.count}" readonly />
+                <input type="text" class="qty-box-input w-8 h-6 text-center border-x border-border border-y-0 text-xs font-semibold" value="${cnt}" readonly />
                 <button class="qty-box-btn page-plus w-6 h-6 flex items-center justify-center text-xs text-text-muted hover:bg-bg-light cursor-pointer" data-idx="${idx}">+</button>
               </div>
             </td>
@@ -157,7 +164,8 @@ import Layout from '../layouts/Layout.astro';
       document.querySelectorAll('.page-plus').forEach(btn => {
         btn.addEventListener('click', () => {
           const idx = Number(btn.getAttribute('data-idx'));
-          cart[idx].count++;
+          cart[idx].count = (cart[idx].count || cart[idx].quantity || 1) + 1;
+          cart[idx].quantity = cart[idx].count;
           localStorage.setItem('shoppingCart', JSON.stringify(cart));
           renderCartPage();
           window.dispatchEvent(new Event('cart-updated'));
@@ -167,7 +175,8 @@ import Layout from '../layouts/Layout.astro';
       document.querySelectorAll('.page-minus').forEach(btn => {
         btn.addEventListener('click', () => {
           const idx = Number(btn.getAttribute('data-idx'));
-          cart[idx].count--;
+          cart[idx].count = (cart[idx].count || cart[idx].quantity || 1) - 1;
+          cart[idx].quantity = cart[idx].count;
           if (cart[idx].count <= 0) {
             cart.splice(idx, 1);
           }

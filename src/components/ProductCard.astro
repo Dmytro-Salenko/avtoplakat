@@ -9,6 +9,7 @@ interface Props {
 const { product } = Astro.props;
 
 const price = product.priceOverride || productDefaults.price;
+const originalFilename = product.originalFilename || product.sku || product.image;
 ---
 
 <div
@@ -16,7 +17,7 @@ const price = product.priceOverride || productDefaults.price;
   data-slug={product.slug}
   data-title={product.title}
   data-price={price}
-  data-sku={product.sku}
+  data-original-filename={originalFilename}
 >
   <!-- Image area — fixed height, object-contain so nothing is cropped -->
   <a href={`/product/${product.slug}`} class="block h-48 bg-gray-50 flex items-center justify-center p-3 border-b border-gray-100">
@@ -44,7 +45,7 @@ const price = product.priceOverride || productDefaults.price;
     <!-- Add to cart button -->
     <button
       class="add-to-cart-btn w-full py-2.5 text-sm font-bold text-white bg-[#0D47A1] rounded-lg hover:bg-[#1565C0] transition-colors cursor-pointer mt-1"
-      data-sku={product.sku}
+      data-original-filename={originalFilename}
       data-title={product.title}
       data-price={price}
     >
@@ -59,20 +60,29 @@ const price = product.priceOverride || productDefaults.price;
       e.preventDefault();
       e.stopPropagation();
 
-      const sku = btn.getAttribute('data-sku');
+      const originalFilename = btn.getAttribute('data-original-filename');
       const title = btn.getAttribute('data-title');
       const price = Number(btn.getAttribute('data-price'));
 
-      if (!sku || !title) return;
+      if (!originalFilename || !title) return;
 
       try {
         let cart = JSON.parse(localStorage.getItem('shoppingCart') || '[]');
-        const existing = cart.find((item: any) => item.sku === sku && !item.isCustom);
+        const existing = cart.find((item: any) => item.originalFilename === originalFilename && !item.isCustom);
 
         if (existing) {
-          existing.count++;
+          existing.count = (existing.count || existing.quantity || 1) + 1;
+          existing.quantity = existing.count;
         } else {
-          cart.push({ sku, title, price, count: 1, isCustom: false, customRequirements: null });
+          cart.push({
+            title,
+            originalFilename,
+            price,
+            count: 1,
+            quantity: 1,
+            isCustom: false,
+            customRequirements: null
+          });
         }
 
         localStorage.setItem('shoppingCart', JSON.stringify(cart));

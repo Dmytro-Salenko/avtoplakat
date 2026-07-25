@@ -71,10 +71,11 @@ export const onRequestPost = async (context: any) => {
     let emailItemsTextList = '';
     
     order.items.forEach((item, index) => {
-      const itemSum = item.price * item.count;
+      const qty = item.quantity;
+      const itemSum = item.price * qty;
       computedStandardTotal += itemSum;
-      itemsTextList += `${index + 1}. <b>${item.title}</b> (x${item.count}) - ${item.price} грн/од. (Сума: ${itemSum} грн)\n`;
-      emailItemsTextList += `${index + 1}. ${item.title} (x${item.count}) - ${item.price} грн/од. (Сума: ${itemSum} грн)\n`;
+      itemsTextList += `${index + 1}. <b>${item.title}</b>\n   Файл: <code>${item.originalFilename}</code> | К-ть: ${qty} | Ціна: ${item.price} грн (Сума: ${itemSum} грн)\n`;
+      emailItemsTextList += `${index + 1}. Назва товару: ${item.title}\n   Оригінальний файл: ${item.originalFilename}\n   Кількість: ${qty}\n   Ціна: ${item.price} грн/од. (Сума: ${itemSum} грн)\n\n`;
     });
 
     const paymentMethodText = order.payment.paymentMethod === 'invoiceWithVat' ? 'Рахунок з ПДВ' : 'Оплата на картку';
