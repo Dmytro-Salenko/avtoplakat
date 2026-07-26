@@ -51,17 +51,58 @@
 </div>
 
 <script>
+  import { trackEvent } from '../lib/analytics';
+
   const overlay = document.getElementById('cart-drawer-overlay');
   const closeBtn = document.getElementById('close-cart-btn');
   const contBtn = document.getElementById('continue-shopping-btn');
   const headerCartBtn = document.getElementById('header-cart-btn');
   const clearBtn = document.getElementById('clear-cart-drawer-btn');
+  const checkoutLink = document.querySelector('a[href="/checkout"]');
   
   function openCart() {
     if (overlay) {
       overlay.style.display = 'flex';
       renderDrawerCart();
+
+      try {
+        const cart = JSON.parse(localStorage.getItem('shoppingCart') || '[]');
+        if (cart.length > 0) {
+          const total = cart.reduce((sum: number, item: any) => sum + (item.isCustom ? 0 : item.price * (item.quantity || item.count || 1)), 0);
+          trackEvent('view_cart', {
+            currency: 'UAH',
+            value: total,
+            items: cart.map((item: any) => ({
+              item_id: item.originalFilename || item.sku,
+              item_name: item.title,
+              price: item.price,
+              quantity: item.quantity || item.count || 1
+            }))
+          });
+        }
+      } catch (e) {}
     }
+  }
+
+  if (checkoutLink) {
+    checkoutLink.addEventListener('click', () => {
+      try {
+        const cart = JSON.parse(localStorage.getItem('shoppingCart') || '[]');
+        if (cart.length > 0) {
+          const total = cart.reduce((sum: number, item: any) => sum + (item.isCustom ? 0 : item.price * (item.quantity || item.count || 1)), 0);
+          trackEvent('begin_checkout', {
+            currency: 'UAH',
+            value: total,
+            items: cart.map((item: any) => ({
+              item_id: item.originalFilename || item.sku,
+              item_name: item.title,
+              price: item.price,
+              quantity: item.quantity || item.count || 1
+            }))
+          });
+        }
+      } catch (e) {}
+    });
   }
   
   function closeCart() {

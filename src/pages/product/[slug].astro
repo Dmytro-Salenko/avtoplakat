@@ -129,6 +129,7 @@ const originalFilename = product.data.originalFilename || product.data.sku || pr
             data-original-filename={originalFilename}
             data-title={product.data.title}
             data-price={price}
+            data-category={categoryName}
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
@@ -172,16 +173,33 @@ const originalFilename = product.data.originalFilename || product.data.sku || pr
 </Layout>
 
 <script>
-  // Add to Cart Logic
+  import { trackEvent } from '../../lib/analytics';
+
+  // Add to Cart Logic & GA4 view_item
   const btn = document.querySelector('.add-to-cart-page-btn');
   const toast = document.getElementById('cart-toast');
-  
+
   if (btn) {
+    const originalFilename = btn.getAttribute('data-original-filename');
+    const title = btn.getAttribute('data-title');
+    const price = Number(btn.getAttribute('data-price'));
+    const category = btn.getAttribute('data-category');
+
+    if (originalFilename && title && price) {
+      trackEvent('view_item', {
+        currency: 'UAH',
+        value: price,
+        items: [{
+          item_id: originalFilename,
+          item_name: title,
+          item_category: category || undefined,
+          price: price
+        }]
+      });
+    }
+
     btn.addEventListener('click', (e) => {
       e.preventDefault();
-      const originalFilename = btn.getAttribute('data-original-filename');
-      const title = btn.getAttribute('data-title');
-      const price = Number(btn.getAttribute('data-price'));
       
       if (!originalFilename || !title) return;
       
@@ -206,6 +224,17 @@ const originalFilename = product.data.originalFilename || product.data.sku || pr
         
         localStorage.setItem('shoppingCart', JSON.stringify(cart));
         window.dispatchEvent(new Event('cart-updated'));
+
+        trackEvent('add_to_cart', {
+          currency: 'UAH',
+          value: price,
+          items: [{
+            item_id: originalFilename,
+            item_name: title,
+            price: price,
+            quantity: 1
+          }]
+        });
         
         // Show success toast per philosophy
         if (toast) {

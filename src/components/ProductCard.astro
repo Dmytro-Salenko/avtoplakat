@@ -55,6 +55,8 @@ const originalFilename = product.originalFilename || product.sku || product.imag
 </div>
 
 <script>
+  import { trackEvent } from '../lib/analytics';
+
   document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
@@ -87,6 +89,17 @@ const originalFilename = product.originalFilename || product.sku || product.imag
 
         localStorage.setItem('shoppingCart', JSON.stringify(cart));
         window.dispatchEvent(new Event('cart-updated'));
+
+        trackEvent('add_to_cart', {
+          currency: 'UAH',
+          value: price,
+          items: [{
+            item_id: originalFilename,
+            item_name: title,
+            price: price,
+            quantity: 1
+          }]
+        });
 
         // Toast
         const toast = document.getElementById('cart-toast');

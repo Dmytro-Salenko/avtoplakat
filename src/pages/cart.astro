@@ -79,6 +79,10 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <script>
+  import { trackEvent } from '../lib/analytics';
+
+  let hasTrackedViewCart = false;
+
   function renderCartPage() {
     try {
       const cart = JSON.parse(localStorage.getItem('shoppingCart') || '[]');
@@ -103,6 +107,21 @@ import Layout from '../layouts/Layout.astro';
       
       emptyDiv.style.display = 'none';
       contentDiv.style.display = 'grid';
+
+      if (!hasTrackedViewCart) {
+        hasTrackedViewCart = true;
+        const total = cart.reduce((sum: number, item: any) => sum + (item.isCustom ? 0 : item.price * (item.quantity || item.count || 1)), 0);
+        trackEvent('view_cart', {
+          currency: 'UAH',
+          value: total,
+          items: cart.map((item: any) => ({
+            item_id: item.originalFilename || item.sku,
+            item_name: item.title,
+            price: item.price,
+            quantity: item.quantity || item.count || 1
+          }))
+        });
+      }
       
       let html = '';
       let total = 0;
@@ -230,6 +249,28 @@ import Layout from '../layouts/Layout.astro';
         }
       });
       localStorage.setItem('shoppingCart', JSON.stringify(cart));
+    });
+  }
+
+  const pageCheckoutLink = document.querySelector('a[href="/checkout"]');
+  if (pageCheckoutLink) {
+    pageCheckoutLink.addEventListener('click', () => {
+      try {
+        const cart = JSON.parse(localStorage.getItem('shoppingCart') || '[]');
+        if (cart.length > 0) {
+          const total = cart.reduce((sum: number, item: any) => sum + (item.isCustom ? 0 : item.price * (item.quantity || item.count || 1)), 0);
+          trackEvent('begin_checkout', {
+            currency: 'UAH',
+            value: total,
+            items: cart.map((item: any) => ({
+              item_id: item.originalFilename || item.sku,
+              item_name: item.title,
+              price: item.price,
+              quantity: item.quantity || item.count || 1
+            }))
+          });
+        }
+      } catch (e) {}
     });
   }
   

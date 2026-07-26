@@ -17,6 +17,8 @@ const {
 
 const canonicalUrl = Astro.url.href;
 const ogImageAbsolute = new URL(ogImage, Astro.site ?? Astro.url.origin).href;
+const isProd = import.meta.env.PROD;
+const gaMeasurementId = "G-87NQLBM9F1";
 ---
 <!doctype html>
 <html lang="uk" class="h-full">
@@ -48,6 +50,20 @@ const ogImageAbsolute = new URL(ogImage, Astro.site ?? Astro.url.origin).href;
     <meta name="twitter:image" content={ogImageAbsolute} />
 
     <meta name="google-site-verification" content="Og7vr81sa4_PiHNbl04b6Ad7ftn1M5Q_HHbVfhGvlbs" />
+
+    <!-- GA4 (Production only) -->
+    {isProd && (
+      <>
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}></script>
+        <script is:inline set:html={`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          window.gtag = gtag;
+          gtag('js', new Date());
+          gtag('config', '${gaMeasurementId}', { send_page_view: false });
+        `} />
+      </>
+    )}
   </head>
   <body class="h-full bg-bg-light text-text-dark antialiased">
     <div class="flex flex-col min-h-screen">
@@ -62,5 +78,21 @@ const ogImageAbsolute = new URL(ogImage, Astro.site ?? Astro.url.origin).href;
     <div id="cart-toast" class="fixed bottom-6 right-6 bg-success text-white px-5 py-3 rounded-lg shadow-lg font-bold text-sm z-[3000] transition-all duration-300 transform translate-y-20 opacity-0 pointer-events-none">
       Плакат додано до кошика
     </div>
+
+    <script>
+      import { trackPageView } from '../lib/analytics';
+      
+      let lastTrackedUrl = '';
+      function handlePageView() {
+        const url = window.location.href;
+        if (url !== lastTrackedUrl) {
+          lastTrackedUrl = url;
+          trackPageView(url);
+        }
+      }
+
+      handlePageView();
+      document.addEventListener('astro:page-load', handlePageView);
+    </script>
   </body>
 </html>

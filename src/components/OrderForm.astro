@@ -61,6 +61,8 @@ import InvoiceFields from './InvoiceFields.astro';
 </form>
 
 <script>
+  import { trackEvent } from '../lib/analytics';
+
   const form = document.getElementById('checkout-order-form') as HTMLFormElement | null;
   const submitBtn = document.getElementById('submit-order-btn');
   const banner = document.getElementById('form-errors-banner');
@@ -214,6 +216,22 @@ import InvoiceFields from './InvoiceFields.astro';
         }
 
         if (res.ok && data.success) {
+          try {
+            trackEvent('purchase', {
+              transaction_id: data.orderId || orderPayload.id,
+              currency: 'UAH',
+              value: totalCost,
+              items: cart.map((item: any) => ({
+                item_id: item.originalFilename,
+                item_name: item.title,
+                price: item.price,
+                quantity: item.quantity || item.count || 1
+              }))
+            });
+          } catch (e) {
+            console.error('GA4 purchase tracking failed:', e);
+          }
+
           localStorage.setItem('shoppingCart', '[]');
           window.dispatchEvent(new Event('cart-updated'));
           window.location.href = '/thank-you';

@@ -52,6 +52,10 @@ import OrderForm from '../components/OrderForm.astro';
 </Layout>
 
 <script>
+  import { trackEvent } from '../lib/analytics';
+
+  let hasTrackedBeginCheckout = false;
+
   function renderCheckoutSummary() {
     try {
       const cart = JSON.parse(localStorage.getItem('shoppingCart') || '[]');
@@ -67,6 +71,21 @@ import OrderForm from '../components/OrderForm.astro';
         subtotalLabel.textContent = '0 грн';
         totalLabel.textContent = '0 грн';
         return;
+      }
+
+      if (!hasTrackedBeginCheckout) {
+        hasTrackedBeginCheckout = true;
+        const total = cart.reduce((sum: number, item: any) => sum + (item.isCustom ? 0 : item.price * (item.quantity || item.count || 1)), 0);
+        trackEvent('begin_checkout', {
+          currency: 'UAH',
+          value: total,
+          items: cart.map((item: any) => ({
+            item_id: item.originalFilename || item.sku,
+            item_name: item.title,
+            price: item.price,
+            quantity: item.quantity || item.count || 1
+          }))
+        });
       }
       
       let html = '';
